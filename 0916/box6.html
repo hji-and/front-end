@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 쉐도우 연습 -->
+
+    <style>
+        .box1{margin: 50px; width: 150px; height: 150px; background-color: skyblue; border: 1px solid #333;
+        box-shadow: 5px 5px 5px red}
+         .box2{margin: 50px; width: 150px; height: 150px; background-color: lightpink; border: 1px solid #333;
+         box-shadow: -5px 5px 5px black}
+         /* 그림자 : 양수를 주면 우측, 음수를 주면 좌측 */
+         .box3{margin: 50px; width: 150px; height: 150px; background-color: lightgreen; border: 1px solid #333;
+        box-shadow: 5px -5px 5px black}
+        /* 그림자 : 양수를 주면 위쪽, 음수를 주면 아래쪽 */
+         .box4{margin: 50px; width: 150px; height: 150px; background-color: yellowgreen; border: 1px solid #333;
+        box-shadow: 5px 5px 20px black}
+        /* 그림자px : 블러(퍼짐 효과) 세기 */
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+</body>
+</html>

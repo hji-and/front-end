@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 마진 연습 -->
+ 
+    <style>
+        .box1{width: 150px; height: 150px; background-color: skyblue; border: 1px solid #333; 
+            margin-top: 50px; margin-bottom: 50px; margin-left: 50px;}
+         .box2{width: 150px; height: 150px; background-color: lightpink; border: 1px solid #333;
+        margin: 0 auto;}
+        /* 위아래0 좌우auto로 중앙정렬 */
+         .box3{width: 150px; height: 150px; background-color: lightgreen; border: 1px solid #333;
+        margin: 50px 0px 50px 50px;}
+        /* box1과 동일한 마진을 줬음↑ (시계방향:상-우-하-좌) */
+         .box4{width: 150px; height: 150px; background-color: yellowgreen; border: 1px solid #333;
+        margin: 30px 50px;}
+        /* 마진2개만 쓰면 위아래30 좌우50로 적용 / 3개 쓰면 상-좌우-하로 적용*/
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+</body>
+</html>

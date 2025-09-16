@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- rowspan, colspan 연습 -->
+     
+<style>
+table{
+    border: 1px solid black;
+    /* border(테두리) : 선두께 선종류 선색상 (solid실선 doted점선)*/
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+    /* td 하나하나에 선을 그음 / 요즈음엔 border-collapse(하나의 테두리로 통합)로 깔끔하게 구성함 */
+    padding: 10px;
+    /* padding 안의 여백, 시계방향 margin 양자간의 거리 */
+}
+</style>
+
+
+
+</head>
+<body>
+    <table>
+<!-- border은 테두리, 태그가 빨간 건 현재는 거의 쓰지 않는다는 뜻 -->
+ <!-- 가로줄(줄, 행)tr안에 세로줄(칸, 열)td가 있음 -->
+ <tr>
+    <!-- 과목과 난이도 합칠 때(세로병합) rowspan -->
+    <td rowspan="2">과목/난이도</td>
+    <!-- html과css를 합칠 때(가로병합) -->
+    <td colspan="2">html/css</td>
+    
+    <td colspan="2">javascript/Jquery</td>
+    
+ </tr> 
+ <tr>
+    
+    <td>쉽고</td>
+    <td>재미있고</td>
+    <td>어렵고</td>
+    <td>신기하다</td>
+ </tr>
+    </table>
+</body>
+</html>

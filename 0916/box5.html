@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 박스-사이징 연습, 박스-라디우스 연습 -->
+
+    <style>
+        .box1{width: 150px; height: 150px; 
+            padding: 10px;
+            border: skyblue; border: 1px solid #333;}
+         .box2{width: 150px; height: 150px; 
+            padding: 10px;
+            background-color: lightpink; border: 1px solid #333;
+        box-sizing: border-box;}
+        /* box-sizing: border-box : 보더랑 패딩 포함한 크기로 맞춰줌(따로 계산x)*/
+         .box3{width: 150px; height: 150px; background-color: lightgreen; border: 1px solid #333;
+        border-radius: 20px 0 20px 0;}
+         .box4{width: 150px; height: 150px; background-color: yellowgreen; border: 1px solid #333;
+        border-radius: 10px;}
+        .box5{width: 150px; height: 150px; background-color: peru; border: 1px solid #333;
+        border-radius: 75px;}
+        /* 사각형 모서리를 둥글게 해줌, 시계방향 적용, 이미지에도 가능 */
+        .dog1{border-radius: 30px;}
+
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+    <div class="box5">박스5</div>
+    <img src="images/dog1.jpg" alt="원강아지" class="dog1"/>
+</body>
+</html>

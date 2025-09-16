@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 셀렉트 연습, 옵션 연습 -->
+<body>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>회원가입</legend>
+            <p>가입목적 : <br/> <textarea rows="5" cols="100"></textarea></p>
+            <!-- textarea글을 쓸 수 있는 구역 rows다섯줄(세로) cols100글자(가로) -->
+            <p>전화번호 :
+                <select>
+                    <option>지역번호</option>
+                    <option selected="selected">02</option>
+                    <!-- OPTION=고를 수 있는 선택지들~ / selected="selected"는 맨 먼저 보여지는,선택되는 것 -->
+                    <option>031</option>
+                    <option>044</option>
+                </select>
+                <input type="text">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
