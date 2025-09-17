@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 구글폰트 다운,적용하는 법 연습 -->
+    <style>
+    /* 웹폰트를 적용하고 싶으면 구글에서 구글폰트를 검색한다->import링크복사해 상단에 붙여넣기한다 */
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+        .f1{font-family: "나눔고딕";}
+        /* .f2{font-family: "BMKKubulimTTF";} */
+
+        .f3{ font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;}
+
+        .f4:hover{font-family: "궁서체"; text-shadow: 5px 5px 5px yellow; display: block;}
+    </style>
+</head>
+<body>
+    <p>기본폰트는 Noto Sans kr에 16px입니다</p>
+    <p class="f1">나는 나눔고딕을 쓰고 싶어요</p>
+    <p class="f2">나는 꾸불림을 쓰고 싶어요</p>
+    <p class="f3">나는 Black Han Sans을 쓰고 싶어요</p>
+
+    <p class="f4">나는 <strong>궁서체</strong></p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 하위 선택자 연습한 것에 float, display:block 연습 -->
+    <style>
+
+    *{margin: 0; padding: 0;}
+    
+    a{text-decoration: none; color: black;}
+    ul, li{list-style: none;}
+
+    .container{width: 900px; margin: 0 auto;}
+
+    header{width: 100%; /*생략가능*/
+    height: 200px;background-color: pink;}
+    header .logo{float: left; margin-left: 50px; margin-top: 70px;}
+    header nav{float: right; margin-right: 20px; margin-top: 60px;}
+    nav ul li{float: left;}
+
+    header nav ul li a{display: block; padding: 15px; background-color: yellow;}
+    /* a는 인라인 요소라 넓이 높이를 적용할 수 없다. display:block은 인라인 요소를 블록요소로 바꿀 수 있다. */
+        header nav ul li a:hover{background-color: black; color: white;}
+
+    .main{height: 550px; background-color: #ccc;}
+    section{width: 650px; height: 550px; background-color: yellowgreen; float: left;} 
+    aside{width: 250px; height: 550px; background-color: aqua; float: left;}  
+    
+    footer{width: 100%; height: 70px; color: beige; background-color: #333;
+    text-align: center; padding-top: 20px; line-height: 70px}
+    /* footer 안에서 가로 중앙정렬 
+    padding-top 20px; 높이가 70px 한 줄로 된 글씨를 중앙정렬하려면 
+    line-height를 높이값과 똑같이 주면 세로 중앙정렬 */
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="logo"><a href="#">The joeun</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Menu1</a></li>
+                    <li><a href="#">Menu2</a></li>
+                    <li><a href="#">Menu3</a></li>
+                    <li><a href="#">Menu4</a></li>
+                    <li><a href="#">Menu5</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    <div class="main">
+        <section></section>
+        <aside></aside>
+    </div>  
+
+    <footer>
+     2015 &copy; Copyright Design By Junsuk
+    </footer>
+       
+    </div>
+    
+</body>
+</html>

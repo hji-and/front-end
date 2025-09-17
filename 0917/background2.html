@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 백그라운드에 이미지 넣는 연습, background-cover -->
+<style>
+.box1{width: 1200px; height: 300px; border: 1px solid #333; background-color: pink;
+margin: 100px auto; background-image: url(images/ca1-1.jpg);
+/* 이미지가 작을 경우 가로세로 반복해서 나타남 */
+/* background-repeat: no-repeat; 이미지가 반복 안 되고 1개만 나타남*/
+background-repeat: repeat-x; /* 이미지가 x축으로만 반복 */
+}
+
+.box2{width: 1200px; height: 300px; border: 1px solid #333; background-color: pink;
+margin: 100px auto; background-image: url(images/ca1-1.jpg); background-repeat: no-repeat;
+/* background-position: 0 50% */
+background-position: 50% 50%;
+}
+/* 배경 위치 가로50% 세로50% 정중앙 background-position: right center로도 ok */
+/* background-position: 200px 200px;로도 가능 background-size: 200px 200px;도 ok  */
+
+.box3{width: 1200px; height: 300px; border: 1px solid #333; background-color: pink;
+margin: 100px auto; background-image: url(images/ca1-1.jpg); background-repeat: no-repeat;
+/* background-size: contain; 이미지가 비율로 늘리다가 도착하는 부분에서 안 늘어남/화면에 바깥쪽으로 꽉차게} */
+background-size: cover;}
+/* 다 맞춰줌 보통 cover를 많이 씀/화면에 먼쪽으로 꽉차게 */
+
+.box4{width: 1200px; height: 300px; border: 1px solid #333; background-color: pink;
+margin: 100px auto; 
+background: pink url(images/ca1-1.jpg) no-repeat 50% 50% / 200px 200px;}
+/* ★★ backgroud: 색상-이미지파일위치-반복여부-위치/이미지크기 ★★ */
+/* 반복여부(작성 까먹어도 뒤에 background-repeat:로 해도 적용됨) 단 앞에는 안됨! */
+
+</style>
+</head>
+<body>
+    <div class="box1">배경</div>
+
+     <div class="box2">배경</div>
+
+     <div class="box3">배경</div>
+
+     <div class="box4">배경</div>
+</body>
+</html>

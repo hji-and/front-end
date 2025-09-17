@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- text-decoration 등 연습 -->
+    <style>
+
+        ul li a:visited{background-color: yellow;}
+        /* a:visited 한 번 방문한 링크색을 노랑으로 설정 */
+
+        /* a태그는 대부분 링크용으로 사용해서 별도의 스타일을 주기 전까진 밑줄, 파랑색 */
+        ul, li{list-style: none;}
+        /* 불릿 없애기 */
+        ul li {float: left;}
+        /* 왼쪽부터 나란히 배열 */
+
+        ul li a{color: black; text-decoration: none;}
+        /* 색변경, 밑줄 제거 */
+        ul li:hover a{background-color: yellow; text-decoration: underline;}
+        /* ★text-decoration☆로 none후 underline하면 커서 올렸을 때 밑줄 나타남 */
+
+        ul li a:active{background-color: orange;}
+        /* 클릭했을 때 색 바뀜 */
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+    </ul>
+</body>
+</html>
