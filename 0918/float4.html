@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 메가커피 연습 우와아아아아앙모르겠어우앙아어엉 -->
+
+    <style>
+    *{margin: 0; padding: 0;}
+
+    .bigbox{width: 1200px; height: 750px; background-color: yellow; 
+        border: 1px solid #333; margin: 0 auto; padding-bottom:10px; overflow: hidden;}
+    .bigbox h1{text-align: center; padding: 20px;}
+        
+        .box{border: 1px solid #333; background-color: azure; padding: 20px; float: left;
+        margin: 0 0 30px 50px; /*float가 왼쪽으로 당긴다면 margin을 왼쪽으로 줘서 밀어내는 것*/
+            } 
+        
+
+            .mediumbox{height: 200px; background-color: aquamarine;  
+                    }
+            
+
+                .boxr1{width: 150px; height: 200px; background: url(images/cof3.jpg) no-repeat 50% 50% /cover;}
+                .boxr2{width: 150px; height: 200px; background: url(images/cof1.jpg) no-repeat 50% 50% /cover;}
+                .boxr3{width: 150px; height: 200px; background: url(images/cof2.jpg) no-repeat 50% 50% /cover;}
+
+                .boxl1{width: 150px; height: 200px; font-size: 12px; background-color: white; 
+                    text-align: center; overflow: auto;}
+                .boxl2{width: 150px; height: 200px; font-size: 12px; background-color: white; 
+                    text-align: center; overflow: auto;}
+                .boxl3{width: 150px; height: 200px; font-size: 12px; background-color: white; 
+                    text-align: center; overflow: auto;}
+
+                    .bigbox .box h3{border-bottom: 1px solid #333;}
+
+    </style>
+</head>
+<body>
+    <div class="bigbox">
+        <h1>커피의 종류</h1>
+
+        <div class="box mediumbox1">
+            <div class="box boxr1"></div>   
+            <div class="box boxl1">
+                <h3>왕메가헛개리카노</h3>
+                <p>국내산 헛개수와 아메리카노를 블렌딩해 고소한 맛이 더욱 커진 왕메가사이즈 커피</p>
+            </div>
+        </div>
+
+        <div class="box mediumbox2">
+            <div class="box boxr2"></div>   
+            <div class="box boxl2">
+                <h3>할메가미숫커피</h3>
+                <p>곡물의 향이 고소한 미숫가루와 달달한 믹스커피의 황금비율 조합</p>
+            </div>
+        </div>
+
+        <div class="box mediumbox3">
+            <div class="box boxr3"></div>   
+            <div class="box boxl3">
+                <h3>라이트 바닐라 아몬드라떼</h3>
+                <p>비건 음료 아몬드브리즈의 칼로리를 낮춘 라이트 바닐라 시럽이 만나 가볍지만 부드~러워진 라떼</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
