@@ -1,0 +1,37 @@
+*{margin: 0; padding: 0;}
+
+.contents{width: 100%; height: 530px;
+background: url(../imgs/intro_bg.png);}
+
+.section1{width: 1440px; height: 530px; margin: 0 AUTO;
+padding: 50px 0; text-align: center;
+border: 1ps solid #333;}
+
+.section1 .left{width: 340px; float: left;}
+
+.section1 .left img{padding-top: 100px;}
+
+.section1 .right{width: 1100px; float: right;}
+.r_top img{padding: 30px;}
+.r_top .text1{color: blue; padding-bottom: 10px;}
+.r_top .text2{line-height: 150%;}
+
+.r_bottom ul{width: 800px; margin: 30px auto; 
+    list-style: none; 
+    background-color: antiquewhite; overflow: hidden;}
+
+.r_bottom ul li a img:nth-child(1){display: block;}
+.r_bottom ul li a img:nth-child(2){display: none;}
+/* block은 none을 안 보이게 ???*/
+
+.r_bottom ul li{float:left; width: 190px; height: 250px; 
+    border: 1px solid black; 
+}
+.r_bottom ul li a{display: block; 
+    width: 150px; height: 150; margin: 20px auto;}
+
+.r_bottom ul li a img:nth-child(1){display: block;}
+.r_bottom ul li a img:nth-child(2){display: none;}
+.r_bottom ul li a:hover img:nth-child(1){display: none;}
+.r_bottom ul li a:hover img:nth-child(2){display: block;}
+/* block은 none을 안 보이게/ 겹쳐져 있던 2번째 사진을 안보이게 했다가 보이게 하는 원리래..*/

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 포지션 연습 (relative + absolute) 
+ 어떤 영역 안에서 어떤 컨텐츠를 제어할 때 유용함, 겹치기 때문에 상호작용을 많이 보여줄 수 있음 -->
+
+    <style>
+         .box1{width: 150px; height: 150px; background-color: skyblue; border: 1px solid #333;}
+         .box2{width: 150px; height: 150px; background-color: lightpink; border: 1px solid #333;}
+
+
+         .bigbox{width: 500px; height: 400px; border: 1px solid #333; margin: 0 auto; 
+            position: relative;}
+
+         .box3{width: 150px; height: 150px; background-color: lightgreen; border: 1px solid #333;
+             position: absolute; bottom: 50px; right: 50px; }
+        /*앱솔루트:브라우저를 부모라고 생각하고 bibbox를 벗어남 -> bigbox에 relative를 줘야 안에서 움직임*/
+            
+         .box4{width: 150px; height: 150px; background-color: yellowgreen; border: 1px solid #333;}
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+
+    <div class="bigbox">
+        <div class="box3">박스3</div>
+        <div class="box4">박스4</div>
+    </div>
+    
+</body>
+</html>

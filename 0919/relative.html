@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 포지션 연습 (relative : left와 top으로 이동가능. 겹칠 수 있다. 자리값이 있다.) -->
+
+    <style>
+        .box1{width: 150px; height: 150px; background-color: skyblue; border: 1px solid #333;}
+         .box2{width: 150px; height: 150px; background-color: lightpink; border: 1px solid #333;}
+         .box3{width: 150px; height: 150px; background-color: lightgreen; border: 1px solid #333;
+                position: relative; top: 20px; left: 20px; 
+                /*4를 밀어내지 않고 겹쳐지는 상태가 됨, 원래 자릿값은 유지*/
+                }
+         .box4{width: 150px; height: 150px; background-color: yellowgreen; border: 1px solid #333;}
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+</body>
+</html>
