@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- animation연습 / 위아래로-->
+
+<style>
+
+#bg{position: relative; left: 10px; height: 160px; width: 116px;
+    background: url(img/bg-main1.png) no-repeat 50% 50%;
+    animation: myani 3s infinite alternate;}
+
+    @keyframes myani {
+        0%{top: 10px;}
+        100%{top: 500px;}}
+
+
+#bg1{position: relative; left: 500px; height: 160px; width: 116px;
+    background: url(img/bg-main1.png) no-repeat 50% 50%;
+    animation: myani1 3s infinite alternate;}
+  
+    @keyframes myani1 {
+        0%{top: 50px;}
+        100%{top: 600px;}}
+
+
+</style>
+
+</head>
+<body>
+
+    <div id="bg"></div>
+    <div id="bg1"></div>
+
+</body>
+</html>

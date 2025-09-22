@@ -1,0 +1,48 @@
+*{margin: 0; padding: 0;}
+
+h1{width: 500px; height: 70px; margin-bottom: 20px;
+border: 2px solid #ccc; background-color: brown;}
+p{font-size: 30px; padding-bottom: 30px; 
+    cursor: pointer;} /**/
+ ---   
+.tra{background-color: #ae5329;
+    transform: translate(-500px, 0);
+    /*x, y축으로 임의로 이동시킬 수 있음*/
+    transition: all 0.5s;}
+.btn1:hover + .tra{transform: translate(0, 0);}
+/* "hover:" 마우스 올리면 / "+" next */
+
+---
+.rot1{margin: 200px 0; transform: rotate(0deg);
+    transition: all 0.5s;} 
+.btn2:hover + .rot1{ transform: rotate(360deg);}
+
+    ---
+    .rot2{margin: 200px 0; transform: rotateY(0deg);
+        transition: all 0.5s;} 
+    .btn3:hover + .rot2{transform: rotateY(360deg);} 
+    /*대문자Y, 양옆으로 돌아감*/
+
+    ---
+    .rot3{margin: 200px 0; transform: rotateX(0deg);
+        transition: all 0.5s;} 
+    .btn4:hover + .rot3{transform: rotateX(360deg);} 
+    /*대문자X, 위아래로 돌아감*/
+
+---
+/*scaleX{}도 있음*/
+.sca{margin: 50px 0; transform: scale(1,1); /*기본크기1,1(생략가능)*/
+    transition: all 0.5s;} 
+.btn5:hover + .sca{transform: scale(2,2);} 
+/*크기 x로 2배 y로 2배*/
+
+        ---
+        .ske{margin: 50px 0; transform: skewX(0deg);
+            transition: all 0.5s;} 
+        .btn6:hover + .ske{transform: skewX(-45deg);}
+        /*기울기, 특별한 도형을 만들고 싶을 때*/
+
+        ---
+        .ske1{margin: 50px 0; transform: skewY(0deg);
+            transition: all 0.5s;} 
+        .btn7:hover + .ske1{transform: skewY(-45deg);}

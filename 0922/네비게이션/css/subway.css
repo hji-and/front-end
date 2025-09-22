@@ -1,0 +1,47 @@
+*{margin: 0; padding: 0;}
+ul, li{list-style: none;}
+a{text-decoration: none; color: black;}
+
+nav{width: 100%; height: 50px; background-color: wheat; margin: 0 auto; 
+    text-align: center; position: relative;}
+nav > ul{width: 100%; height: 60px; background-color: #ccc;
+        position: absolute; overflow: hidden;}
+
+nav > ul:hover{height: 300px; transition: all 0.3s;}        
+
+nav > ul > li{display: inline-block; vertical-align: top;}
+nav ul li a{display: block; width: 200px; height: 60px; line-height: 60px; position: relative;}
+nav ul li ul li a{height: 40px; line-height: 45px;} /*하위메뉴 간격 좁게*/
+
+/* 메뉴에 움직이는 수평선 넣기, 
+nav ul li a에 position: relative로 기준 부여하고 할 것 */
+nav > ul > li > a::after{content: '';
+                        position: absolute; width: 100%; 
+                        bottom: 0; left: 0; height: 3px;
+                        background-color: #333;
+                        transform: scale(0,1); 
+                        /*scale은 중앙부터 양옆으로 늘어남. 만약 왼쪽부터 하려면 transform-origin*/
+                        transition: all 0.3s;}
+nav > ul > li > a:hover::after{transform: scale(1,1);}
+
+
+
+/* 내가 한 거↓ */
+
+/* *{margin: 0; padding: 0;}
+ul, li{list-style: none;}
+a{text-decoration: none; color: black;}
+
+nav{width: 1200px; height: 50px; background-color: wheat; margin: 0 auto; 
+    text-align: center; position: relative;}
+nav .subway{width: 1200px; height: 50px; background-color: white; 
+    position: absolute; overflow: hidden; transition: all 0.3s;}
+
+    nav .subway:hover{height: 250px;}
+
+.subway > li {display: inline-block; vertical-align: top;}   
+.subway li a {display: block; line-height: 50px;
+    width: 200px; height: 50px; }
+
+    .dp1{font-size: 25px; font-weight: 90px; font-style: bold; }
+    .dp2{color: gray;} */
