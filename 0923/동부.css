@@ -1,0 +1,41 @@
+*{margin: 0; padding: 0;}
+ul li{list-style: none;}
+a{color: #333; text-decoration: none;}
+
+.header_out{width: 100%; height: 250px; position: relative; z-index: 5;}
+        header{width: 1200px; height: 250px;
+                margin: 0 auto; background-color: black;}
+
+.menu1 {width: 100%; height: 60px; background-color: rgba(255, 255, 255, 0.9); 
+        margin: 0 auto; text-align: center; position: relative;}
+header > ul{height: 60px; background-color: rgba(255,255,255,0.9);
+        position: absolute; overflow: hidden; transition: all 0.3s;}
+header > ul:hover{height: 260px; transition: all 0.3s; 
+                background-color: blue;
+                /* border-bottom: 2px solid #fff; */
+                }               
+/* header > ul > a:first-child{border-bottom: 1px solid #fff;} */
+
+header > ul > li{display: inline-block; vertical-align: top;}
+header ul li a{display: block; width: 200px; height: 50px; 
+                line-height: 60px; position: relative; z-index: 5;}
+header ul li ul li a{height: 40px; line-height: 40px;}
+
+.shadow{position: absolute; top: 0px; left: 0;
+        background-color: rgba(255, 255, 255, 0.7); 
+        height:60px; width:100%;
+        transition: all 0.35s;
+        }
+    header ul:hover + .shadow{height: 260px; background-color: blue;
+                                 border-bottom: 1px solid #333;}
+
+/* 메뉴에 움직이는 수평선 넣기, 
+nav ul li a에 position: relative로 기준 부여하고 할 것 */
+header > ul > li > a::after{content: '';
+                        position: absolute; width: 100%; 
+                        bottom: 0; left: 0; height: 2px;
+                        background-color: #fff;
+                        transform: scale(0,1); 
+                        /*scale은 중앙부터 양옆으로 늘어남. 만약 왼쪽부터 하려면 transform-origin*/
+                        transition: all 0.3s;}
+header > ul > li > a:hover::after{transform: scale(1,1);}                                 

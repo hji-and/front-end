@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-<!-- animation 연습 / 애니메이션 2개 이어달리기-->
+<!-- animation 연습 / 애니메이션  2개 이어달리기-->
+ <!-- forwards -->
 
 <style>
 
 #myball{position: relative; left: 10px; height: 100px; width: 100px;
     border-radius: 50px; border: 1px solid #000;
     background: url(img/f1.png) no-repeat 50% 50%;
-    animation: myani 3s forwards;}
+    animation: myani 3s forwards;} /*forwords 끝에서 멈추는 것*/
 
     @keyframes myani {
         0%{left: 10px;}
@@ -23,7 +24,7 @@
     border-radius: 50px; border: 1px solid #000;
     background: url(img/f2.png) no-repeat 50% 50%;
     animation: myani2 3s 3s forwards;}
-    /* 3s 진행시간 3s 지연시간 */
+    /* 앞3s 진행시간 / 뒤3s 지연시간 */
     @keyframes myani2 {
         0%{left: 500px;}
         100%{left: 10px;}}

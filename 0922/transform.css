@@ -3,13 +3,13 @@
 h1{width: 500px; height: 70px; margin-bottom: 20px;
 border: 2px solid #ccc; background-color: brown;}
 p{font-size: 30px; padding-bottom: 30px; 
-    cursor: pointer;} /**/
+    cursor: pointer;} /*커서를 올리면 커서모양을 변하게(가짜링크)*/
   
 .tra{background-color: #ae5329;
     transform: translate(-500px, 0);
     /*x, y축으로 임의로 이동시킬 수 있음*/
     transition: all 0.5s;}
-.btn1:hover + .tra{transform: translate(0, 0);}
+.btn1:hover + .tra{transform: translate(0, 0);/*0,0 원래위치로*/}
 /* "hover:" 마우스 올리면 / "+" next */
 
 
@@ -34,7 +34,7 @@ p{font-size: 30px; padding-bottom: 30px;
 .sca{margin: 50px 0; transform: scale(1,1); /*기본크기1,1(생략가능)*/
     transition: all 0.5s;} 
 .btn5:hover + .sca{transform: scale(2,2);} 
-/*크기 x로 2배 y로 2배*/
+/*크기 x로 2배 y로 2배(2만 써도 됨)*/
 
         
         .ske{margin: 50px 0; transform: skewX(0deg);

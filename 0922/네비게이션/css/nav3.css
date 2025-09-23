@@ -10,9 +10,10 @@ nav .gnb{width: 100%; height: 50px; background-color: #ccc;
         overflow: hidden; 
         transition: all 0.3s;}
 
-    nav .gnb:hover{height: 250px;} /*overflow:hidden한50px가 보이는 크기*/
+    nav .gnb:hover{height: 250px;} /*overflow:hidden한 50px가 보이는 크기*/
 
-.gnb > li {display: inline-block; /*중앙에서부터 나열*/}
+.gnb > li {display: inline-block; 
+    /*float-left 처럼 정렬되는데 *중앙*에서부터 나열*/}
 
 .gnb li a{display: block;
     width: 200px; height: 50px; 

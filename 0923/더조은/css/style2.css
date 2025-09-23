@@ -1,0 +1,57 @@
+*{margin: 0; padding: 0;}
+ul li{list-style: none;}
+a{color: #000; text-decoration: none;}
+
+.header_out{width: 100%; height: 250px; position: relative; z-index: 5;}
+
+    header{width: 1490px; height: 250px; margin: 0 auto;
+          border: 1px solid black;  border-bottom: none;
+          }
+
+.logo{width: 300px; height: 50px;
+      position: absolute; left:50%; top:50%;
+      transform: translate(-50%,-50%);} /*정중앙 정렬*/
+    .logo img{display: block;
+              width: 100%; height: 100%;}  
+
+.sns{float: left; margin-left: 15px; margin-top: 20px;}   
+    .sns li{float: left; padding: 0 10px;}    
+.lnb{float: right; margin-right: 15px; margin-top: 20px;}
+    .lnb li{float: left; padding: 0 10px;}
+
+
+
+.main_menu{position: absolute; left:0; width: 100%;  text-align: center;
+           top: 220px;  
+           height: 30px; background-color: yellow;} /*높이 주면 색깔 들어감*/
+
+.main_menu> ul{width: 1490px; margin: 0 auto; 
+              position: relative; 
+              z-index: 10;} 
+    .main_menu > ul > li{float: left; background-color: black;}
+         .main_menu ul li a{display: block; width: 298px; /*너비÷메뉴갯수 계산*/
+                            height: 30px;
+                            line-height: 30px;
+                            color: azure;}
+
+            .main_menu ul li ul{background-color: rgba(16, 16, 16, 0.7);
+                               position: absolute; margin: 0 auto;
+                               height: 0px; 
+                               overflow: hidden;
+                               transition: all 0.35s;}
+                .main_menu ul:hover li ul{height: 90px; /*높이100에서 패딩 뺌*/
+                                          padding: 10px 0;}
+                
+.shadow{position: absolute; 
+        top: 30px; left:0;
+        background-color: rgba(239, 244, 96, 0.7); 
+        height:0px; width: 100%;
+        transition: all 0.35s;
+        }
+    .main_menu ul:hover + .shadow{height: 110px; 
+                                 border-bottom: 1px solid #333;}
+
+section .main1{width: 100%; height: auto; margin: 0 auto; 
+               position: relative;
+              }
+              section .main1 img{width: 100%;}

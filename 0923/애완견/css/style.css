@@ -1,0 +1,52 @@
+*{margin: 0; padding: 0;}
+ul li{list-style: none;}
+a{text-decoration: none; color: #000;}
+
+#wrapper{width: 900px; margin: auto;} 
+/*전체를 900 중앙정렬*/
+
+header{height: 200px; background-color: #f46075;
+    /* width: 100%; 넓이 안 써도 wrapper 따라감} */}
+
+    header h1{float: left; margin-left: 50px; margin-top: 70px;
+            color: #fff;}
+    header .logo_p{float: right; margin-right: 20px; margin-top: 30px;}
+
+nav{height: 60px; background-color: #ccc;}
+    nav ul li{float: left; margin-left: 50px; margin-top: 10px;}
+        nav ul li a{display: block; width: 160px; height: 40px;
+                    line-height: 40px; text-align: center;}
+                     nav ul li:hover a{background-color: #f46075;
+                                        color: #fff; font-weight: bold;
+                                        border-radius: 20px;} /*전체 지정 시width 225주면됨(900÷4)*/
+
+.main{height: 550px;}
+/* 섹션, 어사이드 정렬 */
+section{width: 650px; height: 550px; background-color: skyblue;
+        float: left;}
+aside{width: 250px; height: 550px; background-color: #ffffcc;
+        float: left;}
+
+/* section article 및 텍스트 정렬 */
+section h2{text-align: center; padding: 10px 0;}
+section article{width: 280px; height: 180px; padding: 10px; 
+                background-color: #fff;
+                float: left; border: 1px solid #333;
+                margin: 0 0 15px 15px;
+                text-align: justify; /*텍스트 양쪽정렬*/}        
+    section article p{font-size: 13px;}
+    article h3{padding-bottom: 10px; 
+                /* article > h3 앞에 이미지 넣기 */
+                padding-left: 30px;
+                background: url(../bg.png) no-repeat 0%/*맨앞*/ 20%/*양옆*/;}
+
+/* 어사이드 사진 정렬 */
+aside{text-align: center;}
+aside h2{padding: 10px 0;}
+aside img{padding-bottom: 10px 0;}
+
+/* 푸터 */
+footer{height: 50px;
+        background-color: #333; color: #fff;
+        line-height: 50px; text-align:center;}
+

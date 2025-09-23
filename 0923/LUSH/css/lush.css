@@ -1,0 +1,38 @@
+*{margin: 0; padding: 0;}
+ul li{list-style: none;}
+a{color: #000; text-decoration: none;}
+
+#wrap{}
+#header{width: 1200px; height: 250px;
+        position: relative; margin: 0 auto;
+        border: 1px solid black;
+        z-index: 5;}
+#logo{width: 250px; height: 90px;
+      border: 2px solid black;
+      position: absolute; left:50%; top:50%;
+      transform: translate(-50%,-50%);} /*정중앙 정렬*/
+    #logo img{display: block;
+              width: 100%; height: 100%;}
+    /* 이미지가 넘 크니까 일단 크길 줄이고 100% 100% 해서 크기에 맞춘다 */
+
+#nav_Icon{position: absolute; left:15px; top:20px;}    
+    #nav_Icon ul li{float: left; /*icon들 왼쪽부터 나열*/
+                    margin-left: 15px;}
+
+#gnb{position: absolute; right:15px; top:20px;}
+    #gnb ul li{float: left; 
+               padding: 0 10px; /*글자 사이에 바 넣기*/
+               background: url(../images/bar.gif) no-repeat 100% 60% /*바 위치조절*/;}
+        #gnb ul li:last-child{background: none;} /*마지막 바는 없애기*/
+
+.main_nav{position: absolute; top: 220px; left: 0;}
+    .main_nav > ul > li{float: left; text-align: center;}
+         .main_nav ul li a{display: block; width: 200px; height: 30px;
+                           line-height: 30px;}
+            .main_nav ul li ul{background-color: rgba(255,255,255,0.7);
+                               position: absolute; height: 240px; padding:10px;
+                               display: none;}
+                .main_nav ul:hover li ul{display: block; 
+                                         border-bottom: 1px solid #333;}
+                
+#main{width: 1200px; height: auto; margin: 0 auto; position: relative;}

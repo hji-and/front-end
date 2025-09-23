@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- ↑이걸 빼면 실제 스마트 기기에서 작동 안 함(데스크탑에서만 나옴) -->
+    <title>Document</title>
+
+<!-- 전자기기 종류별 화면의 크기를 감지하는 미디어쿼리(반응형) -->
+
+<style>
+.box1{width: 200px; height: 200px; border: 1px solid black;}
+
+@media screen and (max-width:600px) {.box1{background-color: blue;}  
+/* 핸드폰용 미디어쿼리 */}
+@media screen and (min-width:601px) and (max-width:1023px) {.box1{background-color: green;}    
+/* 스마트패드 미디어쿼리, and 띄워쓰기 */}
+@media screen and (min-width:1024px) {.box1{background-color: red;}   
+/* pc 미디어쿼리 */ }
+</style>
+
+</head>
+<body>
+    <div class="box box1"></div>
+</body>
+</html>
