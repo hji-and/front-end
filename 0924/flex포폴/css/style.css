@@ -1,0 +1,94 @@
+*{margin: 0; padding: 0;}
+
+body{
+    font: normal 18px/1.5 "Helvatica Neue", Sans-serif;
+}
+html, body{
+    margin:0;
+    height: 100%;
+    overflow: hidden;
+}
+.flex-wrapper{
+    display:flex;
+    height: 100%;
+}
+.flex-wrapper a{
+        position: relative; /*flex 쓰면 a에 display:block 안 써도 됨*/
+        flex:1;
+        transition: all 0.4s;
+}
+.flex-wrapper a.one{
+    background: url(../images/a1.jpg) no-repeat 50% 50% / cover;
+    background-color: red;
+}
+.flex-wrapper a.two{
+    background: url(../images/a2.jpg) no-repeat 50% 50% / cover;
+    background-color: green;
+}
+.flex-wrapper a.three{
+    background: url(../images/a3.jpg) no-repeat 50% 50% / cover;
+    background-color: blue;
+}
+.flex-wrapper a.four{
+    background: url(../images/a4.jpg) no-repeat 50% 50% / cover;
+    background-color: black;
+}
+.flex-wrapper a.five{
+    background: url(../images/a5.jpg) no-repeat 50% 50% / cover;
+    background-color: yellow;
+}
+.flex-wrapper a:hover{flex:3;}
+
+.flex-wrapper .overlay{
+    padding: 0 10px;
+    position: absolute;
+    top: 0; 
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*top:0;left:0;width:100%;height:100%;<-이거랑 동일*/
+    transition: bakground-color 0.4s;
+    /* 0.4초에 백그라운드컬러 바꿈 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-wrapper a:hover .overlay{
+    background-color: rgba(0,0,0,0.5);
+}
+/* .flex-wrapper a .overlay-inner h2, .flex-wrapper a .overlay-inner p{} */
+/* 오바레이 이너 밑에 모든 것 = "*" */
+.flex-wrapper a .overlay-inner *{
+    visibility: hidden; /*display:none*/
+    opacity: 0; /*visibility에다 opacity:0도 줘서 완전 안 보이게*/
+    color: #fff; 
+    text-align: center;
+    }
+.flex-wrapper .overlay-inner h2{
+    transform: translateY(-60px);
+}
+.flex-wrapper .overlay-inner p{
+    transform: translateY(60px);
+}
+.flex-wrapper a:hover .overlay-inner *{
+    visibility: visible; /*display:none*/
+    opacity: 1;
+    transition: all 0.3s 0.3s;
+    /* transform: translateY(0px); */
+    transform: none; /*↑일케 쓰는 것보다 논 쓰면 원래 위치나 크기로 돌아옴*/
+}
+
+@media screen and (max-width:800px){
+    /* 세로로 나열되고 호버효과 모두 지움 */
+    .flex-wrapper{flex-direction: column;} 
+    /*flex가 먹힌 상태에서 이렇게 하면 세로로 나열*/
+    .flex-wrapper a:hover{flex: 1;} /*호버했을 때 늘어나지도 말고*/
+    .flex-wrapper a:hover overlay{
+        background-color: transparent; /*배경색을 투명하게*/
+    }
+    .flex-wrapper .overlay h2, .flex-wrapper .overlay p{
+        opacity: 1; 
+        visibility: visible;
+        transform: none;
+    }
+}

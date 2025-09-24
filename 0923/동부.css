@@ -12,9 +12,8 @@ header > ul{height: 60px; background-color: rgba(255,255,255,0.9);
         position: absolute; overflow: hidden; transition: all 0.3s;}
 header > ul:hover{height: 260px; transition: all 0.3s; 
                 background-color: blue;
-                /* border-bottom: 2px solid #fff; */
                 }               
-/* header > ul > a:first-child{border-bottom: 1px solid #fff;} */
+header > ul > li > a:first-child{border-bottom: 1px solid #fff;}
 
 header > ul > li{display: inline-block; vertical-align: top;}
 header ul li a{display: block; width: 200px; height: 50px; 
@@ -36,6 +35,5 @@ header > ul > li > a::after{content: '';
                         bottom: 0; left: 0; height: 2px;
                         background-color: #fff;
                         transform: scale(0,1); 
-                        /*scale은 중앙부터 양옆으로 늘어남. 만약 왼쪽부터 하려면 transform-origin*/
                         transition: all 0.3s;}
 header > ul > li > a:hover::after{transform: scale(1,1);}                                 
