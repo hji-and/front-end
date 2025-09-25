@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 중앙정렬 하는 법 -->
+
+    <style>
+        /* 기본적인 중앙정렬은 margin: 0 auto(높이너비있을 때) */
+        /* ↑ position: absolute;나 fixed 주었을 땐 정렬 안 됨  */
+        /* ↓ top과 left에 50%를 주고 translat(-50% -50%)주는 방법 */
+        div{
+            /* margin: 0 auto; */
+            position: absolute; 
+            top: 50%;
+            right: 50%;
+            width: 180px;
+            height: 60px;
+            background-color: aqua;
+            /* transform: translate(-50%, -50%); */
+            /* margin-left: -90px; */
+            margin-top: -30px;
+            margin-right: -90px;
+            }
+            /* 높이, 너비의 절반만큼 빼주는 방법(-50% -50%이랑 동일)  */
+    </style>
+
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

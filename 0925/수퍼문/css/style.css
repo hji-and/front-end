@@ -1,0 +1,278 @@
+*{margin: 0; padding: 0;}
+ul,ol{list-style: none;}
+    a{
+    outline: 0;
+    text-decoration: none;
+    color: black;
+    }                                                                           
+img{border: 0;}
+
+
+
+
+/* 레이아웃 */
+
+#wrap{position: relative;}
+
+header .logo{
+	position:absolute;
+	top:10%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width:80%;
+	height:auto;}
+
+    header .logo img{
+	display:block;
+	width:100%;
+	height:auto;
+    }
+
+header{
+    position: fixed;
+    width: 15%;
+    height: 100%; 
+    top: 0;
+    left: 0;
+    background-color: darkblue;
+    }
+
+.gnb{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    line-height : 2.5;
+    /* transition: all 0.3s; */
+    }
+    .gnb a{display: block; color: white;}
+        .gnb li:hover a{color: skyblue; transition: all 0.5s;}
+ 
+
+section{
+    position: relative;
+    margin-left: 15%;
+    width: 85%;
+    }
+
+.bottom{
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translate(-50%, -50px);
+    }    
+    .bottom a{
+        display: block;
+        color: white;
+        float: left;
+        }
+        .snsSet li{
+            text-align: center;
+            font-size: 0.8em;
+            padding: 5px;
+            float: left;
+            /* border-right: 1px solid white ; */
+            }
+            .snsSet li:nth-child(1){
+                border-right: 1px solid white;
+                box-sizing: border-box;
+                padding-left: 2px;
+                }
+                header .bottom .sns li{
+                    float:left;
+                    padding: 10px;
+                    text-align:center;
+                    }
+
+
+/* article */
+article{
+    position: relative;
+    height: 260px;
+    float: left; 
+        }
+        article:nth-child(1){
+        width: 60%;
+        background-color: darkblue;
+        height: 520px;
+        }
+        article:nth-child(2){
+        width: 40%;
+        background-color: skyblue;
+        }
+        article:nth-child(3){
+        width: 20%;
+        background-color: rgb(70, 126, 248);
+        }
+        article:nth-child(4){
+        width: 20%;
+        background-color: #aaa;
+        }
+
+        article:nth-child(5){
+        width: 20%;
+        background-color: #999;
+        }
+        article:nth-child(6){
+        width: 40%;
+        background-color: yellow;
+        }
+        article:nth-child(7){
+        width: 20%;
+        background-color: #777;
+        }
+        article:nth-child(8){
+        width: 20%;
+        background-color: green;
+        }
+
+        article:nth-child(9){
+        width: 40%;
+        background-color: #555;
+        }
+        article:nth-child(10){
+        width: 20%;
+        background-color: #444;
+        }
+        article:nth-child(11){
+        width: 20%;
+        background-color: #333;
+        }
+        article:nth-child(12){
+        width: 20%;
+        background-color: lightgreen;
+        }
+
+    /* 배경이미지 넣기 */
+    article > div{
+        width:100%;
+        height:100%;
+        position:relative;
+        overflow:hidden;
+        }
+    article .bg{background: no-repeat center /cover;}    
+        article .bg1{background-image: url(../images/1.png);}
+        article .bg2{background-image: url(../images/3.png);}
+        article .bg3{background-image: url(../images/4.jpg);}
+        article .bg4{background-image: url(../images/5.jpg);}
+        article .bg5{background-image: url(../images/6.jpg);}
+        article .bg6{background-image: url(../images/7.jpg);}
+        article .bg7{background-image: url(../images/8.png);}
+
+/* 이미지박스 스타일 */
+    article .bg span{
+        font-size: 40px;
+        color: lightgrey;
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        }
+        /* article > .bg4, .bg6, .bg7 > span{
+            font-size: 40px;
+            color: lightgrey;
+            position: absolute;
+            bottom: 0;
+            } */
+    article .bg span{
+        transform: scale(10);
+        opacity: 0;
+        transition: all 0.6s;
+        }
+    article:hover .bg span{
+        transform: scale(1);
+        opacity: 1;
+        } 
+
+    /* 메인 이미지박스*/
+    article .bg1 span{
+        font-size: 100px;
+        bottom: -7px;
+        right: 8px;
+        color: white;
+        }
+        article .bg1 span{
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+        transition: all 0.8s;
+        }
+     article:hover .bg1 span{
+        transform: scale(1) rotateY(360deg);
+        color: #222;
+        }
+     
+/* ARTICLE 텍스트박스 영어 스타일 */
+    article .txt{
+        color: black;
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 40px 30px;
+        }
+   article .txt strong{
+        font-size: 30px;
+        color: black;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        display: block; 
+        }
+
+/* 웹폰트 아이콘 기본 스타일(화살표) */
+    article .txt i{
+        font-size: 300px;
+        color: white;
+        position: absolute;
+        bottom: -70px;
+        right: -200px;
+        opacity: 0; 
+        }
+
+/* 돌아가는 달*/
+    article:nth-child(3) .txt i{
+        font-size: 200px;
+        color: darkslategray;
+        position: absolute;
+        bottom: -20px;
+        right: -15px;
+        opacity: 0.7; 
+        }
+    article:nth-child(3):hover .txt i{
+                color: #fff;}
+        
+/* 텍스트 호버 효과 */
+    article .txt, article .txt i {
+        transition: all 1s;}
+
+/* 텍스트 제목 */
+    article .txt strong{transition: all 0.5s;}
+
+    /* 제목 제외한 작은 글씨와 배경색 변화 */
+    article:hover .txt{
+                color: #fff;}
+            article:nth-child(6):hover .txt{
+                    color: black;}
+                    article:nth-child(2):hover .txt{
+                    color: black;}
+        article:hover .txt{
+                background-color: transparent;}
+
+    /* right-200, opacity 0 줬던 화살표 제자리로 */
+         article:hover .txt i{
+            right: 0; opacity: 0.5;}
+
+    /* 제목 글자도 흰색으로 변경 */
+        article:hover .txt strong{color: #fff;}
+            article:nth-child(6):hover .txt strong{
+                    color: black;}
+                    article:nth-child(2):hover .txt strong{
+                    color: black;}
+
+/* 화살표처럼 움직이는 달캐릭터 */
+.txt .txt1{z-index: 10;}
+   article .txt1 img{
+        position: absolute;
+        bottom: 10px;
+        right: -500px;
+        /* opacity: 0;  */
+        }
+    article:hover .txt1 img{
+            right: 0; opacity: 0.3; transition: all 1s;}
