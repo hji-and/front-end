@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- var, let, const 차이 -->
+
+    <script>
+    
+        var num1 = 20;
+        num1 = 30; //변수의 값이 변경된다. 마지막 할당된 값이 최종으로 저장
+        document.write(num1+'<br/>');
+        
+         var num2 = 20; 
+         var num2 = 30; //재선언 가능
+            document.write(num2+'<br/>');
+
+
+        let num3 = 20;
+        num3 = 30; //let은 재할당(값을 변경) 가능
+        document.write(num3+'<br/>')
+
+        let num4 = 20;
+        //let num4 = 30; // let 재선언(이름표를 달아주는 것) 불가
+        document.write(num3+'<br/>')
+
+
+        const num5 = 5;
+        num5 = 40; //const상수는 재할당 재선언 불가능(그래서 바뀌면 안 되는 것들을 저장)
+        document.write("num5="+num5)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

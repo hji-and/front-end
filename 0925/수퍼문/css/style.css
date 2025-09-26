@@ -39,9 +39,8 @@ header{
 
 .gnb{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 400px;
+    right:50px;
     height: auto;
     line-height : 2.5;
     /* transition: all 0.3s; */
@@ -57,10 +56,11 @@ section{
     }
 
 .bottom{
+    width: 120px;
     position: absolute;
-    left: 50%;
-    bottom: 50px;
-    transform: translate(-50%, -50px);
+     bottom: 50px;
+    right: 50%;
+    margin-right: -60px; 
     }    
     .bottom a{
         display: block;
@@ -162,7 +162,7 @@ article{
 
 /* 이미지박스 스타일 */
     article .bg span{
-        font-size: 40px;
+        font-size: 3em;
         color: lightgrey;
         position: absolute;
         bottom: 0;
@@ -214,7 +214,13 @@ article{
         margin-bottom: 20px;
         line-height: 1.6;
         display: block; 
-        }
+        position: relative;
+        z-index: 10;
+        } /*포지션을 주면 레이어가 위로 올라간다. (그래도 부족하다면 z-index)*/
+       article .txt em{
+         position: relative;
+        z-index: 10;
+       }  
 
 /* 웹폰트 아이콘 기본 스타일(화살표) */
     article .txt i{
