@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 전역변수, 지역변수 -->
+
+</head>
+<body>
+    <script>
+
+      var str; //전역변수
+      var sum = "바람"; //전역변수
+
+        function love(){
+           str = '산';
+           var sum = '강'; //지역변수
+            document.write('함수 내에서 출력 ', str, '<br>');
+            document.write('함수 내에서 출력 ', sum, '<br>');
+            //return str;
+        } //함수 안에서 선언한 건 {}내에서만 유효 ->지역변수
+
+        love(); //강 출력
+        document.write(str, '<br>'); 
+        document.write(sum, '<br>'); //바람 출력
+        
+        
+    </script>
+</body>
+</html>

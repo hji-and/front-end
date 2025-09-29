@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 제어문 -> 기타문(Break문) -->
+
+</head>
+<body>
+    <script>
+
+        let num;
+        for(num = 1; num <= 10; num++){
+            if(num == 4)
+            {
+              break;  
+              /* 조건이 참일 때 break를 만나면 
+              더이상 아래 내용을 수행하지 않고
+              for문을 빠져 나옴(4 이후 출력X) */
+            }
+        document.write (num, " , ");
+        } 
+
+    </script>
+</body>
+</html>

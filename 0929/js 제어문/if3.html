@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 제어문 : 조건문 if, else 교과서82p, 예제 -->
+
+</head>
+<body>
+    <script>
+        
+        //교과서82p
+        /*var age = prompt('나이를 입력하세요');
+
+        if(age > 20 && age < 40){
+            document.write('입장을 환영합니다.');
+        }
+            else{document.write('입장이 허락되지 않았습니다.')};*/
+
+            
+        //학점을 내려고 한다(avg>=90 A, 점수>=80 B, 점수>=70 C, 그외D)
+        var avg = prompt("당신의 점수는?","");
+        var hak;
+        if(avg >= 90){
+            hak = 'A';
+        }else if(avg >= 80){
+            hak = 'B';
+        }else if(avg >= 70){
+            hak = 'C';
+        }else{
+            hak = 'D';
+        }
+
+        document.write('당신의 학점은?'+ hak + "입니다.");
+
+    </script>
+</body>
+</html>

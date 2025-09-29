@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 화살표를 누르면 다음 이미지로 교체해주는 간단한 이미지 갤러리 -->
+
+<style>
+
+    *{margin: 0; padding: 0;}
+    img{vertical-align: top;}
+    #galleryWrap{
+        position: relative;
+        top: 1000px;
+        width: 530px;
+        margin: 0 auto;
+        text-align: center; 
+    }
+    
+</style>
+<script>
+
+    let num =1;
+
+    function nextGallery(){
+        num++; //num=num+1 -> num을 하나씩 증가 2,3,4,5,6,7
+            if(num>7) num=1; //중괄호 다음 실행문이 하나면 {중괄호} 생략 가능
+
+        document.getElementById('gallery')/*아이디 선택자*/.src="../이미지갤러리/img"+num+".jpg";
+        return false //*a의 #(임시링크)막음(링크 클릭 시 스크롤이 계속 위로 올라감)*/
+    }
+
+     function preGallery(){
+        num--; 
+            if(num == 0)num=7; //뒤로 돌아가면 마지막 사진이 나와야함(거꾸로)
+
+        document.getElementById('gallery').src="../이미지갤러리/img"+num+".jpg";
+        return false
+    }
+
+</script>
+</head>
+<body>
+
+    <div id="galleryWrap">
+        <h2>이미지 넘기기</h2>
+        <a href="#" onclick="return preGallery()"><img src="../이미지갤러리/left_btn.png" alt="이전"></a>
+            <img src="../이미지갤러리/img1.jpg" alt="갤러리그림" id="gallery">
+        <a href="#" onclick="return nextGallery()"><img src="../이미지갤러리/right_btn.png" alt="다음"></a>
+    </div>
+
+</body>
+</html>

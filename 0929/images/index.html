@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+*{margin: 0; padding: 0; 
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1200px; 
+    background-color: white;
+    margin: 0px auto;
+    height: auto;
+}
+    h1{
+        display: block
+        margin-bottom: 30px;
+    }
+
+.skylife{
+    /* position: relative; */
+    max-width: 1200px; 
+    display: flex; justify-content: center;
+    gap: 15px;
+    top: 30px; 
+    text-align: center;
+}    
+    .item{
+        position: relative;
+        min-width: 400px;
+        height: 540px;
+        border-radius: 8px;
+        padding: 20px 0;
+        /* overflow: hidden; */
+        }
+    
+
+            .item1{
+                /* background-color: #ffab60; */
+                background: #ffab60; url(img_mobile_esim.png) no-repeat 50% 50% /300px;
+            }
+            .item2{
+                /* background-color: #bdd58f; */
+                background: #bdd58f; url(img_mobile_plan.png) no-repeat 50% 50% /300px;
+            }
+            .item3{
+                /* background-color: #89b7dd; */
+                background: #89b7dd; url(img_mobile_usim.png) no-repeat 50% 50% /300px;
+            }
+
+
+    div{position: absolute;
+        top: 100PX;
+        width: 30%;
+        height: 100px;
+        background-color: white;
+        border-radius: 8px;
+        margin: 0 auto; 
+        display: flex;
+        justify-content: row;
+        }
+
+        .item p{
+            display: block;
+            color: gray;
+            padding: 50px 0; 
+            text-align: justify;
+        }
+        .item div{
+            position: absolute;
+            bottom: 0;
+        }
+      
+    </style>
+</head>
+<body>
+     <div class="container">
+        <h1>KT 그대로 이용하는</h1>
+        <div class="skylife">
+        
+            <div class="item item1">
+                <!-- <a href="img_mobile_usim.png"></a> -->
+                <h2>요즘 다 eSIM 개통하는 이유</h2>
+                <div><p>실물 유심 구매 없이 <br>지금 바로 개통 가능하니까!</p></div>
+            </div>
+            <div class="item item2">
+                <!-- <a href="img_mobile_plan.png"></a> -->
+                <h2>유심 구매 A to Z</h2>
+                <div><p>온오프라인 구매방법을<br>자세히 알려 드릴게요!</p></div>
+            </div>
+            <div class="item item3">
+                <!-- <a href="img_mobile_usim.png"></a> -->
+                 <h2>이주의 인기 요금제</h2>
+                <div><p>오직 스카이라이프에서만<br>만나 보실 수 있어요</p></div>
+            </div>
+          
+
+
+        </div>
+    </div>
+</body>
+</html>
