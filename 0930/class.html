@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 버튼을 누르면 색깔이 변하는 박스 -->
+
+<style>
+
+    #box{
+        width: 200px;
+        height: 200px;
+    }
+    .red-bg{
+        background-color: red;
+    }
+    .blue-bg{
+        background-color: blue;
+    }
+
+</style>
+</head>
+<body>
+
+    <div id="box" class="red-bg">
+
+    </div>
+    <button id="changeColorBtn">컬러변경</button>
+
+</body>
+</html>
+<script>
+
+    const box = document.getElementById("box"); //id를 변경할 일이 없을 때 보통 let보다 const를 씀
+    const button = document.getElementById("changeColorBtn"); 
+
+    // 기본문법 button.addEventListener('click',function(){할일});
+    button.addEventListener('click',function(){
+        if(box.classList.contains('red-bg')){    //<-만약 버튼을 클릭했을 때 박스가 red-bg를 포함했냐 물어봄
+            box.classList.add('blue-bg');
+            box.classList.remove('red-bg');
+        }else{
+            box.classList.add('red-bg');
+            box.classList.remove('blue-bg');
+        }
+    });
+
+</script>

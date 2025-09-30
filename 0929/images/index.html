@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ <!-- /* 위아래좌우 거리 주려면 position 부여, 근데 이러믄 margin0auto 안 먹음 */ -->
     <style>
 
 *{margin: 0; padding: 0; 
@@ -13,12 +14,13 @@
 .container{
     max-width: 1200px; 
     background-color: white;
-    margin: 0px auto;
-    height: auto;
+    margin: 0 auto;
+    /* height: auto; */
 }
     h1{
-        display: block
+        display: block;
         margin-bottom: 30px;
+        font-size: 40px;
     }
 
 .skylife{
@@ -37,65 +39,77 @@
         padding: 20px 0;
         /* overflow: hidden; */
         }
-    
 
             .item1{
                 /* background-color: #ffab60; */
-                background: #ffab60; url(img_mobile_esim.png) no-repeat 50% 50% /300px;
+                background: #ffab60 url(img_mobile_esim.png) no-repeat 50% 30% /300px;
             }
             .item2{
                 /* background-color: #bdd58f; */
-                background: #bdd58f; url(img_mobile_plan.png) no-repeat 50% 50% /300px;
+                background: #bdd58f url(img_mobile_plan.png) no-repeat 50% 30% /300px;
             }
             .item3{
                 /* background-color: #89b7dd; */
-                background: #89b7dd; url(img_mobile_usim.png) no-repeat 50% 50% /300px;
+                background: #89b7dd url(img_mobile_usim.png) no-repeat 50% 30% /300px;
             }
 
-
-    div{position: absolute;
-        top: 100PX;
-        width: 30%;
-        height: 100px;
+    .item > div{
+        position: absolute;
+        top: 400px;
+        width: 80%;
+        height: 120px;
+        left: 10%;
         background-color: white;
         border-radius: 8px;
-        margin: 0 auto; 
-        display: flex;
-        justify-content: row;
+        padding: 20px;
+        /* margin: 0 auto;  */
+        /* display: flex;
+        justify-content: row */
         }
 
         .item p{
+            position: absolute;
             display: block;
             color: gray;
-            padding: 50px 0; 
             text-align: justify;
+            
         }
-        .item div{
-            position: absolute;
-            bottom: 0;
+        .item h2{
+            display: block;
+            /* bottom: 0; */
+            font-size: 18px;
+            text-align: justify;
+            padding-bottom: 7px;
         }
-      
+   
     </style>
 </head>
 <body>
      <div class="container">
-        <h1>KT 그대로 이용하는</h1>
+        <h1>KT망 그대로 이용하는</h1>
         <div class="skylife">
         
             <div class="item item1">
                 <!-- <a href="img_mobile_usim.png"></a> -->
-                <h2>요즘 다 eSIM 개통하는 이유</h2>
-                <div><p>실물 유심 구매 없이 <br>지금 바로 개통 가능하니까!</p></div>
+               
+                <div>
+                     <h2>요즘 다 eSIM 개통하는 이유</h2>
+                    <p>실물 유심 구매 없이 <br>지금 바로 개통 가능하니까!</p>
+                </div>
             </div>
             <div class="item item2">
                 <!-- <a href="img_mobile_plan.png"></a> -->
-                <h2>유심 구매 A to Z</h2>
-                <div><p>온오프라인 구매방법을<br>자세히 알려 드릴게요!</p></div>
+                
+                <div>
+                    <h2>유심 구매 A to Z</h2>
+                    <p>온오프라인 구매방법을<br>자세히 알려 드릴게요!</p>
+                </div>
             </div>
             <div class="item item3">
                 <!-- <a href="img_mobile_usim.png"></a> -->
-                 <h2>이주의 인기 요금제</h2>
-                <div><p>오직 스카이라이프에서만<br>만나 보실 수 있어요</p></div>
+                 <div><h2>이주의 인기 요금제</h2>
+                <p>오직 스카이라이프에서만<br>만나 보실 수 있어요</p>
+            </div>
             </div>
           
 

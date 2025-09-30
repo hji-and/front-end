@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- dom속성 변경하기(181p) -->
+
+</head>
+<body>
+
+    <a href="https://google.com" id="myLink" target="_blank">구글</a>
+
+</body>
+</html>
+<script>
+
+    const link = document.getElementById("myLink");
+    console.log(link.getAttribute("href")); //출력: 구글사이트
+    console.log(link.getAttribute("target")); //출력: _blank(새페이지)
+
+    //href 속성을 네이버로 변경
+    link.setAttribute("href","https://naver.com");
+    //href 속성을 self로 변경
+    link.setAttribute("target","_self");
+    console.log(link.getAttribute("href")); //출력: 네이버사이트
+    console.log(link.getAttribute("target")); //출력: 현재 페이지가 바뀜
+
+
+
+
+</script>

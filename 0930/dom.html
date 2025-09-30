@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>자바스크립트 선택자 예제</title>
+   
+</head>
+<body>
+
+    <h1 id="title">과일 목록</h1>
+    <ul>
+        <li class="item">사과</li>
+        <li class="item">바나나</li>
+        <li class="item">포도</li>
+        <li class="item">오렌지</li>
+    </ul>
+
+</body>
+</html>
+<script> //html은 위에서부터 읽기 때문에 선택자 쓸 땐 script는 가장 아래에 기입 
+
+    //1. ID선택자
+        const title = document.getElementById("title");
+        console.log("ID선택자", title.textContent);
+
+    //2. 클래스 선택자(HtmlCollection ->for문)
+        const itembyByClass = document.getElementsByClassName("item");
+        console.log("클래스로 선택");
+        for(let i=0; i<itembyByClass.length; i++){
+            console.log(" -", itembyByClass[i].textContent);
+        } 
+    //3. 태그 선택자(HtmlCollection ->for문)
+        const itemsByTag = document.getElementsByTagName("li");
+        console.log("태그로 선택")
+        for(let i=0; i<itemsByTag.length; i++){
+                console.log(" -", itemsByTag[i].textContent);
+            } 
+
+    //4. querySelector 첫번째 아이템만 나옴
+            const firstItem = document.querySelector(".item");
+            console.log("querySelector (첫번째):", firstItem.textContent);        
+
+    //5. querySelectorAll forEach사용가능
+             const itemAll = document.querySelectorAll(".item")
+             console.log("querySelectorAll : ");
+             itemAll.forEach(function(el, index){
+                console.log(index+1 + ":", el.textContent);
+             });
+        // index <--- 0부터 시작하는 인덱스값(선택된 p의 갯수만큼 변한다.)
+       // el    <--- 함수가 실행될 때 마다 선택 p중에서 순서대로 p가 하나씩 전달된다.
+    </script>
