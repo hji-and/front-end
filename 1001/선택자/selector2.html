@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- addEventListener 마우스오버,마우스아웃 -->
+
+</head>
+<body>
+    <img src="images/coffee-pink.jpg" alt="sample" id="myImage">
+</body>
+</html>
+<script>
+    const img1 = document.getElementById('myImage');
+    let srcVal = img1.getAttribute('src'); //현재 img1에 src속성에 들어있는 속성값을 나타냄
+    //images/coffee-pink.jpg 이미지 주소값 나옴
+    //alert(srcVal);
+
+    img1.addEventListener('mouseover',function(){
+        img1.setAttribute('src','images/coffee-blue.jpg') //마우스 올렸을 때 파란 커피잔 
+    });
+    img1.addEventListener('mouseout',function(){
+        img1.setAttribute('src','images/coffee-pink.jpg') //마우스 뗐을 때 분홍 커피잔 
+    });
+</script>

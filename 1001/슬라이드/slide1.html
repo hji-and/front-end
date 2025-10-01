@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{margin: 0; padding: 0;}
+        header{
+            width: 100%;
+            max-width: 1920px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: #ccc;
+        }
+        .slide-container{
+            width: 100%;
+            max-width: 1920px;
+            height: 480px;
+            position: relative;
+        }
+        .slider{
+            display: flex; /*넓이 따로 안 주고 플렉스 주니까 가로로 배열됨*/
+            transition: transform 0.5s;
+        }
+        button{
+            cursor: pointer;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header></header>
+    <div class="slide-container">
+
+        <div class="slider">
+
+            <div class="slide">
+                <img src="images/slide1.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="images/slide2.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="images/slide3.jpg" alt="">
+            </div>
+
+        </div>
+
+        <button class="prev" onclick="prevSlide()">Previous</button>
+        <button class="next" onclick="nextSlide()">next</button>
+    </div>
+
+</body>
+</html>
+<script>
+
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    
+    let currentIndex = 0;
+
+    function prevSlide(){
+        showSlide(currentIndex-1);
+    }
+    function nextSlide(){
+        showSlide(currentIndex+1);
+    }
+    function showSlide(index){
+        if(index < 0){
+            currentIndex = slides.length -1; //음수인 경우 현재 인덱스에 3-1 = 2를 넣고
+        }else if(index >= slides.length ){ //slide.length사진의갯수 3
+            currentIndex = 0;
+        }else{ //01 
+            currentIndex = index; //평소
+        }
+
+        const transformValue = -currentIndex * 100 + '%'; //-100
+        // slider.style.transform= "translateX("+transformValue+")"; 
+        slider.style.transform= `translateX(${transformValue})`; 
+        //X방향으로 -100%만큼 이동하면 두번째 사진 보임, 넥스트를 누르면 200%만큼 이동해서 세번째 사진 보임 세번 누르면 도로 0으로 돌아옴
+        //0->100->200->0 
+    }
+
+</script>

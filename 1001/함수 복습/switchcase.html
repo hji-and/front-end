@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let grade = "B"; 
+
+        switch (grade) { //변수를 비교
+        case "A":
+            console.log("매우 우수"); //grade가 A면 매우우수
+            break;
+        case "B":
+            console.log("좋음"); //grade가 B면 좋음 ...
+            break;
+        case "C":
+            console.log("보통");
+        default:   //default 문은 어떠한 case 문과도 일치하지 않을 경우 실행되는 것
+            console.log("재시험 필요");
+            break; 
+        }
+        // 결과: 좋음
+
+    </script>
+</body>
+</html>

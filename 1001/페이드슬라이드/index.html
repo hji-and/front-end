@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/fade.css">
+</head>
+<body>
+
+    <div id="slider-container">
+        <div class="slider">
+            <div class="slide fade">
+                <img src="images/slide1.jpg" alt="Slide 1">
+            </div>
+            <div class="slide fade">
+                <img src="images/slide2.jpg" alt="Slide 2">
+            </div>
+            <div class="slide fade">
+                <img src="images/slide3.jpg" alt="Slide 3">
+            </div>
+        </div>
+        <div class="pager">
+            <!-- span은 대표적인 인라인 요소 -->
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+
+    let slideIndex = 1;
+    showSlides(slideIndex); //값1
+
+    function showSlides(a){
+        let i;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        if(a > slides.length){ //값3
+            slideIndex = 1;
+        }
+
+        slides.forEach(slide => slide.classList.remove('on')); //.on제거
+        dots.forEach(dot => dot.classList.remove("active")); //.active제거
+         //forEach는 querySelectorAll에서만 사용가능
+         //아니면 하기 for문처럼 써야함
+        slides[slideIndex-1].classList.add('on'); //1번째사진에on
+        dots[slideIndex-1].classList.add('active'); //currentSlide에 1,2,3넘버링해서 -1
+    }
+
+    function currentSlide(a){
+        showSlides(slideIndex = a);
+    }
+
+
+    function plusSlides(a){ //a=1
+        showSlides(slideIndex += a);
+    }
+
+    
+        setInterval(function(){
+            plusSlides(1)
+        },3000) //3초가 지나면 현재슬라이드 번호에+1해서 자동으로 넘어가는 자동슬라이드
+    
+</script>
+
+ <!-- for(i = 0; i < slides.length; i++){
+                slides[i].classList.remove('on');
+            }
+            // slides.forEach(slide => slide.classList.remove('on'));
+            
+            for(i = 0; i < dots.length; i++){
+                dots[i].classList.remove('active');
+            }
+            // dots.forEach(dot => dot.classList.remove('active')); -->

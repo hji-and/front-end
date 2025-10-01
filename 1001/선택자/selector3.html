@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- nextElementSibling, parentElement 등등  -->
+
+</head>
+<body>
+
+<ul id="fruits">
+  <li>🍎 사과</li>
+  <li>🍌 바나나</li>
+  <li>🍇 포도</li>
+</ul>
+
+</body>
+</html>
+<script>
+
+    const first = document.querySelector("#fruits li"); 
+        console.log(first.textContent); //li중 첫번째 것만 출력(사과)
+        console.log(first.nextElementSibling.textContent); //li중 두번째 것만 출력(바나나)
+    
+    const second = first.nextElementSibling; //바나나
+        console.log(second.nextElementSibling.textContent); //바나나의 다음 li(포도)
+        console.log(second.previousElementSibling.textContent); //바나나 이전 li(사과)
+
+
+        
+    const list = document.getElementById('fruits');
+    //부모
+    console.log("부모 자식");
+    console.log(list.parentElement.tagName); //list(#fruits)의 부모를 알려줌(Body)
+
+    console.log(list.children.length); //list(#fruits)의 자식 갯수를 알려줌(3)
+    console.log(list.firstElementChild.textContent); //list(#fruits)의🍎 사과
+    console.log(list.lastElementChild.textContent); //list(#fruits)의 🍇 포도
+
+</script>

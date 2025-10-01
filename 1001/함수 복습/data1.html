@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 숫자로 변환 Number() 사용 / parseInt() 사용 -->
+
+</head>
+<body>
+    <script>
+        // var sum = 0;
+        // var avg = 0;
+        // var kor = prompt("당신의 국어 점수는?","");
+        // var mat = prompt("당신의 수학 점수는?","");
+        // var eng = prompt("당신의 영어 점수는?","");
+
+        // sum = kor+mat+eng; //+를 다 문자로 인지해버림(수치연산 때 주의)
+        // document.write(sum);
+
+
+        var sum = 0;
+        var avg = 0;
+        //숫자로 변환 Number() 사용 / parseInt() 사용
+        var kor = Number(prompt("당신의 국어 점수는?",""));
+        var mat = Number(prompt("당신의 수학 점수는?",""));
+        var eng = parseInt(prompt("당신의 영어 점수는?",""));   //parseInt: 150.5px => 150 (소수점, 문자 자르고 정수만 보여줌)
+       
+      
+        sum = kor+mat+eng; 
+        document.write(sum);
+
+    </script>
+</body>
+</html>
