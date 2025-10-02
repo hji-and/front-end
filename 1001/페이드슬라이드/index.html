@@ -36,13 +36,13 @@
     showSlides(slideIndex); //값1
 
     function showSlides(a){
-        let i;
+        // let i;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
 
-        if(a > slides.length){ //값3
-            slideIndex = 1;
-        }
+        if(a > slides.length){ //값3 
+            slideIndex = 1; //1=두번째 사진
+        } //사진의 갯수를 초과하면 1번으로 기본값으로 되돌림
 
         slides.forEach(slide => slide.classList.remove('on')); //.on제거
         dots.forEach(dot => dot.classList.remove("active")); //.active제거
@@ -53,12 +53,12 @@
     }
 
     function currentSlide(a){
-        showSlides(slideIndex = a);
+        showSlides(slideIndex = a); //a와 슬라이드 인덱스의 값을 같게
     }
 
 
     function plusSlides(a){ //a=1
-        showSlides(slideIndex += a);
+        showSlides(slideIndex += a); 
     }
 
     

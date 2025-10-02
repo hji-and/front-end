@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    var str = "Javascript";
+    console.log(str.charAt(5)); //인덱스 번호 5번째 문자를 추출(c)
+
+    var str = "Javascript";
+    console.log(str.indexOf('a')); //a가 포함되어있는지 확인하고 포함 시, 나오는 첫번째 a의 인덱스번호
+    console.log(str.indexOf('k')); //포함되지 않으면 -1을 뱉어냄
+
+    // lastIndexOf()
+    var str = 'Javascript'
+    console.log(str.lastIndexOf('a')); //뒤에서 부터 찾는거라 중복되는 수의 맨 뒤의 인덱스 번호
+    console.log(str.includes('script')); //포함된 단어를 찾을 때 (결과 true/false)
+
+    var str = 'http://icoxpublish.com';
+    console.log(str.substring(0,4)); //인덱스 번호 0부터 4전 (0~3추출, http)
+    console.log(str.substring(7)); //7자리부터 끝까지(icoxpublish.com)
+
+    var str = 'http://icoxpublish.com';
+    console.log(str.substr(7,4)); //인덱스번호 7부터 4글자 (7~10까지, icox)
+
+    var str = 'Javascript_jQuery';
+    var division = str.split('_'); //'_'를 기준으로 잘라서 배열로 만듦
+    console.log(division[0]+","+division[1]); //Javascript,jQuery
+    console.log(division); //Array
+
+    var str = 'm_out_.gif';
+    console.log(str.replace('out','over')); //m_over_.gif단어교체
+
+    var str1 = 'nav';
+    var str2 = '_bg';
+    console.log(str1.concat(str2)); //변수를 합쳐서 하나로 만듦 nav_bg
+
+    var  str = " removeblank ";
+        console.log(str.trim());
+        //공백제거
+
+        var str = "LoWerCase";
+        console.log(str.toLowerCase()); //lowercase
+        var str = "UppErCase";
+        console.log(str.toUpperCase()); //UPPERCASE
+        
+
+    </script>
+</body>
+</html>

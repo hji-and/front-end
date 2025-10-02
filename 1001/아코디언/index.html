@@ -43,7 +43,7 @@
 </html>
 <script>
     const accordions = document.querySelectorAll(".accordion");
-    accordions.forEach(function(acc){
+    accordions.forEach(function(acc){ //클릭이벤트 전에 forEach로 아코디언을 다 등록해줘야 함
         acc.addEventListener('click',function(){
             
             accordions.forEach(function(a){ 

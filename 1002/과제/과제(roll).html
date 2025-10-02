@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    
+    <style>
+
+        *{margin: 0; padding: 0;}
+        
+        li{list-style: none;
+        float: left;
+        /* width: 0px; */
+        }
+        
+
+        #banner_wrap{
+            width: 1200px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #aaa;
+            background-color: #aaa;
+            position: relative;
+        }
+
+        #banner{
+            width: 1200px;
+            height: 300px;
+            border: 1px solid red;
+            display: flex;
+            position: absolute;
+        }
+        #frame{
+            width: 1200px;
+            height: 300px;
+            position: relative;
+            margin: 0 auto;
+            border: 1px solid blue;
+            overflow: hidden;
+            top: 40%;
+        }
+
+        p a{position: absolute;
+            width: 38px;
+            height: 36px;
+            top: 70%;
+        }
+            p a.prev{
+                left: 20px;}
+
+            p a.next{
+                right: 20px;}
+
+    </style>
+</head>
+<body>
+
+    <div id="banner_wrap">
+        <div id="frame">
+            <ul id="banner">
+                <li><a href="#"><img src="img/slide1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/slide2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/slide3.jpg" alt=""></a></li>
+            </ul>
+        </div> 
+            <p>
+                <a class="prev" href="#"><img src="img/prev_btn.png" alt=""></a>
+                <a class="next" href="#"><img src="img/next_btn.png" alt=""></a>
+            </p>
+    </div>
+    
+<script>
+
+    let list = document.getElementById('banner'); //li를 감싸는 ul#banner
+    let listLi = document.querySelectorAll('#banner li'); //사진을 감싸는 li
+    let total = listLi.length; 
+    let li_width = 1200; 
+ 
+    
+     /*html에 이미지를 추가하지 않고 java script로 사진을 복붙하는 법*/
+     for(let i = 0; i < 3; i++){ 
+        let copyObj = listLi[i].cloneNode(true);
+
+        list.append(copyObj); //ul 맨뒤로 copyObj를 추가해라
+     }
+    
+
+     let num = 0;
+
+    document.querySelector('.next').addEventListener('click',function(e){
+        e.preventDefault();
+
+        if(num ===total ){ 
+            num = 0;
+            list.style.transition = 'none';
+            list.style.marginLeft = 0;
+            //트랜지션이 없어서 움직임 없이 첫번째 사진으로 순간적 이동
+        }
+        //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
+        setTimeout(function(){
+            num++;
+            list.style.transition = 'margin-left 0.5s';
+            list.style.marginLeft = -li_width * num + 'px';
+        },50); //0.05초 정도 두고 실행
+    })
+
+
+
+
+     document.querySelector('.prev').addEventListener('click',function(e){
+        e.preventDefault();
+
+        if(num === 0 ){ //인덱스가 0번이 되는 순간
+            num = total;
+            list.style.transition = 'none';
+            list.style.marginLeft = -li_width * num + 'px';
+            //트랜지션이 없어서 움직임 없이 첫번째 사진으로 순간적 이동
+        }
+        //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
+        setTimeout(function(){
+            num--;
+            list.style.transition = 'margin-left 0.5s';
+            list.style.marginLeft = -li_width * num + 'px';
+        },50); //0.05초를 두고 실행
+    })
+
+
+
+    /*자동 슬라이드 setInterval*/
+    function autoPlay(){
+           if(num === total ){ //인덱스가 0번이 되는 순간
+            num = 0;
+            list.style.transition = 'none';
+            list.style.marginLeft = 0;
+            //트랜지션이 없어서 움직임 없이 첫번째 사진으로 순간적 이동
+        }
+        //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
+        setTimeout(function(){
+            num++;
+            list.style.transition = 'margin-left 0.5s';
+            list.style.marginLeft = -li_width * num + 'px';
+        },50); 
+    }
+    
+//자동동
+    let frame = document.getElementById('frame');
+
+    let interVal = setInterval(autoPlay, 3000);
+
+    frame.addEventListener('mouseover',function(){
+        clearInterval(interVal);
+    });
+    frame.addEventListener('mouseout',function(){
+        interVal = setInterval(autoPlay, 4000);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 헬로키티가 마우스 따라다니는 이벤트 -->
+
+    <style>
+
+        *{margin: 0; padding: 0;
+        cursor: url(img/mouse_img_32.png), auto; /*auto : 이미지 적용이 안 되면 기본마우스포인터로 대체*/
+        /*마우스포인트 대신 사용할 커서 이미지 경로*/
+        }
+        ul,li{list-style: none;}
+        a{text-decoration: none; color: #000;}
+        a:hover{color: red;}
+
+        #mouse_col{ /*십자가 가로줄*/
+            position: fixed;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            top: 0;
+            background-color: orangered;
+            pointer-events: none; /*마우스포인트를 투명한 요소처럼 처리(클릭 이벤트를 방해하지 않도록)*/
+        }
+        #mouse_row{ /*십자가 세로줄*/
+            position: fixed;
+            width: 2px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: orangered;
+            pointer-events: none; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+         <ul>
+            <li><a href="#">main</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">skill</a></li>
+            <li><a href="#">work</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <div id="mouse_col"></div>
+        <div id="mouse_row"></div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove',function(e){
+            var x = e.pageX; //X좌표
+            var y = e.pageY; //Y좌표
+            var ele1 = document.getElementById('mouse_col');
+            var ele2 = document.getElementById('mouse_row');
+                ele1.style.top = y + 'px';
+                ele2.style.left = x + 'px';
+            }); 
+            
+           
+           
+       
+    </script>
+</body>
+</html>

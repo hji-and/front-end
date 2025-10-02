@@ -70,7 +70,8 @@
             index = 0;
         }
         const transformValue = -index * 100 + '%'; 
-        slider.style.transform= "translateX("+transformValue+")"; 
+        slider.style.transform= `translateX(${transformValue})`;
+        // slider.style.transform= "translateX("+transformValue+")"; 
     }
     setInterval(auto, 2000);
 

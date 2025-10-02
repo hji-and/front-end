@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하나의 이미지에서 여러 가지 링크(도형)</title>
+</head>
+<body>
+    <div id="banner">
+        <img src="img_map.jpg" alt="" usemap="#banner1">
+        <map name="banner1" id="banner1">
+
+            <area shape="rect" coords="151,988,928,1034" href="http://nate.com" target="_blank" alt="">
+            <!-- 그림판에서 사각형: 상단 우, 하단 좌 좌표 보고 입력 -->
+
+             <area shape="circle" coords="554,412,80" href="http://starbucks.co.kr" target="_blank" alt="">
+             <!-- 원형: 중심점좌표,(중심점부터)반지름너비 -->
+
+            <area shape="poly" coords="391,117,544,127,713,167,413,192" href="http://coupang.co.kr" target="_blank" alt="">
+             <!-- 다각형: 둘레의 외곽선에서 좌표 찍음(많을수록 좋음) -->
+
+        </map>
+    </div>
+</body>
+</html>
