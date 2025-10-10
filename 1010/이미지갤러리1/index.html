@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0930 이미지갤러리1 제이쿼리로</title>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <style>
+
+        *{margin: 0; padding: 0;}
+        ul, li{list-style: none;}
+
+        body{
+            background-color: #333;
+        }
+        #wrap{
+            width: 640px;
+            margin: 100px auto 0;/
+        }
+       #nav li{
+        float: left;
+       }
+       #nav li a{
+        display: block;
+        border: 2px solid #bbb;
+        margin: 0 6px 10px 0;
+        border-radius: 5px;
+       }
+       #nav li a img{width: 70px;}
+
+       #window{clear: both;} /*좌우 float값을 취소(줄바꿈)*/
+
+       #nav li a.active{
+        border: 2px solid #fff;
+       }
+
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <ul id="nav">
+            <li><a href="../이미지갤러리1/lop0.jpg" class="active"><img src="../이미지갤러리1/thumb0.jpg" alt="호1"></a></li>
+            <li><a href="../이미지갤러리1/lop1.jpg"><img src="../이미지갤러리1/thumb1.jpg" alt="호2"></a></li>
+            <li><a href="../이미지갤러리1/lop2.jpg"><img src="../이미지갤러리1/thumb2.jpg" alt="호3"></a></li>
+            <li><a href="../이미지갤러리1/lop3.jpg"><img src="../이미지갤러리1/thumb3.jpg" alt="호4"></a></li>
+            <li><a href="../이미지갤러리1/lop4.jpg"><img src="../이미지갤러리1/thumb4.jpg" alt="호5"></a></li>
+            <li><a href="../이미지갤러리1/lop5.jpg"><img src="../이미지갤러리1/thumb5.jpg" alt="호6"></a></li>
+            <li><a href="../이미지갤러리1/lop6.jpg"><img src="../이미지갤러리1/thumb6.jpg" alt="호7"></a></li>
+            <li><a href="../이미지갤러리1/lop7.jpg"><img src="../이미지갤러리1/thumb7.jpg" alt="호8"></a></li>
+        </ul>
+        
+        <div id="window"><img src="../이미지갤러리1/lop0.jpg" alt=""></div>
+    </div>  
+
+</body>
+</html>
+<script>
+    // const navLinks = document.querySelectorAll("#nav li a"); //8개 등록
+    // navLinks.forEach(function(navLink){
+    //     navLink.addEventListener("click",function(e){
+    //         e.preventDefault(); //a이벤트를 막아서 링크 금지
+    //         //작은 이미지 클릭 시 팝업이동 금지
+
+    //         let img_url = navLink.getAttribute('href');
+    //         // alert(img_url)
+    //         document.querySelector("#window img").setAttribute('src' ,img_url);
+    //         navLinks.forEach(function(link){
+    //             link.classList.remove('active'); //active(모든 a)를 제거
+    //         });
+    //         navLink.classList.add('active'); //active(css가 적용)옮겨다니는 선택자
+    //     }); 
+    // })
+    $(function(){
+        $('#nav li a').click(function(){
+            
+            var img_url = $(this).attr('href'); //현재 href에 들어있는 속성값을 읽어와 변수img_url에 저장
+            // alert(img_url);
+            $('#window img').attr('src',img_url); 
+            
+            $('#nav li a').removeClass('active');
+            $(this).addClass('active');
+
+            return false;
+        })
+    })
+</script>
