@@ -1,0 +1,106 @@
+*{margin: 0; padding: 0;}
+ul, li{list-style: none;}
+a{text-decoration: none; color: black;}
+body{overflow-x: hidden;}
+
+#logo{
+    position: absolute;
+    display: block;
+    background: url(../img/logo_w.png) 0 0 no-repeat;
+    left: 45%;
+    padding: 5px;
+    width: 202px;
+    height: 40px;
+    overflow: hidden;
+}
+nav{z-index: 10;
+    width: 100%; height: 50px; background-color: white; margin: 0 auto; 
+    text-align: center; position: relative;}
+nav > ul{top: 40px;
+    width: 100%; height: 60px; background-color: white;
+        position: absolute; overflow: hidden;}
+
+nav > ul:hover{height: 300px; transition: all 0.3s;}        
+
+nav > ul > li{display: inline-block; vertical-align: top;}
+nav ul li a{display: block; width: 150px; height: 60px; font-weight: bold;
+    line-height: 60px; position: relative;}
+nav ul li ul li a{height: 40px; line-height: 45px; font-weight: normal;
+    color: slategray;} /*하위메뉴 간격 좁게*/
+
+   
+nav > ul > li > ul > li > a::after{
+    display: block;
+    position: relative;  
+    content: "";    
+}
+nav > ul > li > ul > li > a:hover {
+    position: absolute; width: 100%; 
+    /* bottom: 0; left: 0; height: 3px; */
+    border-bottom: 1px solid green;
+    color: green;
+   
+}
+
+nav > ul > li > a:hover{
+    color: green;
+}
+
+
+#sandwitch{
+    position: relative;
+    width: 1920px;
+    /* min-width: px; */
+    height: 440px;
+    /* overflow: hidden; */
+}
+#sandwitch ul li{
+    position: absolute;
+    top: 50px;
+    width: 1920px;
+    height: 440px;
+}
+#sandwitch .b0{
+    left: 0;
+    background: url(../img/s1.jpg) 0 0 no-repeat;
+}
+#sandwitch .b1{
+    left: 100%;
+    background: url(../img/s2.jpg) 0 0 no-repeat;
+}
+#sandwitch .b2{
+    left: 200%;
+    background: url(../img/s3.jpg) 0 0 no-repeat;
+}
+#sandwitch .b3{
+    left: 300%;
+    background: url(../img/s4.jpg) 0 0 no-repeat;
+}
+#sandwitch .b4{
+    left: 400%;
+    background: url(../img/s5.jpg) 0 0 no-repeat;
+}
+#button{
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    margin-left: 500px;
+    display: flex;
+    width: 150px;
+}
+#button li{
+    width: 15px;
+    height: 15px;
+    /* float: left; */
+    border-radius: 7.5px;
+    margin: 0 5px;
+    background-color: #ddd; 
+}
+#button li.on{
+    width: 30px;
+    background-color:gold 
+}
+#button li a{display: block;
+    text-indent: -9999px;
+}
+

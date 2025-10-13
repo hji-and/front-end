@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/subway_menu.css">
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+</head>
+<body>
+     <nav>
+    <div id="logo"></div>    
+    <ul class="subway">
+         <li>
+            <a class="dp1" href="#">메뉴소개</a>
+                <div class="dp2">
+                    <ul>
+                        <li><a href="#">샌드위치</a></li>
+                        <li><a href="#">랩ㆍ기타</a> </li>
+                        <li><a href="#">샐러드</a></li>   
+                        <li><a href="#">아침메뉴</a></li>
+                        <li><a href="#">스마일 썹</a></li>
+                        <li><a href="#">단체메뉴</a></li>  
+                    </ul>
+                </div>
+         </li>
+
+        <li>
+            <a class="dp1" href="#">이용방법</a>
+                <div class="dp2">
+                <ul>
+                      <li><a href="#">써브웨이 이용방법</a></li>
+                      <li><a href="#">단체메뉴 이용방법</a></li>
+                      <li><a href="#">신선한 재료 소개</a></li>
+                      <li><a href="#">App 이용방법</a></li> 
+                </ul>
+                </div>
+        </li>
+
+        <li>
+            <a href="#" class="dp1">새소식</a>
+                <div class="dp2">
+                  <ul>
+                        <li><a href="#">이벤트ㆍ프로모션</a></li>
+                        <li><a href="#">뉴스ㆍ공지사항</a></li>
+                        <li><a href="#">광고영상</a></li>
+                    </ul>
+                </div>
+        </li>
+
+        <li>
+            <a href="#" class="dp1">써브웨이</a>
+                <div class="dp2">
+                     <ul>
+                            <li><a href="#">써브웨이 역사</a></li>
+                            <li><a href="#">써브웨이 약속</a></li>
+                            <li><a href="#">샌드위치 아티스트 지원</a></li>
+                            <li><a href="#">매장찾기</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="dp1">가맹점</a>
+                     <div class="dp2">
+                        <ul>
+                            <li><a href="#">써브웨이 프랜차이즈</a></li>
+                            <li><a href="#">가맹관련 FAQ</a></li>
+                            <li><a href="#">가맹신청ㆍ문의</a></li>
+                            <li><a href="#">지사안내</a></li>
+                            <li><a href="#">사업설명회</a></li>
+                        </ul>
+                    </div>
+             </li>
+
+            <li>
+                <a class="dp1" href="#">온라인 주문</a>
+                    <div class="dp2">
+                        <ul>
+                        <li><a href="#">FAST-SUB</a></li>
+                        <li><a href="#">HOME-SUB</a></li>
+                        <li><a href="#">단체주문</a></li>
+                        </ul>
+                    </div>
+            </li>          
+    </ul>            
+    </nav>    
+    <div id="sandwitch">
+        <ul class="ban">
+        <li class="b0"><a href="#"></a></li>
+        <li class="b1"><a href="#"></a></li>
+        <li class="b2"><a href="#"></a></li>
+        <li class="b3"><a href="#"></a></li>
+        <li class="b4"><a href="#"></a></li>
+        </ul>
+      </div>   
+        <ul id="button">
+            <li class="on"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+       
+</body>
+</html>
+<script>
+    $(function(){
+    var sandwitch = $('#sandwitch > ul > li'); //큰 사진
+    var button = $('#button > li'); //pager버튼
+    var current = 0; //현재 사진
+    var id;
+    var i;
+    
+    button.click(function(){
+        i = $(this).index(); //전역번수 선언했으면 여기에 var재선언X
+        // alert(i);
+        button.removeClass('on');
+        button.eq(i).addClass('on');
+        move();
+        return false;
+    });
+
+
+    function timer(){
+        id = setInterval(function(){
+            var n = current + 1; //3초 후에 현재사진에 1 더해라
+            if(n === 3){n = 0;} //3 되면 다시 0
+            
+            button.eq(n).trigger('click');
+            //컴퓨터가 1씩 증가하면서 버튼을 강제로 클릭한다.
+
+        },3000);
+    }
+    timer();
+
+
+    function move(){
+        if(current == i) return;
+        //현재 활성화된(검정) 버튼과 클릭한 버튼이 같으면, 빠져나간다.
+        
+        var cur = sandwitch.eq(current); //현재 머물러 있는 큰사진(처음엔 인덱스0)
+        var next = sandwitch.eq(i); //내가 누르는 것
+            cur.css('left','0').stop().animate({'left':'-100%'},500);
+            next.css('left','100%').stop().animate({'left':'0'},500);
+
+        current = i;
+    }
+
+});
+</script>   

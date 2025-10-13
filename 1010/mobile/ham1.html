@@ -11,10 +11,10 @@
                 var right1 = $('nav').css('right');
                 // alert(right1); //-200px
                 if(right1 === '-200px'){
-                    $(this).addClass('on');
+                    $(this).addClass('on'); //이미지가 x로 바뀌고
                     $('nav').css('right','0px');
                 }else{
-                    $(this).removeClass('on');
+                    $(this).removeClass('on'); 
                     $('nav').css('right','-200px');
                 }
             });

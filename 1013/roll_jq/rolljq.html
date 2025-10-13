@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>기차길슬라이드(이미지추가)</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    
+    <style>
+
+        *{margin: 0; padding: 0;}
+        
+        li{list-style: none;
+        float: left;
+        width: 80px; /*여백 고려해서 80*/}
+        
+        h1{text-align: center;}
+
+        #banner_wrap{
+            width: 260px;
+            height: 120px;
+            padding: 10px 20px;
+            margin: 0 auto;
+            border: 1px solid #aaa;
+        }
+
+        #banner{
+            width: 800px;
+            height: 54px;
+            border: 1px solid red;
+        }
+        #frame{
+            width: 230px;
+            height: 54px;
+            position: relative;
+            margin: 10px auto;
+            border: 1px solid blue;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>롤링 슬라이더 배너 만들기</h1>
+    <div id="banner_wrap">
+        <div id="frame">
+            <ul id="banner">
+                <li><a href="#"><img src="images/pic_t1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t5.jpg" alt=""></a></li>
+                
+                <!-- <li><a href="#"><img src="images/pic_t1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/pic_t3.jpg" alt=""></a></li> -->
+            </ul>
+        </div> 
+            <p>
+                <a class="prev" href="#"><img src="images/prev_btn.png" alt=""></a>
+                <a class="next" href="#"><img src="images/next_btn.png" alt=""></a>
+            </p>
+    </div>
+  
+    
+<script>
+
+                    // let list = document.getElementById('banner'); //li를 감싸는 넓이800인 ul#banner
+                    // let listLi = document.querySelectorAll('#banner li'); //5장의 사진을 감싸는 li
+    let total =$('#banner>li').length; //5개
+    // alert(total);
+
+                    // let li_width = 80; 
+                    // let li_width = document.querySelector('#banner>li').offsetWidth; 배너사진 한 장의 넓이를 물어보는 offsetWidth
+    let li_width = $('#banner>li').eq(0).width();
+    // alert(li_width); -> 80
+    // let li_width1 = parseInt($('#banner>li').eq(0).css('width'));
+    // alert(li_width1); //-> 80px (px가 나오니 나중에 곱하기 등 계산 시 계산 안 됨 주의,parseInt 붙여야함)
+
+    let copy1 = $('#banner>li:lt(3)').clone();
+    //배너>li 중 인덱스번호3보다 작은(0,1,2)를 clone복사(ctrl+c);
+    $('#banner').append(copy1); //배너 맨뒤로 복사한 (0,1,2) 추가
+    let num = 0;
+    
+                    // document.querySelector('.next').addEventListener('click',function(e){
+                    //     e.preventDefault();
+    $('.next').click(function(e) {
+        e.preventDefault();
+
+        if(num ===5 ){ //인덱스가 5번이 되는 순간
+            num = 0;
+                    // list.style.transition = 'none';
+                    // list.style.marginLeft = 0;
+            $('#banner').css('margin-left','0');
+                
+        }
+                    //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
+                    // setTimeout(function(){
+        num++;
+                    // list.style.transition = 'margin-left 0.5s';
+                    // list.style.marginLeft = -li_width * num + 'px';//자.스에는 애니메이트가 없어서 트랜지션과 마진레프트 별도로 줌
+        $('#banner').stop().animate({'margin-left':-li_width * num},500);
+                    // },50); //0.05초 정도 두고 실행
+    });
+
+
+
+
+                    //  document.querySelector('.prev').addEventListener('click',function(e){
+                    //     e.preventDefault();
+    $('.prev').on("click",function(e) {
+        e.preventDefault();
+
+        if(num === 0){ //인덱스가 0번이 되는 순간
+            num = 5;
+                    // list.style.transition = 'none';
+                    // list.style.marginLeft = -li_width * num + 'px'; //5*80(너비) 
+                    // 트랜지션이 없어서 움직임 없이 첫번째 사진으로 순간적 이동
+                $('#banner').css('margin-left',-li_width * num);
+        };
+                    //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
+                    // setTimeout(function(){ 
+        num--;
+        $('#banner').stop().animate({'margin-left':-li_width * num},500);  
+                    // list.style.transition = 'margin-left 0.5s';
+                    // list.style.marginLeft = -li_width * num + 'px';
+                    // },50); //0.05초를 두고 실행
+    });
+
+//자동 슬라이드
+var id = setInterval(autoPlay,2000);
+function autoPlay(){
+        if(num ===5 ){ 
+            num = 0;
+            $('#banner').css('margin-left','0');
+                
+        }         
+        num++;                
+        $('#banner').stop().animate({'margin-left':-li_width * num},500);
+                    //    if(num === 0 ){ //인덱스가 0번이 되는 순간
+                    //     num = total;
+                    //     list.style.transition = 'none';
+                    //     list.style.marginLeft = -li_width * num + 'px'; //5*80(너비) 
+                    //     //트랜지션이 없어서 움직임 없이 첫번째 사진으로 순간적 이동
+        }
+      
+   
+
+//자동슬라이드가 마우스 올리면 멈추고 떼면 도는 것
+
+                    // let frame = document.getElementById('frame');
+                    // let interVal = setInterval(autoPlay, 3000);
+    $('#frame').mouseover(function(){
+        clearInterval(id);
+    })    
+     $('#frame').mouseout(function(){
+        id = setInterval(autoPlay,2000);
+    })   
+                    // frame.addEventListener('mouseover',function(){
+                    //     clearInterval(interVal);
+                    // });
+                    // frame.addEventListener('mouseout',function(){
+                    //     interVal = setInterval(autoPlay, 3000);
+                    // });
+
+</script>
+
+</body>
+</html>
