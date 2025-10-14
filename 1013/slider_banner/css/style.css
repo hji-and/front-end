@@ -41,7 +41,7 @@ img{border:none;vertical-align: middle;}
     height: 15px;
     float: left;
     margin: 0 5px;
-    background: url(../img/btnVisual.png) 0 -16px no-repeat;
+    background: url(../img/btnVisual.png) 0 -16px no-repeat; /*회색 동그라미*/
 }
 #buttonList li.on{
     background-position:0 0 ;

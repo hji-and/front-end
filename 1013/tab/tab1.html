@@ -29,7 +29,7 @@
 <script>
 $(function(){
     $('.tab li').click(function(){
-        var i = $(this).index(); //중요
+        var i = $(this).index(); //중요, 클릭한 인덱스 번호를 구하기
         // alert(i)
             $('.tab li').removeClass('on');
             $('.tab li').eq(i).addClass('on');

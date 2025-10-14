@@ -8,44 +8,113 @@ body{overflow-x: hidden;}
     display: block;
     background: url(../img/logo_w.png) 0 0 no-repeat;
     left: 45%;
-    padding: 5px;
+    margin-top: 10px;
     width: 202px;
-    height: 40px;
-    overflow: hidden;
+    height: 50px;
+    /* overflow: hidden; */
 }
 nav{z-index: 10;
-    width: 100%; height: 50px; background-color: white; margin: 0 auto; 
-    text-align: center; position: relative;}
-nav > ul{top: 40px;
-    width: 100%; height: 60px; background-color: white;
-        position: absolute; overflow: hidden;}
-
-nav > ul:hover{height: 300px; transition: all 0.3s;}        
-
-nav > ul > li{display: inline-block; vertical-align: top;}
-nav ul li a{display: block; width: 150px; height: 60px; font-weight: bold;
-    line-height: 60px; position: relative;}
-nav ul li ul li a{height: 40px; line-height: 45px; font-weight: normal;
-    color: slategray;} /*하위메뉴 간격 좁게*/
-
-   
-nav > ul > li > ul > li > a::after{
-    display: block;
-    position: relative;  
-    content: "";    
+    width: 100%; 
+    height: 60px; 
+    background-color: white; 
+    margin: 0 auto; 
+    text-align: center; 
+    position: relative;
 }
-nav > ul > li > ul > li > a:hover {
-    position: absolute; width: 100%; 
-    /* bottom: 0; left: 0; height: 3px; */
-    border-bottom: 1px solid green;
+nav > ul{
+    top: 60px;
+    width: 100%; 
+    height: 55px; 
+    background-color: white;
+    position: absolute; 
+    overflow: hidden;
+}
+
+nav > ul:hover{
+    height: 300px; 
+    transition: all 0.3s;}        
+
+nav > ul > li{
+    display: inline-block; 
+    vertical-align: top;
+}
+nav ul li a{display: block; 
+    width: 155px; 
+    height: 55px; 
+    font-weight: bold;
+    line-height: 55px; 
+    position: relative;
+}
+nav ul li ul li a{
+    margin-top: 10px;
+    height: 35px; 
+    line-height: 35px; 
+    font-weight: normal;
+    color: slategray; 
+    text-decoration: 1px solid transparent;
+} /*하위메뉴 간격 좁게*/
+
+
+nav  ul  li  ul  li  a:hover {
+    width: 100%; 
+    text-decoration: underline 1px solid green;
     color: green;
-   
 }
 
 nav > ul > li > a:hover{
     color: green;
 }
 
+.shadow{
+    position: absolute;
+    top: 115px;
+    width: 100%;
+    height: 0px;
+    border-top: 1px solid #ddd;
+    background-color: rgba(59, 54, 54, 0.7);
+    transition: all 0.3s;
+}
+
+/* nav > ul > li > a:hover + .shadow{
+    height: 445px;
+    background-color: rgba(59, 54, 54, 0.7);
+    z-index: 30;
+} */
+
+#box{
+    position: absolute;
+    display: block;
+    top: 500px;
+    right: 300px;
+    display:inline-block;
+}
+.box1{
+    float: left;
+    width: 300px;
+    height: 80px;
+    border-radius: 30px 0 0 0;     
+    background: gold url(../img/icon_map.png) no-repeat 80px 25px;
+}
+.box2{
+    float: left;
+    width: 300px;
+    height: 80px;
+    border-radius: 0 0 30px 0;
+    background: green url(../img/icon_franchise.png) no-repeat 50px 25px;
+}
+.box1 p{
+    padding-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.box2 p{
+    color: white;
+    padding-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
 
 #sandwitch{
     position: relative;

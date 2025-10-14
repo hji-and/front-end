@@ -74,8 +74,8 @@
 
                     // let li_width = 80; 
                     // let li_width = document.querySelector('#banner>li').offsetWidth; 배너사진 한 장의 넓이를 물어보는 offsetWidth
-    let li_width = $('#banner>li').eq(0).width();
-    // alert(li_width); -> 80
+    let li_width = $('#banner>li').eq(0).width(); //-> 80
+    // alert(li_width); 
     // let li_width1 = parseInt($('#banner>li').eq(0).css('width'));
     // alert(li_width1); //-> 80px (px가 나오니 나중에 곱하기 등 계산 시 계산 안 됨 주의,parseInt 붙여야함)
 
@@ -96,9 +96,7 @@
             $('#banner').css('margin-left','0');
                 
         }
-                    //첫번째장에서 2번째로 넘어가는 과정이 너무 빨라서 1->2 넘어가는 속도를 늦춰야 함
-                    // setTimeout(function(){
-        num++;
+            num++;
                     // list.style.transition = 'margin-left 0.5s';
                     // list.style.marginLeft = -li_width * num + 'px';//자.스에는 애니메이트가 없어서 트랜지션과 마진레프트 별도로 줌
         $('#banner').stop().animate({'margin-left':-li_width * num},500);
@@ -153,7 +151,7 @@ function autoPlay(){
                     // let frame = document.getElementById('frame');
                     // let interVal = setInterval(autoPlay, 3000);
     $('#frame').mouseover(function(){
-        clearInterval(id);
+        clearInterval(id); //자동으로 돌아가는 걸 멈추는 거
     })    
      $('#frame').mouseout(function(){
         id = setInterval(autoPlay,2000);

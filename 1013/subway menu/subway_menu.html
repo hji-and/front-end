@@ -8,7 +8,7 @@
     <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
 </head>
 <body>
-     <nav>
+    <nav>
     <div id="logo"></div>    
     <ul class="subway">
          <li>
@@ -83,7 +83,20 @@
                         </ul>
                     </div>
             </li>          
-    </ul>            
+    </ul> 
+
+    <div id="box">
+        <div class="box1">
+            <p>매장찾기</p>
+            <!-- <img src="img/icon_map.png" alt=""> -->
+        </div>
+        <div class="box2">
+            <p>가맹신청·문의</p>
+            <!-- <img src="img/icon_franchise.png" alt=""> -->
+        </div>
+    </div>
+
+    <div class="shadow"></div>
     </nav>    
     <div id="sandwitch">
         <ul class="ban">
@@ -125,7 +138,7 @@
     function timer(){
         id = setInterval(function(){
             var n = current + 1; //3초 후에 현재사진에 1 더해라
-            if(n === 3){n = 0;} //3 되면 다시 0
+            if(n === 5){n = 0;} //3 되면 다시 0
             
             button.eq(n).trigger('click');
             //컴퓨터가 1씩 증가하면서 버튼을 강제로 클릭한다.
