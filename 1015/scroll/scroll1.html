@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll animate</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+    *{margin: 0; padding: 0;}
+    body{height: 3000px;}/*여유롭게 스크롤 될 수 있게*/
+    .box{width: 150px;height: 150px;}
+        .box1{background-color: aqua; position: absolute;top: 300px; left:-150px;} /*left에 -150, 안 보이게 숨김*/
+        .box2{background-color: blueviolet; position: absolute;top: 1200px; left: -150px;}
+        .box3{background-color: brown; position: absolute;top: 1800px; right: -200px;} /*right에, 가로 스크롤 당기면 보임*/
+        .box4{background-color: coral; position: absolute;top: 2800px; right: -200px;
+            transition: right 0.3s;}
+            .box4.on{right: 500px;}
+            .sTOp{position: fixed;}
+    </style>
+</head>
+<body>
+    <h1 class="sTop">0000</h1>
+    <div class="box box1">박스1</div>
+    <div class="box box2">박스2</div>
+    <div class="box box3">박스3</div>
+    <div class="box box4">박스4</div>
+</body>
+</html>
+<script>
+    $(window).scroll(function(){
+    //화면 스크롤 할 때
+        var sct = $(window).scrollTop(); //현재 스크롤 위치값(스크롤양)
+        // ↑$(this).scrollTop();와 같음
+
+        $('.sTop').text(sct); //sct에 저장된 스크롤 위치값을 .sTop에 반영(대입)
+        //$('sTop').html(sct);와 같음
+
+        if(sct >= 10){
+            $('.box1').stop().animate({left:50+"%"},800); //스크롤 10 내리면 박스가 left에서 50%까지 ㄱㅏ겠다
+        }
+        if(sct >= 500){
+            $('.box2').stop().animate({left:50+"%"},800); //스크롤 500 내리면 박스가 left에서 50%까지
+        }
+        if(sct >= 1200){
+            $('.box3').stop().animate({right:50+"%"},800); //스크롤 1200 내리면 박스가 right에서 50%까지
+        }
+        if(sct <= 1500){
+            $('.box4').removeClass("on");}//스크롤1500보다 작으면 등장x(올렸다가 다시 내려가도 등장)
+        if(sct >= 2000){
+            $('.box4').addClass("on");} //스크롤 2000 내리면 박스가 right에서 등장
+    });
+
+</script>

@@ -7,12 +7,23 @@ body{overflow-x: hidden;}
     position: absolute;
     display: block;
     background: url(../img/logo_w.png) 0 0 no-repeat;
-    left: 45%;
+    left: 46%;
     margin-top: 10px;
     width: 202px;
     height: 50px;
     /* overflow: hidden; */
 }
+#login{
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 30px;
+    display:inline-block;
+    float: left;
+    color: gray;
+    z-index: 90;
+}
+
 nav{z-index: 10;
     width: 100%; 
     height: 60px; 
@@ -151,22 +162,22 @@ nav > ul > li > a:hover{
 }
 #button{
     position: absolute;
-    top: 500px;
+    top: 480px;
     left: 50%;
-    margin-left: 500px;
+    margin-left: 550px;
     display: flex;
     width: 150px;
 }
 #button li{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     /* float: left; */
     border-radius: 7.5px;
     margin: 0 5px;
     background-color: #ddd; 
 }
 #button li.on{
-    width: 30px;
+    width: 20px;
     background-color:gold 
 }
 #button li a{display: block;

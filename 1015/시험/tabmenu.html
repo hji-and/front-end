@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<style>
+    *{margin: 0; padding: 0;}
+    .tab{
+        width: 450px;
+        height: 250px;
+        border: 1px solid #333;
+    }
+    .tab_menu{
+        height: 40px;
+        line-height: 40px;
+        list-style: none;
+        border-bottom: 2px solid blue;
+        margin: 10px;
+        text-transform: scale(1,1); 
+    }
+
+    .tab_menu li{
+        width: 150px;
+        float: left;
+    }
+    .tab_menu li.on{
+        text-decoration: underline;
+        text-underline-offset: 11px;
+        text-decoration-color: blue;
+        text-decoration-thickness: 3px; 
+
+        /* border-bottom: 4px solid blue;  */
+        font-weight: bold; color:blue;
+        text-transform: scale(3,3); 
+        }
+
+    .tab_list li{display: none;} 
+    .tab_list li.on{display: block;} 
+    .tab_list li.on div{
+        padding: 5px;
+       border-bottom: 1px solid lightgray;
+    }
+    span{
+    color: blue;
+    padding: 0 10px 0 8px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    }
+    span.a{color: lightgreen;
+    padding: 0 10px 0 8px;
+    border: 1px solid lightgreen;
+    border-radius: 3px;}
+    span.b{color: aqua;
+    padding: 0 10px 0 8px;
+    border: 1px solid aqua;
+    border-radius: 3px;}
+    span.c{color: orange;
+    padding: 0 10px 0 8px;
+    border: 1px solid orange;
+    border-radius: 3px;}
+
+</style>
+<body>
+    <div class="tab">
+        <ul class="tab_menu">
+            <li>공지사항</li>
+            <li>독서·문화·행사</li>
+        </ul>
+        <ul class="tab_list">
+            <li class="on">
+                <div><span><em>통합</em></span>[푸른들]3월 따로 또 같이</div>
+                <div><span><em>통합</em></span>[길꽃][서울문화의 밤]도서관의 밤 우리가족 책놀이</div>
+                <div><span><em>통합</em></span>[푸른들]2025년 2분기 정규 프로그램 참여자 모집 안내</div>
+                <div><span><em>통합</em></span>[가양]2025 2분기 정규프로그램 모집안내</div>
+                <div><span><em>통합</em></span>[곰달래]개관 12주년 기념행사 안내</div>
+            </li>
+            <li>
+                <div><span class="a"><em>길꽃</em></span>[서울문화의 밤] 도서관의 밤 우리가족 책놀이</div>
+                <div><span class="b"><em>강서영어</em></span>TPRG로 고전읽기-80일간의 세계일주-</div>
+                <div><span class="c"><em>등빛</em></span>[2025년 2분기 정규문화] 세계 역사 속 그날</div>
+                <div><span class="c"><em>등빛</em></span>[2025년 2분기 정규문화] 문해력UP 사고력UP</div>
+                <div><span class="c"><em>등빛</em></span>[2025년 2분기 정규문화] 독서랑 논술이랑</div>
+            </li>
+        </ul>
+    </div>
+<script>
+
+    $(function(){
+        $('.tab_menu li').click(function(){
+            var i = $(this).index(); 
+
+            $('.tab_menu li').removeClass('on');
+            $('.tab_menu li').eq(i).addClass('on');
+                $('.tab_list li').removeClass('on'); 
+                $('.tab_list li').eq(i).addClass('on'); 
+        });
+    })
+    
+</script>
+</body>
+</html>
+<script>
+
+</script>
