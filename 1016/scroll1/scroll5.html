@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll 따라오는 메뉴 + each문 + 플러그인 + 팝업</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- js폴더->플러그인 -->
+    <script src="../플러그인/js/jquery.mousewheel.min.js"></script>
+    <script src="../플러그인/js/jquery.easing.1.3.js"></script>
+
+        <!-- "jquery UI" 크롬 검색해서 입력 -->
+        <!-- <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script> -->
+    <!-- 혹은 js폴더에서 -->
+    <script src="../플러그인/js/jquery-ui.js"></script>
+    <!-- 쿠키(팝업창-하루동안보지않기)값이 없음 보이게 -->
+    <script src="../플러그인/js/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="css/scroll5.css">
+    <script src="js/scroll5.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="on"><a href="#">회사소개</a></li>
+            <li><a href="#">제품소개</a></li>
+            <li><a href="#">커뮤니티</a></li>
+            <li><a href="#">제품구매</a></li>
+            <li><a href="#">다운로드</a></li>
+        </ul>
+    </nav>
+    <h1 class="s_Top">0000</h1>
+    <div class="container">
+        <div class="section section1">메인1</div>
+        <div class="section section2">
+            <div class="left1">
+                <h1>밥</h1>
+                <p>삼겹살</p>
+            </div>
+            <div class="right1">
+                <h1>밥2</h1>
+                <p>치킨</p>
+            </div>
+        </div>
+        <div class="section section3">메인3</div>
+        <div class="section section4">
+            <div class="s4_cover">
+                <div class="s4_1">
+                    <h1>HTML</h1>
+                    <p>하면할수록 재미있다.</p>
+                </div>
+                <div class="s4_2">
+                    <h1>CSS</h1>
+                    <p>이제좀 알것 같다.</p>
+                </div>
+                <div class="s4_3">
+                    <h1>javascript</h1>
+                    <p>뭔말인지 통 몰겠다.</p>
+                </div>
+                <div class="s4_4">
+                    <h1>jQuery</h1>
+                    <p>뭔가 되네! 신기하다.</p>
+                </div>
+        </div>
+        </div>
+        <div class="section section5">메인5</div>
+        </div>
+        <div id="float_div">
+            <ul>
+                <li class="on"><span id="btn1"></span></li>
+                <li><span id="btn2"></span></li>
+                <li><span id="btn3"></span></li>
+                <li><span id="btn4"></span></li>
+                <li><span id="btn5"></span></li>
+            </ul>
+        </div>
+        <!-- 팝팝팝업업 -->
+        <div id="popup">
+            <img src="images/popup.jpg" usemap="#pop" alt="">
+            <map name="pop" id="pop">
+                <area shape="rect" coords="252,330, 295,348" href="#" alt="창닫기">
+                <!-- area 도형="사각형" 좌표"252,330, 295,348"(그림판 들어가서 좌표 쳌) -->
+                <area shape="rect" coords="96,330, 215,348" href="#" alt="하루동안 이 창 열지 않기">
+            </map>
+        </div>
+        <div id="notice_wrap">
+            <img src="images/popup1.jpg" alt="공지">
+            <p class="closeWrap">
+                <input type="checkbox" name="expireChk" id="expireChk">
+                <!-- 체크박스 ↓ name, for 통일시켜주면 연동 가능(글씨 눌러도 체크박스에 체크됨)-->
+                <label for="expireChk">3일동안 이 창 열지 않기</label> 
+                <button class="closeBtn">닫기</button>
+            </p>
+        </div>
+</body>
+</html>
