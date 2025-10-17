@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const users = [
+            {name: "홍길동", age: 25},
+            {name: "몽룡", age: 20},
+            {name: "춘향", age: 22}
+        ];
+        //map으로 이름만 추출(forEach와 비슷)
+        const names = users.map((user) => user.name);
+        console.log(names);
+
+        //맵으로 새로운 배열 생성 (user=그냥변수)
+        const newUser = users.map((user) => ({ 
+            ...user, //기존의 user을 부른다
+            age: user.age+1 //나이수정
+        }));
+        console.log(newUser);
+    </script>
+</body>
+</html>

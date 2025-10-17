@@ -24,6 +24,7 @@ $(function(){
     }); 
 
 
+// <!-- section 2 -->
     let a1 = $('.s2_title img').offset().top;
     //ㅇㅣ미지
     let a2 = $('.s2_title h2').offset().top; //제목
@@ -57,12 +58,49 @@ $(function(){
     });
 
 
+// <!-- section 2-1 -->
+    let b1 = $('.s2_1title img').offset().top;
+    //이미지
+    let b2 = $('.s2_1title h2').offset().top; //제목
+    let b3 = $('.s2_1title p').offset().top; //내용
+    let b4 = $('.s2_1table li').offset().top;
+
+    $(window).scroll(function(){
+        let sct = $(this).scrollTop();
+        if(b1 <= sct + 700){
+            $('.s2_1title img').addClass('slide');
+        }
+        if(b2 <= sct + 700){
+            $('.s2_1title h2').addClass('slide');
+        }
+        if(b3 <= sct + 700){
+            $('.s2_1title p').addClass('slide');
+        }
+        if(b4 <= sct + 700){
+            $('.s2_1table li').eq(0).addClass('slide');
+                setTimeout(function(){
+                    $('.s2_1table li').eq(1).addClass('slide');
+                },300);
+                setTimeout(function(){
+                    $('.s2_1table li').eq(2).addClass('slide');
+                },600);
+                setTimeout(function(){
+                    $('.s2_1table li').eq(3).addClass('slide');
+                },900);
+                setTimeout(function(){
+                    $('.s2_1table li').eq(4).addClass('slide');
+                },1200);
+        }
+    });
+
+
+
+// <!-- section 3 -->
     let a5 = $('.s3_title img').offset().top;
     //ㅇㅣ미지
     let a6 = $('.s3_title h2').offset().top; //제목
     let a7 = $('.s3_title p').offset().top; //내용
     let a8 = $('.s3_table li').offset().top;
-    console.log(a5,a6,a7,a8) 
 
     $(window).scroll(function(){
         let sct = $(this).scrollTop();
@@ -88,4 +126,14 @@ $(function(){
                 },900);
         }
     });
+
+
+    // <!-- section 4 -->
+    let a9 = $('.s4_title').offset().top;
+
+    $(window).scroll(function(){
+        let sct = $(this).scrollTop();
+        if(a9 <= sct + 700){
+            $('.s4_title').addClass('slide');
+        }})
 });

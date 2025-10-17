@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(){ //함수스코프 
+            if (true){ //블록스코프(if, for 같은 중괄호{}안에서 유효)
+                var a = 1;
+                let b = 2;
+                const c = 3;
+                console.log("블록내부:", a, b, c); //1 2 3
+            }
+        console.log("함수블록 외부:",a); //var은 함수test(함수스코프) 안에서 유효
+        console.log(b);//let, const는 if문(블록스코프) 안에서만 유효
+        console.log(c);    
+        }
+
+        test();
+
+    </script>
+</body>
+</html>

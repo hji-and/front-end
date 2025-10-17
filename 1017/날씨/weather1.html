@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather api(forecast)</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script>
+
+// $.getJSON("demo_ajax_json.js", function(result){
+//     //w3school 참조
+//     });
+$.getJSON("http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=800f01ebf3630c060b1b2c206fd77b8c&units=metric", function(result){
+        // alert(result.cod);//200
+        // alert(result.city.name);//Seoul
+        // alert(result.list[0].main.temp);//23.42
+        // alert(result.list[0].weather[0].icon);//10n(코드가 아이콘(그림)을 대체)
+
+        let $ctemp = result.list[0].main.temp;
+        let $mintemp = result.list[0].main.temp_min;
+        let $maxtemp = result.list[0].main.temp_max;
+        let $cicon = result.list[0].weather[0].icon;
+        let $cDate = result.list[0].dt_txt;
+
+        $('.ctemp').append($ctemp);
+        $('.clowtemp').append($mintemp);
+        $('.chightemp').append($maxtemp);
+        $('h2').prepend($cDate);
+        // $('.cicon').append($cicon);
+        $('.cicon').append(`<img src =https://openweathermap.org/img/wn/${$cicon}@2x.png>`)
+
+    });
+
+</script>
+</head>
+<body>
+    <!-- openweathermap CityCode&APIkey&섭씨온도 ↓ -->
+    <!-- http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=800f01ebf3630c060b1b2c206fd77b8c&units=metric -->
+    <h1>weather api</h1>
+    <h2> | 날씨예보</h2>
+    <div class="ctemp">현재 온도: </div>
+    <div class="clowtemp">최저 온도: </div>
+    <div class="chightemp">최고 온도: </div>
+    <div class="cicon">아이콘 :</div>
+</body>
+</html>

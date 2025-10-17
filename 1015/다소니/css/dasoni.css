@@ -316,6 +316,40 @@ header .gnb{
 .s2_1table li:nth-child(5){
     background: #fff url(../img/sec02_icon5.png) no-repeat 50% 40% ;
 }
+.s2_1table li{
+    border: 1px solid transparent;
+}
+
+.s2_1table li:hover{
+   border: 1px solid black;
+}
+
+
+/* /(img), 심리상담, 인간관계에서의 문제, 심리적 문제로 어려움을 겪고 계시는 분들에게 */
+.s2_1title img, .s2_1title h2, .s2_1title p{
+    visibility: hidden;
+}
+.s2_1title img.slide, .s2_1title h2.slide, .s2_1title p.slide{
+    visibility: visible;
+    animation: slide 1s;
+}
+@keyframes slide {
+    0%{
+        transform: translateY(70%);
+        opacity: 0;
+    }100%{
+        transform: translateY(0);
+        opacity: 1;
+}
+}
+
+.s2_1table li{
+    visibility: hidden;
+}
+.s2_1table li.slide{
+    visibility: visible;
+    animation: slide 1s;
+}
 
 
 
@@ -468,3 +502,192 @@ header .gnb{
     background: #fff;
     border: 1px solid #000;
 }
+/* X축 슬라이드 */
+.s4_title{visibility: hidden;}
+.s4_title.slide{ visibility: visible;
+    animation: slide 1s;
+}
+@keyframes slide {
+    0%{
+        transform: translateX(-40%);
+        opacity: 0;
+    }100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* section 5 */
+#s5{
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+.s5_title{
+    position: absolute;
+    margin: 0 auto;
+    display: inline-block;
+}
+.s5_table1{
+    width: 500px;
+    height: 255px;
+    float: left;
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+.s5_table2{
+    width: 500px;
+    height: 255px;
+    float: left;
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+.s5_title > h3{
+    float: left;
+    
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.s5_title .gong{
+    color: #65B07E;
+    background: url(../img/sec5_tit.png) no-repeat 0 0;
+}
+.s5_title .sang{
+    color: #ff8f2b;
+    background: url(../img/sec5_tit2.png) no-repeat 0 0;
+}
+
+/* X축 슬라이드 */
+/* .s5_title{visibility: hidden;} */
+.s5_title.slide{ visibility: visible;
+    animation: slide 1s;
+}
+@keyframes slide {
+    0%{
+        transform: translateX(-40%);
+        opacity: 0;
+    }100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 답안 */
+/* #s6{
+    height: 400px;
+}
+
+.s6_content{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.s6_noti, .s6_review{
+    width: 500px;
+    height: 255px;
+    float: left;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+
+.s6_review{
+    float: left;
+}
+
+.s6_content h2{
+    font-size: 21px;
+    float: left;
+    margin-bottom: 25px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.s6_noti img, .s6_review img{
+    float: right;
+    transition: all 0.4s;
+    margin-top: 10px;
+}
+.s6_noti a:hover img, .s6_review a:hover img{
+    transform: rotate(180deg);
+}
+
+.s6_title, .s6_date{font-size: 14px; margin-bottom: 30px;}
+
+.s6_title:last-child, .s6_date:last-child{
+    margin-bottom: 0;
+}
+
+.s6_title{color: #000; float: left; margin-left: 20px;}
+
+.s6_date{color: #666; float: right;}
+
+#s6 ul a{display: block; width: 100%;}
+
+#s6 ul a:hover .s6_title{
+    text-decoration: underline;
+}
+
+/* footer */
+/* footer{
+    height: 265px; background: #333;
+}
+.ft_container{width: 1000px; margin: 0 auto;}
+.ft_logo{
+    float: left; margin-top: 90px; width: 190px;
+}
+.ft_center{
+    float: left;
+    width: 500px;
+    height: 150px;
+    margin-top: 60px;
+    margin-left: 40px;
+}
+.ft_center p{
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    padding-top: 10px;
+}
+.ft_center span{
+    border-right: 1px solid #fff;
+}
+.ft_sns{
+    float: right; width: 132px; margin-top: 132px;
+}
+.ft_sns a{
+    display: block;
+    width: 24px;
+    height: 24px;
+    float: left;
+    margin-right: 30px;
+}
+.ft_sns a:last-child{
+    margin-right: 0;
+}
+
+.fix_box{
+    width: 75px;
+    position: absolute;
+    left: 50%;
+    top: 400px;
+    margin-left: 550px;
+    z-index: 99;
+}
+
+.fix_box li a{
+    display: block;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.fix_box li a.fix_talk{
+    background: #d46f5d url(../img/q_icon.png) no-repeat 50% 50%;
+}
+.fix_box li a.fix_phone{
+    background: #d46f5d url(../img/q_icon2.png) no-repeat 50% 50%;
+}
+.fix_box li a.fix_clock{
+    background: #d46f5d url(../img/q_icon3.png) no-repeat 50% 50%;
+} */ 

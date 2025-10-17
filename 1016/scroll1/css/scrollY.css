@@ -72,16 +72,16 @@ nav.fixed{
 }
 
 /* 따라오는 메뉴 */
-/* #float_div{
+#float_div{
     width: 70px;
     height: 250px;
     background-color: dimgray;
     padding-top: 10px;
-    position: absolute;
+    position: fixed;
     right: 50px;
     top: 250px;
-} */
-/* #float_div ul li{
+}
+#float_div ul li{
     list-style: none;
     width: 25px;
     height: 25px;
@@ -93,6 +93,6 @@ nav.fixed{
 }
 #float_div ul li.on{
     background-color: orange;
-} */
+}
 
 
