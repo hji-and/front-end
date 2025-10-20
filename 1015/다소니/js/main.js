@@ -136,4 +136,13 @@ $(function(){
         if(a9 <= sct + 700){
             $('.s4_title').addClass('slide');
         }})
+
+    // <!-- section 5 -->
+    let a10 = $('.s5_title').offset().top;
+
+    $(window).scroll(function(){
+        let sct = $(this).scrollTop();
+        if(a10 <= sct + 700){
+            $('.s5_title').addClass('slide');
+        }})
 });
