@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 export default function Counter() {
   const [number, setNumber] = useState(0)
-  // number(현재값)는 setNumbe에서 조작 가능
+  // number(현재값)는 setNumber에서 조작 가능
   // 동적state(상태값, 나중에 변경 가능) 을 관리하는 useState (초기값 0 줌)
 
   const onIncrease = () =>{

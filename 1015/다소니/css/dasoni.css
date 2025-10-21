@@ -540,14 +540,14 @@ header .gnb{
     vertical-align: top;
     position: absolute;
     left: 52%;
-    top: -10px;
+    top: -20px;
     font-size: 20px;
 }
 .gong{
     vertical-align: top;
     position: absolute;
     left: 40px; 
-    top: -10px;
+    top: -20px;
     font-size: 20px;
 }
 .s5_title > .s5_t_img2{
@@ -556,12 +556,15 @@ header .gnb{
     left: 1070px;
     top: -10px;
 }
+
 .s5_title .gong{
     color: #65B07E;
+    padding: 10px 0 0 10px;
     background: url(../img/sec5_tit.png) no-repeat 0px -1.5px ;
 }
 .s5_title .sang{
     color: #ff8f2b;
+    padding: 10px 0 0 10px;
     background: url(../img/sec5_tit2.png) no-repeat 0px -1.5px;
 }
 
@@ -636,7 +639,7 @@ header .gnb{
 }
 .s6_title{width: 1200px; margin: 0 auto;}
 
-.s6_title img{
+.s6_title > img{
     float: left; 
     margin-top: 30px; 
     padding: 15px;
@@ -658,15 +661,16 @@ header .gnb{
 .s6_sns{
     float: right; 
     width: 132px; 
-    margin-top: 132px;
-    /* z-index: 99; */
+    margin: -55px 250px 0 0;
 }
 .s6_sns a{
     display: block;
     width: 24px;
     height: 24px;
     float: left;
-    margin-right: 30px;
+    padding: 10px;
+    /* display: flex;
+    justify-content: space-between; */
 }
 .s6_sns a:last-child{
     margin-right: 0;
