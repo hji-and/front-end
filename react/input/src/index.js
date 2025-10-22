@@ -6,11 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-// app.js의 #root를 index.js에서 렌더링해서 보여줌(app를 잘 만들면 됨)
-
-// </React.StrictMode>
+  
     <App />
-// </React.StrictMode> <---이거는 app.js를 검사하며 두 번 돌려서 보통은 없애주는 게조음
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
