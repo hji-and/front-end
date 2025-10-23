@@ -1,0 +1,29 @@
+.TodoItem{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(240,240,240);
+}
+
+.TodoItem .checkbox_col{ /* 체크박스를 감싼 박스에 스타일 적용 */
+    width: 20px;
+}
+
+.TodoItem .title_col{/* 할 일 텍스트를 감싼 박스에 스타일 적용 */
+    flex: 1;
+}
+
+.TodoItem .date_col{/* 할 일 아이템 등록 시간을 감싼 박스에 스타일 적용 */
+    font-size: 14px;
+    color: gray;
+}
+
+.TodoItem .btn_col button{/* 삭제 버튼에 스타일 적용 */
+    cursor: pointer;
+    color: gray;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
