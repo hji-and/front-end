@@ -1,0 +1,38 @@
+.dropdown-menu {
+  border-radius: 0 !important;
+}
+nav .btn {
+  border-radius: 0;
+}
+nav .btn2 {
+  background: black !important;
+  color: #fff !important;
+}
+nav .btn2:hover {
+  background-color: #fff !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+.carousel-caption h5 {
+  font-size: 80px;
+}
+.card-img-top {
+  width: 5rem;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+/* <!-- ----------Introduce---------- --> */
+#introduce .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent;
+  background-size: 100% 100%;
+  width: 2rem;
+  height: 2rem;
+  /* 흰색 화살표 SVG에 색상 필터 적용 */
+  filter: invert(36%) sepia(85%) saturate(2216%) hue-rotate(204deg)
+    brightness(95%) contrast(102%);
+}
+#introduce .carousel-indicators [data-bs-target] {
+  background-color: #333; /* 짙은 회색 (원하는 색으로 변경 가능) */
+}

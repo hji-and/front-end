@@ -42,11 +42,28 @@ export default function App() {
     idRef.current += 1; 
   };
 
+  const onUpdate = (targetId) => {
+    //targetId는 클릭된 Todo 고유id로 전달
+    setTodo(todo.map((it)=>{
+      // if(it.id===targetId){//순회하면서 기존it에 들어있는 id(it.id)와 targetId(클릭된id)가 같은지 확인, 값이 같다면
+      //   return{...it, //전개연산자(it(객체)안에 있는 각각의 속성을 펼쳐서 자식 컴포넌트(TodoItem)로 전달하는 역할) -> it에 들어있는 기존다른속성(content,date,createdDate)등은 유지
+      //     isDone:!it.isDone}//isDone값은 반전(false->true)하는 업데이트 실행
+      // }else{
+      //   return it;
+      // } //이 식을 한 줄로 줄이먄↓
+      return it.id === targetId ? {...it, isDone : !it.isDone} : it
+    }))
+  }
+
+  const onDelete = (targetId) => {
+    setTodo(todo.filter((it) => it.id !== targetId)) //삭제버튼 누른 id를 제외하고 배열을 만들면 삭제버튼 누른 것 같은 효과
+  }
+
   return (
     <div className='App'>
       <Header/>
       <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo}/> {/* todo(프롭스 == 데이터)내용을 리스트에 추가 */}
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/> {/* todo(프롭스 == 데이터)내용을 리스트에 추가 */}
     
     </div>
   )
