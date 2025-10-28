@@ -7,6 +7,7 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
       <!-- Swiper Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
@@ -109,7 +110,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="image/chicago.jpg" class="d-block w-100" alt="chicago" />
+          <img src="image/chicago.jpg" class="d-block w-100" alt="chicago" style="height: 90vh;" />
           <div
             class="carousel-caption d-none d-md-block text-center"
             style="height: 500px"
@@ -118,20 +119,6 @@
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
-        <!-- <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div> -->
       </div>
       <button
         class="carousel-control-prev"
@@ -142,24 +129,17 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <!-- <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button> -->
+  
     </div>
 
     <!-- ----------About---------- -->
     
-        <div class="col-sm-12 d-flex container-fluid align-item-center py-5"> 
+        <div class="col-sm-12 d-flex container-fluid align-item-center py-5" 
+        style="padding: 0 50px; text-overflow: ellipsis; "> 
 
           <p class="mb-6 px-2 text-start ">
             <span class="fs-6">Tagline</span><br/>
-            <strong class="fs-3">About[company name]:</strong><br/>
+            <strong class="fs-1">About[company name]:</strong><br/>
              Our vision Lorem ipsum dolor sit amet,
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua.<br/>Ut enim ad minim veniam, quis nostrud
@@ -172,6 +152,7 @@
             labore et dolore magna aliqua.<br/>Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.
+
              Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>  
              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Our vision Lorem ipsum dolor sit amet,
@@ -191,10 +172,10 @@
 
 
     <!-- ----------Introduce---------- -->
-     <div class="col-sm-12 d-flex container-fluid align-item-center py-5"> 
+     <div class="col-sm-12 d-flex container-fluid align-item-center py-5" style="padding: 0 50px;"> 
           <p class="mb-6 px-2 text-start ">
             <span class="fs-6">Tagline</span><br/>
-            <strong class="fs-3">Introduce your Team:</strong><br/>
+            <strong class="fs-1">Introduce your Team:</strong><br/>
              Our vision Lorem ipsum dolor sit amet.
           </p>
       </div>
@@ -207,7 +188,7 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
       <div class="swiper-slide">
-        <div class="card card border-light" style="width: 18rem;">
+        <div class="card card border-light">
             <img src="image/img_avatar1.png" class="card-img-top" alt="avatar">
               <div class="card-body">
                 <p class="card-text">
@@ -215,11 +196,16 @@
                   <span class="">Job</span><br/>
                   card title and card's content.
                 </p>
+                <div class="card-icon">
+                  <i class="bi bi-apple" style="margin-right: 5px;"></i>
+                  <i class="bi bi-chat-left-quote" style="margin-right: 5px;"></i>
+                  <i class="bi bi-coin"></i>
+                </div>
               </div>
         </div>
       </div>
     <div class="swiper-slide">
-         <div class="card card border-light" style="width: 18rem;">
+         <div class="card card border-light">
             <img src="image/img_avatar1.png" class="card-img-top" alt="avatar">
               <div class="card-body">
                 <p class="card-text">
@@ -227,11 +213,16 @@
                   <span class="">Job</span><br/>
                   card title and card's content.
                 </p>
+                  <div class="card-icon">
+                  <i class="bi bi-apple" style="margin-right: 5px;"></i>
+                  <i class="bi bi-chat-left-quote" style="margin-right: 5px;"></i>
+                  <i class="bi bi-coin"></i>
+                </div>
               </div>
         </div>
     </div>
     <div class="swiper-slide">
-         <div class="card card border-light" style="width: 18rem;">
+         <div class="card card border-light">
             <img src="image/img_avatar1.png" class="card-img-top" alt="avatar">
               <div class="card-body">
                 <p class="card-text">
@@ -239,11 +230,16 @@
                   <span class="">Job</span><br/>
                   card title and card's content.
                 </p>
+                  <div class="card-icon">
+                  <i class="bi bi-apple" style="margin-right: 5px;"></i>
+                  <i class="bi bi-chat-left-quote" style="margin-right: 5px;"></i>
+                  <i class="bi bi-coin"></i>
+                </div>
               </div>
         </div>  
     </div>
     <div class="swiper-slide">
-         <div class="card card border-light" style="width: 18rem;">
+         <div class="card card border-light">
             <img src="image/img_avatar1.png" class="card-img-top" alt="avatar">
               <div class="card-body">
                 <p class="card-text">
@@ -251,11 +247,16 @@
                   <span class="">Job</span><br/>
                   card title and card's content.
                 </p>
+                  <div class="card-icon">
+                  <i class="bi bi-apple" style="margin-right: 5px;"></i>
+                  <i class="bi bi-chat-left-quote" style="margin-right: 5px;"></i>
+                  <i class="bi bi-coin"></i>
+                </div>
               </div>
         </div>  
     </div>
     <div class="swiper-slide">
-         <div class="card card border-light" style="width: 18rem;">
+         <div class="card card border-light">
             <img src="image/img_avatar1.png" class="card-img-top" alt="avatar">
               <div class="card-body">
                 <p class="card-text">
@@ -263,42 +264,56 @@
                   <span class="">Job</span><br/>
                   card title and card's content.
                 </p>
+                  <div class="card-icon">
+                  <i class="bi bi-apple" style="margin-right: 5px;"></i>
+                  <i class="bi bi-chat-left-quote" style="margin-right: 5px;"></i>
+                  <i class="bi bi-coin"></i>
+                </div>
               </div>
         </div>  
     </div>
   </div>
   <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
+  <div class="mypager swiper-pagination"></div>
 
     <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="mybtn swiper-button-prev"></div>
+    <div class="mybtn swiper-button-next"></div>
 
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
 </div>
 
   </section>
 
 
     <!-- ----------Text---------- -->
-    <section class="text-container py-5 text-center">
+    <section class="text-container py-5 text-center" style="padding: 0 50px; margin-bottom: 100px;">
       <strong class="fs-5 py-3">★★★★★★</strong><br/>
     Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</strong>
       <p class="text-muted">— John Doe, Salesman, Rep Inc</p>
+        <div class="text-card">
+            <img src="image/img_avatar1.png" class="ct-top" alt="avatar">
+              <div class="tc-body">
+                <p class="tc-text">
+                  <strong class="">Fullname</strong><br/>
+                  card title and card's content.
+                </p>
+              </div>
+              
+          </div>
+          <div class="tbar">|</div>
     </section>
 
 
     <!-- ----------Location---------- -->
-    <div class="col-sm-12 d-flex container-fluid align-item-center"> 
+    <div class="col-sm-12 d-flex container-fluid align-item-center" style="padding: 0 50px;"> 
           <p class="mb-6 px-2 text-start ">
             <span class="fs-6">Tagline</span><br/>
-            <strong class="fs-3">Our locations:</strong><br/>
+            <strong class="fs-1">Our locations:</strong><br/>
              Our vision Lorem ipsum dolor sit amet.
           </p>
     </div>
     
-      <div class="col-sm-12 d-flex container-fluid align-item-center py-5"> 
+      <div class="col-sm-12 d-flex container-fluid align-item-center py-5" > 
           
           <p class="mb-6 px-2 text-start ">
             <!-- <div class="d-flex" style="height: 30px;"> -->
@@ -318,13 +333,11 @@
          
         </div>  
 
-    <p>
-      
-    </p>
+
 
 
     <!-- ----------Contact---------- -->
-      <div id="contact" class="container-fluid bg-grey py-5">
+      <div id="contact" class="container-fluid bg-grey py-5" style="padding: 0 50px;">
         <!-- <h2 class="text-center mb-4">CONTACT</h2>
         <div class="row">
         <div class="col-md-5">
@@ -401,7 +414,7 @@
         // Optional parameters
         loop: true, //무한자동재생
         slidesperView: 3,
-        spaceBetween: 30,
+        spaceBetween: 10,
         
         autoplay: {               // 자동 재생 옵션 추가
         delay: 2000,            // 3초마다 슬라이드 전환
@@ -411,15 +424,15 @@
       breakpoints: {
         0: {
           slidesPerView: 1,
-          spaceBetween: 10,
+          spaceBetween: 20,
         },
         576: {
           slidesPerView: 2,
-          spaceBetween: 20,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 3,
-          spaceBetween: 30,
+          spaceBetween: 40,
         },
       },
 
@@ -435,11 +448,6 @@
           prevEl: '.swiper-button-prev',
         },
 
-        // And if we need scrollbar
-        scrollbar: {
-          el: '.swiper-scrollbar',
-          hide: true
-        },
       });
     })
     

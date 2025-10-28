@@ -33,10 +33,11 @@ nav .btn2:hover {
 }
 /* Swiper 컨테이너 */
 .swiper {
-  width: 100%; /* 전체 너비 사용 */
-  height: 300px; /* 슬라이더의 전체 높이. 카드 내용에 따라 조절하세요. */
-  padding: 20px 0; /* 상하 여백 */
-  margin: auto; /* 중앙 정렬 */
+  width: 100%;
+  height: 400px;
+  padding: 20px 0 60px 0; /* 하단 여백 추가 */
+  margin: auto;
+  max-width: 1800px; /* 1400px → 1800px */
 }
 /* Swiper 슬라이드 */
 .swiper-slide {
@@ -45,22 +46,29 @@ nav .btn2:hover {
   align-items: center;
   margin: 0;
 }
+
+/* 카드 스타일 (기존 Bootstrap 카드 스타일 유지) */
+.swiper-slide .card {
+  padding: 10px;
+  width: 100%; /* 슬라이드 안에 꽉 차도록 */
+  height: 90%; /* 슬라이드 높이에 꽉 차도록 (옵션) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 (선택 사항) */
+  max-width: 420px; /* 카드 최대 너비 */
+}
+
 .swiper-slide .swiper-slide-prev {
   margin: 0;
 }
 
-/* 카드 스타일 (기존 Bootstrap 카드 스타일 유지) */
-.swiper-slide .card {
-  width: 100%; /* 슬라이드 안에 꽉 차도록 */
-  height: 100%; /* 슬라이드 높이에 꽉 차도록 (옵션) */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 (선택 사항) */
-}
 /* Navigation 버튼의 위치 조정 (선택 사항) */
 .swiper-button-prev,
 .swiper-button-next {
   color: #333; /* 버튼 색상 */
   top: 50%; /* 중앙에 위치 */
   transform: translateY(-50%);
+  border: 1px solid black;
+  border-radius: 70px;
+  padding: 10px;
 }
 .swiper-button-prev {
   left: 10px;
@@ -69,13 +77,44 @@ nav .btn2:hover {
 .swiper-button-next {
   right: 10px;
 }
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+/* SwiperSlide Pager */
+.swiper-pagination {
+  position: relative !important; /* 추가 */
+  margin-top: 20px; /* 추가 */
+}
 
-/* Pagination dot의 위치 조정 (선택 사항) */
-.swiper-pagination-bullets {
-  bottom: 0px !important; /* 페이지네이션을 아래쪽으로 내립니다 */
+.swiper-pagination-bullet {
+  background-color: #333 !important; /* 추가 */
+  /* bottom: 0px !important; 페이지네이션을 아래쪽으로 내립니다 */
 }
 
 /* <!-- ----------Text---------- --> */
 .text-container {
   margin-top: 100px;
+}
+.ct-top {
+  width: 3rem;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.text-card,
+.ct-top {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+  font-size: 11px;
+}
+.tc-text {
+  padding-top: 11px;
+}
+.tbar {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  top: 90px;
 }

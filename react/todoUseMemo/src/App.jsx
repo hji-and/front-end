@@ -4,9 +4,12 @@ import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
 
+//** 1028 TypeScript UseMemo 추가 -> component폴더 > TodoList.jsx **
+//** 1028 TypeScript React.memo 추가 -> component폴더 > Header.jsx **
+
 //useReducer란?
 //리액트에서 간단한 상태관리는 useState
-//useReducer 복잡한 상태 관리용 리액트 훅. 장점:코드구조가 명확해 가독성이 좋고, 확장 및 유지보수가 쉽다. 단점:코드가 약간 길어짐
+//useReducer 복잡한 상태 관리용 리액트 훅. 장점:코드구조가 명확해 가독성이 좋고, 확장및유지보수가 쉽다. 단점:코드가 약간 길어짐
 
 //const [state,dispatch] = useReducer(reducer, initialstate);
 //state: 현재 상태값(예:todo폴더>useState의todo)

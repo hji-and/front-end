@@ -22,7 +22,7 @@ nav .btn2:hover {
 
 /* <!-- ----------Introduce---------- --> */
 .card-img-top {
-  width: 5rem;
+  width: 8rem;
   border-radius: 70%;
   overflow: hidden;
 }
@@ -34,9 +34,10 @@ nav .btn2:hover {
 /* Swiper 컨테이너 */
 .swiper {
   width: 100%; /* 전체 너비 사용 */
-  height: 400px; /* 슬라이더의 전체 높이. 카드 내용에 따라 조절하세요. */
-  padding: 20px 0; /* 상하 여백 */
+  height: 600px; /* 슬라이더의 전체 높이. 카드 내용에 따라 조절하세요. */
+  padding: 20px 0 60px 0; /* 상하 여백 - 하단에 여백 추가 */
   margin: auto; /* 중앙 정렬 */
+  max-width: 1800px; /* 컨테이너 최대 너비 */
 }
 
 /* Swiper 슬라이드 */
@@ -44,13 +45,15 @@ nav .btn2:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 !important;
 }
 
 /* 카드 스타일 (기존 Bootstrap 카드 스타일 유지) */
 .swiper-slide .card {
   width: 100%; /* 슬라이드 안에 꽉 차도록 */
   height: 100%; /* 슬라이드 높이에 꽉 차도록 (옵션) */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 효과 추가 (선택 사항) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 (선택 사항) */
+  max-width: 420px; /* 카드 최대 너비 */
 }
 
 /* Navigation 버튼의 위치 조정 (선택 사항) */
@@ -70,12 +73,17 @@ nav .btn2:hover {
 }
 
 /* Pagination dot의 위치 조정 (선택 사항) */
-.swiper-pagination-bullets {
-  bottom: 0px !important; /* 페이지네이션을 아래쪽으로 내립니다 */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #333 !important;
 }
 
 /* Introduce 섹션 제목 정렬 */
 .col-sm-12.d-flex.container-fluid.align-item-center.py-5 p {
-    text-align: center; /* 제목 텍스트를 중앙 정렬 */
-    width: 100%; /* 텍스트가 전체 너비를 차지하도록 */
+  text-align: center; /* 제목 텍스트를 중앙 정렬 */
+  width: 100%; /* 텍스트가 전체 너비를 차지하도록 */
 }
