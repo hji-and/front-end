@@ -46,6 +46,7 @@ export default function TodoList({ todo, onUpdate, onDelete }) {
   // useCallback은 콜백 함수를 메모리제이션 한다.
 
   const analyzeTodo = useMemo(() => {
+    console.log("몇번호출될까요!");
     const totalCount = todo.length;
     const doneCount = todo.filter((it) => it.isDone).length;
     const notDoneCount = totalCount - doneCount;
@@ -97,3 +98,7 @@ export default function TodoList({ todo, onUpdate, onDelete }) {
     </div>
   );
 }
+//todo - 데이터 변경 시에만 useMemo가 실행
+
+//useCallback함수를 (Memoization)해서 불필요하게 재생성되지 않게 하는 리액트 훅
+//컴포넌트가 다시 랜더링될 때 함수를 새로 만들지 않도록 캐싱하는(메모리에 1번 기억시키는) 기능
