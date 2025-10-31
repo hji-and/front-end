@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 /*  기본 사용 예
     import { Link } from "react-router-dom";
     <Link to="/about">About</Link>
@@ -43,16 +43,16 @@ export default function Navbar() {
           {/* PC nav */}
           <div className="desktop-nav">
             {navItems.map((item) => (
-              <Link
+              <NavLink
                 key={item.to}
                 to={item.to}
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
                   `nav-button ${isActive ? "active" : ""}`
-                }
+                } //isActive === true 현재 페이지와 같으면 active 상태 추가
               >
                 {item.label}
-              </Link>
+              </NavLink>
               // <button
               //   key={item.id}
               //   onClick={() => scrollToSection(item.id)}
@@ -81,7 +81,7 @@ export default function Navbar() {
           <div className="mobile-nav">
             <div className="mobile-nav-items">
               {navItems.map((item) => (
-                <Link
+                <NavLink
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsMenuOpen(false)}
@@ -90,7 +90,7 @@ export default function Navbar() {
                   }
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>

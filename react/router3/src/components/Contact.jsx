@@ -1,8 +1,11 @@
 import React from "react";
-import "./contact.css";
 import { useState } from "react";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+//firebase추가
+import { db } from "../firebase";
+import "./contact.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,19 +13,47 @@ export default function Contact() {
     email: "",
     message: "",
   });
-
-  const handleSubmit = (e) => {
+  //firebase추가
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // isSubmitting 폼 제출 중인지 여부를 나타내는 상태(로딩 표시용)
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+  // submitStatus 제출 성공/실패 상태('success' 또는 'error')
+  //
+  const handleSubmit = async (e) => {
+    //async, await 비동기작업
     e.preventDefault(); //a태그 클릭 시 써주기
-    console.log("Form submitted:", FormData);
-    alert("Thank you for your message!");
-    setFormData({ name: "", email: "", message: "" });
-    //폼 초기화
+    setIsSubmitting(true); //전송중
+    setSubmitStatus(null);
+
+    //try제대로 작동 시, catch뭔가 오류났을 때, finally오류 났든 안 났든
+    try {
+      // Firebase Firestore에 데이터 저장
+      await addDoc(collection(db, "contacts"), {
+        //addDo; firestore저장명령어
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: serverTimestamp(), //서버시간 기록
+      });
+
+      // 성공 메시지
+      setSubmitStatus("success");
+      alert("Thank you for your message! Your message has been saved.");
+      setFormData({ name: "", email: "", message: "" }); //폼 초기화
+    } catch (error) {
+      // 에러 처리
+      console.error("Error saving contact:", error);
+      setSubmitStatus("error");
+      alert("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value, //실제 입력되는 value값
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -41,7 +72,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-grid">
-          {/* Contact Info, 완성본에서 왼쪽 영역 */}
+          {/* Contact Info */}
           <div className="contact-info">
             <div>
               <h3 className="contact-info-title">Let's Talk</h3>
@@ -87,7 +118,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social Media 완성본에서 오른쪽 영역 */}
+            {/* Social Media */}
             <div className="social-media">
               <h4 className="social-title">Follow Me</h4>
               <div className="social-links">
@@ -161,17 +192,32 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-button">
-                Send Message
+              <button
+                type="submit"
+                className="submit-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
+              {submitStatus === "success" && (
+                <p style={{ color: "#10b981", textAlign: "center" }}>
+                  Message sent successfully!
+                </p>
+              )}
+              {submitStatus === "error" && (
+                <p style={{ color: "#ef4444", textAlign: "center" }}>
+                  Failed to send message. Please try again.
+                </p>
+              )}
             </form>
           </div>
         </div>
-        {/* Footer */}
-        <footer className="footer">
-          <p>&copy; 2024 Your Name. All rights reserved.</p>
-        </footer>
       </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+      </footer>
     </section>
   );
 }
