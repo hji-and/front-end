@@ -1,0 +1,7 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//Sass: Mixins는 스타일 시트 전체에서 재사용할 css 선언 그룹을 정의하는 기능
+//스타일 정의 앞에 @mixin이 붙게 되면 해당 스타일 시트 내부에서 얼마든지 재사용이 가능합니다.
