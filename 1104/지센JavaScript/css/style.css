@@ -192,10 +192,17 @@ img {
 .mobile_nav > ul > li:hover > a {
   color: #b4252d;
 }
-/* 모바일 네비 서브메뉴 */
+/* 모바일 네비 서브메뉴, Javascript 수정 */
 .mobile_nav .sub {
-  display: none;
+  /* display: none; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
+.mobile_nav .sub.active {
+  max-height: 500px;
+}
+
 .mobile_nav .sub > li {
   height: 35px;
   border-top: 1px dotted #eaeaea;
