@@ -1,79 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ajax w3schools</title>
     <!-- 폰트어썸5 주소 -->
-    <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
+      integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<style>
-     .weather{
-      width:300px;
-      height:150px;
-      text-align: center;
-      background-color:cornflowerblue;
-      color: #fff;
-    }
-    .weather > div{
-      float: left;
-      height: 75px;
-      line-height: 75px;
-      width: 50%;
-    }
-    .weather > div.currIcon, .weather > div.currTemp{
-      font-size: 50px;
-    }
+    <style>
+      .weather {
+        width: 300px;
+        height: 150px;
+        text-align: center;
+        background-color: cornflowerblue;
+        color: #fff;
+      }
+      .weather > div {
+        float: left;
+        height: 75px;
+        line-height: 75px;
+        width: 50%;
+      }
+      .weather > div.currIcon,
+      .weather > div.currTemp {
+        font-size: 50px;
+      }
 
-    .weather > div.city{
-      width:100%;
-      font-size:23px;
-    }
-</style>    
-<script>
-    $(function(){
-        let weatherIcon = { //객체리터럴
-            '01' : 'fas fa-sun',
-            '02' : 'fas fa-cloud-sun',
-            '03' : 'fas fa-cloud',
-            '04' : 'fas fa-cloud-metaball',
-            '09' : 'fas fa-cloud-rain',
-            '10' : 'fas fa-cloud-showers-heavy',
-            '11' : 'fas fa-poo-storm',
-            '13' : 'fas fa-snowflake',
-            '50' : 'fas fa-smog', 
-        }
+      .weather > div.city {
+        width: 100%;
+        font-size: 23px;
+      }
+    </style>
+    <script>
+      $(function () {
+        let weatherIcon = {
+          //객체리터럴
+          "01": "fas fa-sun",
+          "02": "fas fa-cloud-sun",
+          "03": "fas fa-cloud",
+          "04": "fas fa-cloud-metaball",
+          "09": "fas fa-cloud-rain",
+          10: "fas fa-cloud-showers-heavy",
+          11: "fas fa-poo-storm",
+          13: "fas fa-snowflake",
+          50: "fas fa-smog",
+        };
 
         //웨더api의 날씨 아이콘이 안 예뻐서 어썸폰트의 아이콘으로 대체
-        let apiURL = "http://api.openweathermap.org/data/2.5/weather?id=1835848&appid=800f01ebf3630c060b1b2c206fd77b8c&units=metric";
-        
-        // Ajax는 Asynchronous JavaScript and XML의 약자로, 
-        // 말 그대로 JavaScript와 XML을 이용한 비동기적 정보 교환 기법이다. 
-        // 다만 요즘은 XML보다는 JSON을 주로 사용한다. 
-        $.ajax({
-            url : apiURL, //요청한 주소
-            dataType: "json", //응답 데이터를 json으로 받겠다
-            type : "GET", //get방식으로 요청
-            async:false, //동기식(차례대로 데이터 받음 - 권장하지 않음)
-            success:function(data){ //요청 성공 시 실행되는 콜백함수
-                let $Icon = (data.weather[0].icon).substr(0,2);
-                //인덱스번호 0부터 2전까진 아이콘 01d -> 01만 추출
-                let $Temp = Math.floor(data.main.temp) + 'º';
-                let $city = data.name;
-                $('.currIcon').append($('.currIcon').append('<i class="'+weatherIcon[$Icon]+'"></i>'));
-                $('.currTemp').prepend($Temp);
-                $('.city').append($city);
-            }
-        });
+        let apiURL =
+          "http://api.openweathermap.org/data/2.5/weather?id=1835848&appid=800f01ebf3630c060b1b2c206fd77b8c&units=metric";
 
-    });
-</script>
-</head>
-<body>
-     <div class="weather">
-        <div class="currIcon"></div>
-        <div class="currTemp"></div>
-        <div class="city">도시 : </div>
+        // Ajax는 Asynchronous JavaScript and XML의 약자로,
+        // 말 그대로 JavaScript와 XML을 이용한 비동기적 정보 교환 기법이다.
+        // 다만 Ajax는 jquery가 있어야 한다.
+        // 요즘은 XML보다는 JSON을 주로 사용한다.
+        $.ajax({
+          url: apiURL, //요청한 주소
+          dataType: "json", //응답 데이터를 json으로 받겠다
+          type: "GET", //get방식으로 요청
+          async: false, //동기식(차례대로 데이터 받음 - 권장하지 않음)
+          success: function (data) {
+            //요청 성공 시 실행되는 콜백함수
+            let $Icon = data.weather[0].icon.substr(0, 2);
+            //인덱스번호 0부터 2전까진 아이콘 01d -> 01만 추출
+            let $Temp = Math.floor(data.main.temp) + "º";
+            let $city = data.name;
+            $(".currIcon").append(
+              $(".currIcon").append(
+                '<i class="' + weatherIcon[$Icon] + '"></i>'
+              )
+            );
+            $(".currTemp").prepend($Temp);
+            $(".city").append($city);
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="weather">
+      <div class="currIcon"></div>
+      <div class="currTemp"></div>
+      <div class="city">도시 :</div>
     </div>
-</body>
+  </body>
 </html>
