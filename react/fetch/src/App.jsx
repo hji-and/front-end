@@ -9,6 +9,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import "./App.css";
+import Seach from "./Search";
 
 export default function App() {
   //상태관리
@@ -69,7 +71,6 @@ export default function App() {
         <h1 style={styles.title}>사용자 목록</h1>
         <button style={styles.refreshButton}>🔄 새로고침</button>
       </header>
-
       {/* 로딩상태 */}
       {loading && (
         <div style={styles.messageContainer}>
@@ -93,12 +94,11 @@ export default function App() {
           </button>
         </div>
       )}
-
       {/* 사용자 목록 */}
       {!loading && !error && (
         <div style={styles.userGrid}>
           {users.map((user) => (
-            <div key={user.id} style={styles.userCard}>
+            <div key={user.id} style={styles.userCard} className="userCard">
               <div style={styles.userAvatar}>{user.name.charAt(0)}</div>
               {/* charAt - 문자열에서 특정 인덱스에 위치하는 유니코드 단일문자를 반환 */}
               <h3 style={styles.userName}>{user.name}</h3>
@@ -108,13 +108,16 @@ export default function App() {
           ))}
         </div>
       )}
-
       {/* 데이터가 없을 때 */}
       {!loading && !error && users.length === 0 && (
         <div style={styles.messageContainer}>
           <p style={styles.emptyText}>사용자 정보가 없습니다.</p>
         </div>
       )}
+
+      <div>
+        <Seach />
+      </div>
     </div>
   );
 }
@@ -203,6 +206,7 @@ const styles = {
     transition: "transform 0.3s, box-shadow 0.3s",
     cursor: "pointer",
     textAlign: "center",
+    //
   },
   userAvatar: {
     width: "60px",
