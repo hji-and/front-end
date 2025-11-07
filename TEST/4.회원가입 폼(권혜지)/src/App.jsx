@@ -13,7 +13,7 @@ export default function App() {
     tel: "",
   });
 
-  //touched 상태(사용자가 필드를 건드렸는지)
+  //touched 상태
   const [touched, setTouched] = useState({
     email: false,
     password: false,
@@ -22,14 +22,14 @@ export default function App() {
     tel: false,
   });
 
-  //비밀번호 보기/숨기기 상태(보너스)
+  //비밀번호 보기/숨기기 상태
   const [showPassword, setShowPassword] = useState(false);
 
   //유효성 검사 함수들
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     // username은 공백이나 @를 포함할 수 없고, 하나 이상의 문자가 존재해야 함
-    // domain도 공백과 @를 제외한 문자로 이루어져야 합니다.
+    // domain도 공백과 @를 제외한 문자로 이루어져야
     // extention(.com등)은 공백과 @를 제외한 문자로 이루어져야 하며 마침표로 구분
     return emailRegex.test(email);
     //test 정규표현식 메서드 -> 일치하면 true, 하지않으면 false
@@ -67,13 +67,13 @@ export default function App() {
       errors.name = "이름은 2자 이상이어야 합니다.";
     }
     if (touched.tel && !validateTel(formData.tel)) {
-      errors.tel = "전화번호 형식으로 입력해주세요";
+      errors.tel = "전화번호 형식으로 입력해주세요.";
     }
     return errors;
   };
   const errors = getErrors();
 
-  //폼 유효성 검사(모든 필드가 유효한지, 전송할 준비가 끝남)
+  //폼 유효성 검사
   //제출버튼 활성화 조건
   const isFormValid = () => {
     return (
@@ -86,25 +86,19 @@ export default function App() {
   };
 
   //입력 변경 핸들러(여러 개의 입력창에 실시간 입력 반영)
-  //리액트 창에선 이거 없으면 입력 안 됨
   const handleChange = (e) => {
     const { name, value } = e.target;
-    //e.target 이벤트가 발생한 html요소
-    //name 속성과 value 속성을 구조 분해 할당
     setFormData({
       ...formData, //기존에 있는 데이터를 유지하며, 새 값을 입력할 수 있게 도와줌
       [name]: value,
     });
   };
   //블러 핸들러(필드에서 포커스가 벗어날 때)
-  //사용자가 아무것도 입력하지 않고 필드를 벗어나는 경우에만 에러 메시지
-  //사용자가 이메일 필드에 입력하고 떠남 -> Touched.email=true
   const handleBlur = (e) => {
     const { name } = e.target;
     setTouched({
-      ...touched, //touched: 객체의 모든 속성을 복사합니다.
+      ...touched,
       [name]: true,
-      //위에서 추출한 name 변수(예: "email")를 키로 하고, 그 값을 true로 설정하여 기존 touched 객체에 추가하거나 업데이트
     });
   };
 
@@ -115,7 +109,6 @@ export default function App() {
       alert(
         `회원가입 성공!!\n\n이름: ${formData.name}\n이메일:${formData.email}`
       );
-      console.log("회원가입데이터", formData);
 
       // 제출버튼 누르면 폼 초기화
       setFormData({
@@ -158,7 +151,7 @@ export default function App() {
     });
   };
 
-  // 'on' 클래스 상태에 따라 버튼의 클래스 이름을 동적으로 설정합니다.
+  // 'on' 클래스 상태에 따라 버튼의 클래스 이름을 동적으로 설정
   const buttonClasses = `btn-firework ${isOn ? "on" : ""}`;
 
   return (
