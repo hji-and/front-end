@@ -131,10 +131,10 @@ export default function App() {
         <div className="hero-buttons">
           <button
             className="btn-secondary"
-            // onClick={() => window.open("./resume.pdf", "_blank")}
+            onClick={() => window.open("./Resume.pdf", "_blank")}
           >
             {/* <FiDownload /> */}
-            Download CV
+            Resume
           </button>
         </div>
       </section>
@@ -164,6 +164,18 @@ export default function App() {
                 <div className="portfolio-item">
                   <div className="portfolio-image">Project 1</div>
                   <h3>프로젝트 1</h3>
+                  {/* <a
+                      href={project.github}
+                      target="_blank" 연결 웹페이질 새로운 탭에서 연다 
+                      className="project-link"
+                      rel="noopener noreferrer"
+                      //noopener: 링크 클릭 시, 브라우저 콘텍스트 엑세스 권한 없이 새 탭에서 링크가 열림.
+                      //  신뢰할 수 없는 링크 열 때 유용
+                      //noreferrer: HTTP프로토콜의 referer헤더값(페이지를 요청한 이전 페이지가 무엇인지 알려주는 정보)
+                      // 하이퍼링크로 이동 시 referrer헤더를 생략하고 참조자 정보를 누출하지 않게 막는다.
+                    >
+                      <FaGithub />
+                    </a> */}
                   <p>React와 TypeScript를 사용한 웹 애플리케이션</p>
                 </div>
               </SwiperSlide>
@@ -183,8 +195,8 @@ export default function App() {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="portfolio-item">
-                  <div className="portfolio-image">Project 4</div>
-                  <h3>프로젝트 4</h3>
+                  <div className="portfolio-image">Soon</div>
+                  <h3>Team Project</h3>
                   <p>데이터 시각화 대시보드</p>
                 </div>
               </SwiperSlide>
