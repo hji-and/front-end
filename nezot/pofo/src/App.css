@@ -1,0 +1,328 @@
+.app {
+  position: relative;
+}
+/* 네비 */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  /* 배경영역 하위 모든 요소에 blur(퍼짐)효과 */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text; /* -webkit- 크롬에서 작동하도록 만든 밴더프리픽스 */
+  /* 주요 웹 브라우저 공급자가 새로운 실험적인 기능을 제공할 때 이전 버전의 웹 브라우저에 그 사실을 알려주기 위해 사용하는 접두사이다. */
+  background-clip: text; /* 배경색을 글자에 넣기 */
+  -webkit-text-fill-color: transparent;
+}
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+.nav-menu li {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  user-select: none; /* 사용자가 요소의 텍스트를 '선택'할 수 있는 방법을 지정 */
+}
+
+.nav-menu li:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+.nav-menu li.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* 섹션 */
+section {
+  min-height: 100vh; /* position:relative면 100% 안 먹으니 100vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+.section-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+.section-about {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.section-resume {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.section-portfolio {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #333;
+}
+
+/* .section-contact {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: #333;
+} */
+
+/* 섹션의 콘텐츠들 */
+.section-content {
+  max-width: 1200px;
+  text-align: center;
+  padding: 2rem;
+}
+.section-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fade-in-delay {
+  animation: fadeIn 1s ease-in-out 0.3s both;
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out;
+}
+
+.zoom-in {
+  animation: zoomIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* section-about 카드 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr) /* 최소크기일때 250px */
+  );
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  /* 유리효과 */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.card-fade {
+  animation: fadeIn 1s ease-in-out 1.5s both;
+  /* 	both
+(실행 전)키 프레임에 정의된 시작 시점(0%, from)의 스타일을 적용하고 대기합니다.
+(실행 후)키 프레임에 정의된 종료 시점(100%, to)의 스타일을 적용하고 대기합니다. */
+}
+
+/* Portfolio SwiperSlider */
+.section-container {
+  width: 100%;
+  padding: 2rem 0 4rem;
+}
+.portfolio-swiper {
+  padding-bottom: 50px;
+}
+.portfolio-swiper .swiper-slide {
+  height: auto;
+}
+.portfolio-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.portfolio-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.portfolio-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.portfolio-item p {
+  color: #666;
+  line-height: 1.6;
+}
+/* Swiper Navigation */
+.portfolio-swiper .swiper-button-next,
+.portfolio-swiper .swiper-button-prev {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+.portfolio-swiper .swiper-button-next:hover,
+.portfolio-swiper .swiper-button-prev:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.portfolio-swiper .swiper-button-next::after,
+.portfolio-swiper .swiper-button-prev::after {
+  font-size: 20px;
+}
+
+/* Swiper Pagination */
+.portfolio-swiper .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.3);
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+  background: #667eea;
+  width: 30px;
+  border-radius: 6px;
+}
+/* Responsive 반응형 */
+@media (max-width: 768px) {
+  .section-content h2 {
+    font-size: 2rem;
+  }
+  .section-content p {
+    font-size: 1rem;
+  }
+  .nav-menu {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  .nav-menu li {
+    padding: 0.4rem 0.6rem;
+  }
+  .nav-container {
+    padding: 1rem;
+  }
+  .swiper-container {
+    padding: 1rem 0 3rem;
+  }
+  .cards {
+    grid-template-columns: 1fr; /* 가로로 나열 */
+  }
+}
+/* resume button */
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center; /* btn방향 세로 */
+  align-items: center;
+  margin-bottom: 3rem;
+}
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row; /* btn방향 가로 */
+  }
+}
+.btn-secondary {
+  /* Download CV */
+  padding: 0.75rem 2rem;
+  border: 2px solid #4b5563;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  background: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: #a855f7;
+  color: #a855f7;
+}

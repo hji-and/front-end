@@ -1,0 +1,723 @@
+:root {
+  font-family: "Noto Sans KR", "Pretendard", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #1f2d3d;
+  background-color: #f7f9fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --subway-green: #006838;
+  --subway-dark: #004228;
+  --subway-yellow: #ffc20e;
+  --subway-cream: #f6eee0;
+  --subway-gray: #586476;
+  --container-width: min(1120px, 92vw);
+  /*  화면 너비         | 계산 결과                                   |
+| ------------- | --------------------------------------- |
+| 1920px (데스크탑) | `min(1120px, 1766.4px(1120의 n%(view-width))` → **1120px 적용** |
+| 800px (태블릿)   | `min(1120px, 736px)` → **736px 적용**     |
+| 400px (모바일)   | `min(1120px, 368px)` → **368px 적용**     |
+ */
+  --shadow-soft: 0 16px 48px rgba(16, 56, 40, 0.12);
+}
+/*
+CSS의 :root 의사클래스는 문서 트리의 루트 요소를 선택한다. 즉, HTML 문서의 루트 요소는 <html> 요소이므로, :root와 html은 같다고 보면 된다.
+보통 이 영역에 css 변수를 선언해 사용한다고 보면된다. 자바스크립트로 따지면 일종의 전역 변수 영역이라고 이해하면 된다. :root에서 CSS 변수를 선언하여 HTML 문서 어디에서나 해당 변수에 접근할 수 있도록 구성하는 것은 흔한 패턴이다.
+
+복잡한 웹사이트 같은 경우 엄청난 양의 CSS를 가지고 있는데, 유지보수를 하다 보면 여러 곳에서 사용한 임의의 값을 한꺼번에 바꿔야 할 때가 있다. 그 값들을 하나씩 찾아서 일일이 바꾸려면 상당히 피곤할 것이고, 때에 따라 실수도 많을 것이다.
+그래서 여타 프로그래밍 언어처럼 변수를 이용하면, 요소 전반에 걸쳐 사용되는 임의의 값을 변수에 저장하고 호출하면 보다 효율적인 프로그래밍이 가능해진다.
+
+CSS에서 변수의 이름을 지정할 때는 변수 맨 앞에 -- 를 붙여주어야 한다. 그리고 변수를 호출해 사용할 때는 var(변수명)형식을 사용한다.
+출처: https://inpa.tistory.com/entry/CSS-📚-CSS용-변수-variable-정리 [Inpa Dev 👨‍💻:티스토리]
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  color: #1f2d3d;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--container-width);
+  /* root 넓이가 1200px면 최대크기가 1200px */
+}
+.site-header {
+  color: #ffffff;
+  position: sticky;
+  /* fixed와 유사, 헤더가 부모 컨테이너 안에서만 sticky하게 붙는다 */
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+.header-top {
+  background: linear-gradient(135deg, var(--subway-green), var(--subway-dark));
+}
+
+.brand-container {
+  display: flex;
+  justify-content: center;
+  padding: 26px 0;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.brand-primary {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  /*  유동적 타이포그래피 최소 1.8rem, 화면 너비의 3%, 최대 2.2rem */
+  text-transform: uppercase;
+}
+/*
+1.8rem → 최소값
+
+뷰포트가 작아도 이 크기보다 작아지지 않음
+
+3vw → 권장값(preferred)
+
+화면 너비(Viewport Width)의 3%만큼 커짐
+
+화면이 커지면 폰트도 커짐
+
+2.2rem → 최대값
+
+화면이 커져도 이 크기보다 커지지 않음
+*/
+.brand-secondary {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.header-nav {
+  position: relative;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 104, 56, 0.12);
+}
+.site-nav {
+  position: relative;
+  font-weight: 600;
+  color: var(--subway-dark);
+}
+
+.site-nav > ul {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 18px 0;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item > a {
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.nav-item > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: var(--subway-yellow);
+  transition: transform 0.25s ease;
+} /* 메뉴 밑 라인(노란색 라인) */
+
+.nav-item > a:hover::after,
+.nav-item > a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-item > a {
+  color: inherit;
+}
+
+.nav-item > a.active {
+  color: var(--subway-yellow);
+}
+.mega-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(100%);
+  /* 요소의 상단 위치를 부모 요소 높이의 100%로 설정 */
+  /* calc(): 괄호 안의 숫자나 숫자와 단위가 조합된 수식을 계산(calculation)해서 값으로 나타내는 함수형 표기법 */
+  width: 100vw;
+  /* vw = viewport width */
+  transform: translateX(-50%);
+  padding: 0 4vw 32px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 36px 72px rgba(16, 56, 40, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* 안전하게 숨김처리 */
+  transition: opacity 0.22s ease;
+}
+
+.mega-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mega-menu-inner {
+  margin: 0 auto;
+  max-width: min(1120px, 90vw);
+  /* pc-1120px, 반응형 90vw */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  /* auto-fit 빈공간 없이 column을 늘려 채움 */
+  /* minmax(180px, 1fr) 최소180, 최대1fr(등분) */
+  gap: 32px;
+  padding-top: 28px;
+}
+
+.mega-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.mega-column-active {
+  transform: translateY(-4px);
+}
+.mega-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--subway-green);
+}
+.mega-column-active .mega-heading,
+.mega-column:hover .mega-heading {
+  color: var(--subway-green);
+}
+
+.mega-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.dropdown-link {
+  color: var(--subway-dark);
+  font-weight: 500;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  /* inline요소처럼 동작하면서 flexbox속성 가능, 아이콘+텍스트 같이 정렬시 편리 */
+  align-items: center;
+}
+.dropdown-link:hover {
+  color: var(--subway-green);
+}
+
+/* 
+## 네비게이션 구조 요약
+
+- **상단 헤더(`site-header`)**
+  - 브랜드 영역: `Subway`와 `Fresh Choice` 텍스트를 노출
+  - 네비게이션 래퍼(`header-nav`): 마우스/포커스 이벤트로 메가 메뉴 열림 상태를 제어
+
+- **기본 메뉴(`top-nav`)**
+  - `navItems` 배열을 기반으로 홈, 메뉴소개, 이용방법, 새소식, 가맹점 링크를 생성
+  - 각 항목은 `NavLink`로 라우팅되고, 활성 경로에 `active` 클래스가 적용
+  - 항목에 마우스를 올리거나 포커스하면 `hoveredItem` 상태가 업데이트되어 서브 메뉴 열림
+
+- **메가 메뉴(`mega-menu`)**
+  - `data-open` 속성으로 열림 여부(`hoveredItem` 존재 여부)를 표시
+  - `navItems` 항목마다 하나의 열(`mega-column`)이 렌더링되며, 현재 호버된 항목은 `mega-column-active` 클래스를 가짐
+  - 각 열은 `subItems` 배열을 기반으로 서브 링크 목록을 제공 (`Link` 컴포넌트 사용)
+  - `onMouseEnter`와 `onFocus`로 열 상태 유지, 포인터 또는 키보드 탐색 시 안정적으로 작동
+
+- **포커스 제어**
+  - `header-nav`의 `onBlur` 핸들러가 전달받은 `FocusEvent`를 통해 포커스가 내부 요소를 벗어나면 `hoveredItem`을 `null`로 리셋
+  - `onMouseLeave` 역시 동일하게 `hoveredItem`을 초기화해 메뉴가 닫히도록 처리
+   */
+
+/* ---------------Home-------------- */
+.site-main {
+  flex: 1;
+}
+.page {
+  padding-bottom: 88px;
+}
+.page-hero {
+  padding: 80px 0 48px;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 104, 56, 0.08),
+    rgba(255, 194, 14, 0.08)
+  );
+  text-align: center;
+}
+.page-hero h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.4rem, 2.8vw, 3rem);
+  color: var(--subway-dark);
+}
+
+.page-hero p {
+  margin: 0 auto;
+  max-width: 640px;
+  color: var(--subway-gray);
+}
+
+.hero-section {
+  padding: 96px 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 104, 56, 0.1),
+    rgba(255, 194, 14, 0.1)
+  );
+}
+.hero-inner {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.hero-copy h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+  font-weight: 800;
+  /*
+보통 폰트사이즈를 12px 요렇게 고정 크기 픽셀 단위로 설정하지만 em과 rem은 배율
+ 
+em은 상위 요소(부모)가 기준, rem은 최상위 요소가 기준이 됩니다.
+rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답니다.
+ */
+}
+.hero-copy .highlight {
+  color: var(--subway-green);
+}
+.hero-copy .lead {
+  margin: 0;
+  color: var(--subway-gray);
+  font-size: 1.05rem;
+}
+.hero-copy .eyebrow {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--subway-dark);
+}
+.hero-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+.fresh-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 44px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  min-width: 260px;
+}
+.fresh-card strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.6rem;
+  color: var(--subway-dark);
+}
+.fresh-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--subway-gray);
+}
+
+/* ---------------Home section-------------- */
+.highlights {
+  padding: 64px 0;
+}
+.highlight-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.highlight-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid rgba(0, 104, 56, 0.08);
+}
+.highlight-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  color: var(--subway-dark);
+}
+.cta-banner {
+  background: linear-gradient(135deg, var(--subway-dark), var(--subway-green));
+  color: #ffffff;
+  padding: 56px 0;
+}
+.cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.cta-inner h2 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 2.4rem);
+}
+.cta-inner p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* -----------Menu-grid------------ */
+.menu-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.menu-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 14px 32px rgba(31, 45, 61, 0.08);
+  border: 1px solid rgba(0, 104, 56, 0.08);
+}
+.menu-card h2 {
+  margin-bottom: 8px;
+  color: var(--subway-dark);
+}
+.menu-card ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.menu-card li {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: var(--subway-cream);
+  color: var(--subway-dark);
+  font-weight: 600;
+}
+
+.menu-description {
+  margin: 0;
+  color: var(--subway-gray);
+}
+.menu-tips {
+  margin-top: 72px;
+  padding: 48px;
+  background: rgba(0, 104, 56, 0.06);
+}
+.tips-inner {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: center;
+}
+
+.tips-inner ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--subway-gray);
+  line-height: 1.6;
+}
+
+/* ---------------HowToOrder------------ */
+.steps-section {
+  padding: 64px 0;
+}
+.step-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.step-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 104, 56, 0.08);
+  box-shadow: 0 18px 36px rgba(31, 45, 61, 0.12);
+}
+.step-number {
+  display: inline-flex;
+  /* 내부 글자나 아이콘을 가로세로 중앙정렬 */
+  align-items: center; /*세로중앙*/
+  justify-content: center; /*가로중앙*/
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--subway-yellow);
+  color: var(--subway-dark);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.online-order {
+  padding: 64px 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 104, 56, 0.08),
+    rgba(255, 194, 14, 0.12)
+  );
+}
+
+.online-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ----------- News ------------ */
+.news-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.news-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 104, 56, 0.07);
+  box-shadow: 0 14px 28px rgba(31, 45, 61, 0.1);
+}
+.news-card h2 {
+  margin-bottom: 12px;
+  color: var(--subway-dark);
+}
+
+.news-card p {
+  color: var(--subway-gray);
+  margin-bottom: 16px;
+}
+.news-tag {
+  display: inline-block;
+  /* 글자별로 높이가 다를땐 이거 써서 중앙정렬 */
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: rgba(0, 104, 56, 0.12);
+  color: var(--subway-green);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.media-banner {
+  margin-top: 72px;
+  padding: 56px 0;
+  background-color: var(--subway-dark);
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+}
+
+.media-banner h3 {
+  margin: 0 0 12px;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+/* -------------Franchise------------- */
+.milestone-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.milestone-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 104, 56, 0.08);
+  box-shadow: 0 16px 36px rgba(31, 45, 61, 0.1);
+}
+
+.milestone-card h2 {
+  margin-bottom: 12px;
+  color: var(--subway-dark);
+}
+
+.milestone-card p {
+  color: var(--subway-gray);
+}
+.franchise-contact {
+  margin-top: 72px;
+  padding: 64px 0;
+  background: rgba(0, 104, 56, 0.06);
+}
+.contact-inner {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: center;
+}
+.contact-inner ul {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  color: var(--subway-gray);
+  line-height: 1.6;
+}
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+/* footer */
+.site-footer {
+  background: #0a2a1c;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 32px 0;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* 공간이 부족하면(반응형) 다른 쪽으로 이동 */
+  gap: 16px;
+  font-weight: 600;
+}
+.footer-links a:hover {
+  color: var(--subway-yellow);
+}
+
+/* -----------공통 클래스 css------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--subway-green);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 104, 56, 0.25);
+}
+
+.btn-secondary {
+  background-color: var(--subway-yellow);
+  color: var(--subway-dark);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(255, 194, 14, 0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--subway-green);
+  color: var(--subway-green);
+}
+
+.btn-outline:hover {
+  background-color: rgba(0, 104, 56, 0.08);
+}
+.text-link {
+  font-weight: 600;
+  color: var(--subway-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.text-link:hover {
+  color: var(--subway-dark);
+}
+
+/* -----------media(반응형)------------ */
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 16px;
+    font-size: 0.95rem;
+  }
+  .header-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .site-nav > ul {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 16px 0;
+  }
+  .mega-menu {
+    display: none;
+  }
+  .hero-section {
+    padding: 72px 0;
+  }
+  .hero-section h1 {
+    font-size: clamp(2.4rem, 8vw, 3rem);
+  }
+  .cta-inner {
+    flex-direction: column; /*수직 방향으로 정렬*/
+    align-items: flex-start; /*왼쪽 정렬*/
+  }
+  .footer-inner {
+    align-items: flex-start;
+  }
+}
