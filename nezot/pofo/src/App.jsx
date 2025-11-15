@@ -111,11 +111,11 @@ export default function App() {
           <p className="slide-in-left">
             스크롤할 때마다 부드러운 효과가 적용됩니다.
           </p>
-          <div className="cards">
+          {/* <div className="cards">
             <div className="card card-fade">Card 1</div>
             <div className="card card-fade">Card 2</div>
             <div className="card card-fade">Card 3</div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -123,26 +123,31 @@ export default function App() {
         <div className="section-content">
           <h2 className="slide-in-right">Resume</h2>
           <p className="slide-in-right">
-            다양한 서비스를 제공합니다. 아래로 스크롤 해보세요.
+            자기소개서, 이력서
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="hero-buttons">
-          <button
-            className="btn-secondary"
+        <div className="cards">
+          <div
+            className="card card-fade"
             onClick={() => window.open("./Resume.pdf", "_blank")}
           >
-            {/* <FiDownload /> */}
-            Resume
-          </button>
+            국문
+          </div>
+          <div
+            className="card card-fade"
+            onClick={() => window.open("./Resume.pdf", "_blank")}
+          >
+            JApan
+          </div>
         </div>
       </section>
 
       <section ref={portfolioRef} className="section section-portfolio">
         <div className="section-content">
           <h2 className="fade-in">Portfolio</h2>
-          <p className="fade-in-delay">저희 작업물들을 소개합니다.</p>
+          <p className="fade-in-delay">작업물들을 소개합니다.</p>
           <div className="swiper-container">
             <Swiper
               modules={[Navigation, Pagination]}
