@@ -1,11 +1,17 @@
 import { useState, useEffect, useRef } from "react";
+// import { BrowserRouter, Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./App.css";
-// import { FiDownload, FiChevronDown } from "react-icons/fi"; //resume다운로드버튼
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+} from "react-icons/fa"
 
 export default function App() {
   const [activeSection, setActiveSection] = useState(0);
@@ -52,6 +58,9 @@ export default function App() {
     };
     window.addEventListener("scroll", handleScroll);
 
+    // 외부사이트 이동
+    const url = "https://html0929.dothome.co.kr/"
+
     return () => window.removeEventListener("scroll", handleScroll); //스크롤이벤트 소멸시켜 메모리누수방지
   }, []);
   //컴포넌트 화면에 나타난 후, 사용자가 스크롤할 때마다 모든 .section요소를 검사하여
@@ -62,7 +71,7 @@ export default function App() {
     <div className="app">
       <nav className="navbar">
         <div className="nav-container">
-          <h1 className="logo">Scroll Navigation</h1>
+          <h1 className="logo">Portfolio</h1>
           <ul className="nav-menu">
             <li
               className={activeSection === 0 ? "active" : ""} //화면이 0번째면 active줌
@@ -100,22 +109,35 @@ export default function App() {
 
       <section ref={heroRef} className="section section-hero">
         <div className="section-content">
-          <h2 className="fade-in">Welcome to One-page Scroll</h2>
-          <p className="fade-in-delay">스크롤 효과를 경험해보세요.</p>
+          <h2 className="fade-in">Portfolio</h2>
+          <p className="fade-in-delay">프로그래머를 지망하는 권혜지입니다.</p>
+
         </div>
       </section>
 
       <section ref={aboutRef} className="section section-about">
         <div className="section-content">
-          <h2 className="slide-in-left">About Us</h2>
-          <p className="slide-in-left">
-            스크롤할 때마다 부드러운 효과가 적용됩니다.
-          </p>
-          {/* <div className="cards">
-            <div className="card card-fade">Card 1</div>
-            <div className="card card-fade">Card 2</div>
-            <div className="card card-fade">Card 3</div>
-          </div> */}
+          <h2 className="slide-in-left">About</h2>
+          <div className="me slide-in-left">
+            <div>
+              <img src="./me.png" alt="me" style={{width: '20rem', padding:'0'}} />
+            </div>
+              <div className="mee">
+                <ul>Education</ul>
+                <li>2017-2018 KCP일본어학교 어학연수 </li>
+                <li>2019.2 숙명여자대학교 공예과, 일본학과(副) 졸업 </li>
+                <li>2025.9 ‘생성형 AI활용(스테이블 디퓨전) 모던 웹 실무자 육성' 이수중 </li>
+                <ul>Skills</ul>
+                <li>
+                 <FaHtml5  style={{ fontSize: '15px',  margin: '5px 0 5px' }}/>
+                 <FaCss3Alt  style={{ fontSize: '15px', margin: '5px 5px' }}/>
+                 <FaJs  style={{ fontSize: '15px', margin: '5px 5px' }}/>
+                  <FaReact  style={{ fontSize: '15px', margin: '5px 5px' }}/>
+                  </li> 
+              </div>
+          
+         
+          </div>
         </div>
       </section>
 
@@ -133,13 +155,13 @@ export default function App() {
             className="card card-fade"
             onClick={() => window.open("./Resume.pdf", "_blank")}
           >
-            국문
+            한국어
           </div>
           <div
             className="card card-fade"
             onClick={() => window.open("./Resume.pdf", "_blank")}
           >
-            JApan
+            日本語
           </div>
         </div>
       </section>
@@ -167,58 +189,49 @@ export default function App() {
             >
               <SwiperSlide>
                 <div className="portfolio-item">
-                  <div className="portfolio-image">Project 1</div>
-                  <h3>프로젝트 1</h3>
-                  {/* <a
-                      href={project.github}
-                      target="_blank" 연결 웹페이질 새로운 탭에서 연다 
+                  <div className="portfolio-image" 
+                  // onClick={()=>{window.open(url, '_blank')}}
+                 >
+                  <a
+                      href={'https://html0925.dothome.co.kr/ '}
+                      target="_blank"
                       className="project-link"
                       rel="noopener noreferrer"
-                      //noopener: 링크 클릭 시, 브라우저 콘텍스트 엑세스 권한 없이 새 탭에서 링크가 열림.
-                      //  신뢰할 수 없는 링크 열 때 유용
-                      //noreferrer: HTTP프로토콜의 referer헤더값(페이지를 요청한 이전 페이지가 무엇인지 알려주는 정보)
-                      // 하이퍼링크로 이동 시 referrer헤더를 생략하고 참조자 정보를 누출하지 않게 막는다.
-                    >
-                      <FaGithub />
-                    </a> */}
-                  <p>React와 TypeScript를 사용한 웹 애플리케이션</p>
+                    >Project 1</a>
+                    </div>
+                  <h3>프로젝트 1</h3>
+                  <p>HTML, CSS를 사용한 웹</p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="portfolio-item">
-                  <div className="portfolio-image">Project 2</div>
+                  <div className="portfolio-image">
+                     <a
+                      href={'https://html0929.dothome.co.kr/  '}
+                      target="_blank"
+                      className="project-link"
+                      rel="noopener noreferrer"
+                    >Project 2</a>
+                    </div>
                   <h3>프로젝트 2</h3>
-                  <p>Node.js 기반 RESTful API 서버</p>
+                  <p>HTML, CSS, JavaScript를 사용한 반응형 웹</p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="portfolio-item">
                   <div className="portfolio-image">Project 3</div>
                   <h3>프로젝트 3</h3>
-                  <p>모바일 반응형 웹 디자인</p>
+                  <p>React와 TypeScript를 사용한 웹</p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="portfolio-item">
                   <div className="portfolio-image">Soon</div>
                   <h3>Team Project</h3>
-                  <p>데이터 시각화 대시보드</p>
+                  <p>팀프로젝트(예정)</p>
                 </div>
               </SwiperSlide>
-              {/* <SwiperSlide>
-                <div className="portfolio-item">
-                  <div className="portfolio-image">Project 5</div>
-                  <h3>프로젝트 5</h3>
-                  <p>실시간 채팅 애플리케이션</p>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="portfolio-item">
-                  <div className="portfolio-image">Project 6</div>
-                  <h3>프로젝트 6</h3>
-                  <p>E-commerce 플랫폼</p>
-                </div>
-              </SwiperSlide> */}
+             
             </Swiper>
           </div>
         </div>
