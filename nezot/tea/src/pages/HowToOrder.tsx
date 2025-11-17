@@ -1,24 +1,23 @@
 const steps = [
   {
-    number: "01",
-    title: "빵 & 사이즈 선택",
+    number: "🍵",
+    title: "도자기",
     description:
-      "6인치 또는 12인치 중 사이즈를 정하고 갓 구워낸 6가지 빵 중 하나를 고릅니다.",
+      "백자에 유약을 입혀 구웠습니다. 차의 향미를 있는 그대로 표현해주는 소재입니다.",
   },
   {
-    number: "02",
-    title: "치즈 & 야채 추가",
+    number: "🥄",
+    title: "잎차 생활을 위한 전자저울",
     description:
       "기본 7가지 야채에 치즈, 에그, 베이컨 등 원하는 토핑을 자유롭게 더합니다.",
   },
   {
-    number: "03",
-    title: "소스 & 시즈닝",
-    description:
-      "스위트어니언, 허니머스타드, 핫칠리 등 13가지 소스와 시즈닝으로 마무리합니다.",
+    number: "🧮",
+    title: "잎차 생활을 위한 전자저울",
+    description: "찻잎의 무게는 물론 추출시간까지 잴 수 있어요.",
   },
   {
-    number: "04",
+    number: "🥛",
     title: "세트 업그레이드",
     description:
       "쿠키, 수프, 음료를 더해 풍성한 한 끼를 완성하거나 샐러드로 가볍게 즐겨보세요.",
@@ -28,13 +27,10 @@ const steps = [
 export default function HowToOrder() {
   return (
     <div className="page how-to-order-page">
-      <section className="page-hero">
+      <section className="page-hero teaware">
         <div className="container">
-          <h1>써브웨이 이용방법</h1>
-          <p>
-            간단한 4단계로 완성하는 나만의 샌드위치. 매장에서도, 온라인에서도
-            동일하게 즐길 수 있습니다.
-          </p>
+          <h1>Teaware</h1>
+          <p>시간이 흐르면서 나만의 색으로 물들어가는 다기를 경험해보세요.</p>
         </div>
       </section>
       <section className="steps-section">

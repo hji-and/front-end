@@ -3,17 +3,17 @@
     "Segoe UI", sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #1f2d3d;
-  background-color: #f7f9fb;
+  color: #808080;
+  background-color: #f7f6f4;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --subway-green: #006838;
-  --subway-dark: #004228;
-  --subway-yellow: #ffc20e;
-  --subway-cream: #f6eee0;
-  --subway-gray: #586476;
+  --green: #758b64;
+  --dark: #808080;
+  --sky: #88b4cf;
+  --cream: #feebdd;
+  --gray: #d5d5d5;
   --container-width: min(1120px, 92vw);
   /*  화면 너비         | 계산 결과                                   |
 | ------------- | --------------------------------------- |
@@ -23,16 +23,6 @@
  */
   --shadow-soft: 0 16px 48px rgba(16, 56, 40, 0.12);
 }
-/*
-CSS의 :root 의사클래스는 문서 트리의 루트 요소를 선택한다. 즉, HTML 문서의 루트 요소는 <html> 요소이므로, :root와 html은 같다고 보면 된다.
-보통 이 영역에 css 변수를 선언해 사용한다고 보면된다. 자바스크립트로 따지면 일종의 전역 변수 영역이라고 이해하면 된다. :root에서 CSS 변수를 선언하여 HTML 문서 어디에서나 해당 변수에 접근할 수 있도록 구성하는 것은 흔한 패턴이다.
-
-복잡한 웹사이트 같은 경우 엄청난 양의 CSS를 가지고 있는데, 유지보수를 하다 보면 여러 곳에서 사용한 임의의 값을 한꺼번에 바꿔야 할 때가 있다. 그 값들을 하나씩 찾아서 일일이 바꾸려면 상당히 피곤할 것이고, 때에 따라 실수도 많을 것이다.
-그래서 여타 프로그래밍 언어처럼 변수를 이용하면, 요소 전반에 걸쳐 사용되는 임의의 값을 변수에 저장하고 호출하면 보다 효율적인 프로그래밍이 가능해진다.
-
-CSS에서 변수의 이름을 지정할 때는 변수 맨 앞에 -- 를 붙여주어야 한다. 그리고 변수를 호출해 사용할 때는 var(변수명)형식을 사용한다.
-출처: https://inpa.tistory.com/entry/CSS-📚-CSS용-변수-variable-정리 [Inpa Dev 👨‍💻:티스토리]
-*/
 
 *,
 *::before,
@@ -54,7 +44,7 @@ a {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  color: #1f2d3d;
+  color: #333;
   background-color: #ffffff;
 }
 
@@ -65,7 +55,7 @@ a {
   /* root 넓이가 1200px면 최대크기가 1200px */
 }
 .site-header {
-  color: #ffffff;
+  color: #333;
   position: sticky;
   /* fixed와 유사, 헤더가 부모 컨테이너 안에서만 sticky하게 붙는다 */
   top: 0;
@@ -73,7 +63,7 @@ a {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 .header-top {
-  background: linear-gradient(135deg, var(--subway-green), var(--subway-dark));
+  background: #fff;
 }
 
 .brand-container {
@@ -94,21 +84,7 @@ a {
   /*  유동적 타이포그래피 최소 1.8rem, 화면 너비의 3%, 최대 2.2rem */
   text-transform: uppercase;
 }
-/*
-1.8rem → 최소값
 
-뷰포트가 작아도 이 크기보다 작아지지 않음
-
-3vw → 권장값(preferred)
-
-화면 너비(Viewport Width)의 3%만큼 커짐
-
-화면이 커지면 폰트도 커짐
-
-2.2rem → 최대값
-
-화면이 커져도 이 크기보다 커지지 않음
-*/
 .brand-secondary {
   font-size: 0.9rem;
   opacity: 0.85;
@@ -116,12 +92,12 @@ a {
 .header-nav {
   position: relative;
   background-color: #ffffff;
-  border-bottom: 1px solid rgba(0, 104, 56, 0.12);
+  border-bottom: 1px solid rgba(0, 104, 56, 0.1);
 }
 .site-nav {
   position: relative;
-  font-weight: 600;
-  color: var(--subway-dark);
+  font-weight: 400;
+  color: var(--dark);
 }
 
 .site-nav > ul {
@@ -130,7 +106,7 @@ a {
   gap: 32px;
   list-style: none;
   margin: 0;
-  padding: 18px 0;
+  padding: 5px 0;
 }
 
 .nav-item {
@@ -141,7 +117,7 @@ a {
 
 .nav-item > a {
   position: relative;
-  padding: 6px 0;
+  padding: 0 0 3px 0;
   transition: color 0.2s ease;
 }
 
@@ -149,14 +125,14 @@ a {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -5px;
   width: 100%;
   height: 3px;
   transform: scaleX(0);
   transform-origin: left;
-  background-color: var(--subway-yellow);
+  background-color: var(--sky);
   transition: transform 0.25s ease;
-} /* 메뉴 밑 라인(노란색 라인) */
+}
 
 .nav-item > a:hover::after,
 .nav-item > a.active::after {
@@ -168,7 +144,7 @@ a {
 }
 
 .nav-item > a.active {
-  color: var(--subway-yellow);
+  color: var(--sky);
 }
 .mega-menu {
   position: absolute;
@@ -180,7 +156,16 @@ a {
   /* vw = viewport width */
   transform: translateX(-50%);
   padding: 0 4vw 32px;
-  background: rgba(255, 255, 255, 0.98);
+  /*  */
+  /*  */
+  background: linear-gradient(
+    200deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.85)
+  );
+  /*  */
+  /*  */
+  /*  */
   box-shadow: 0 36px 72px rgba(16, 56, 40, 0.16);
   opacity: 0;
   visibility: hidden;
@@ -220,11 +205,11 @@ a {
 .mega-heading {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--subway-green);
+  color: var(--sky);
 }
 .mega-column-active .mega-heading,
 .mega-column:hover .mega-heading {
-  color: var(--subway-green);
+  color: var(--sky);
 }
 
 .mega-column ul {
@@ -236,7 +221,7 @@ a {
 }
 
 .dropdown-link {
-  color: var(--subway-dark);
+  color: var(--dark);
   font-weight: 500;
   padding: 8px 0;
   transition: color 0.2s ease;
@@ -245,7 +230,7 @@ a {
   align-items: center;
 }
 .dropdown-link:hover {
-  color: var(--subway-green);
+  color: var(--green);
 }
 
 /* 
@@ -290,22 +275,18 @@ a {
 .page-hero h1 {
   margin-bottom: 16px;
   font-size: clamp(2.4rem, 2.8vw, 3rem);
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 
 .page-hero p {
   margin: 0 auto;
   max-width: 640px;
-  color: var(--subway-gray);
+  color: var(--gray);
 }
 
 .hero-section {
   padding: 96px 0;
-  background: linear-gradient(
-    120deg,
-    rgba(0, 104, 56, 0.1),
-    rgba(255, 194, 14, 0.1)
-  );
+  background: url(./tea-img/tea-2715039_1280.jpg) no-repeat center/cover;
 }
 .hero-inner {
   display: grid;
@@ -317,26 +298,20 @@ a {
   margin: 12px 0 16px;
   font-size: clamp(2.8rem, 4vw, 3.6rem);
   font-weight: 800;
-  /*
-보통 폰트사이즈를 12px 요렇게 고정 크기 픽셀 단위로 설정하지만 em과 rem은 배율
- 
-em은 상위 요소(부모)가 기준, rem은 최상위 요소가 기준이 됩니다.
-rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답니다.
- */
 }
 .hero-copy .highlight {
-  color: var(--subway-green);
+  color: var(--sky);
 }
 .hero-copy .lead {
   margin: 0;
-  color: var(--subway-gray);
+  color: var(--gray);
   font-size: 1.05rem;
 }
 .hero-copy .eyebrow {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 .hero-actions {
   margin-top: 28px;
@@ -360,13 +335,13 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
   display: block;
   margin-top: 12px;
   font-size: 1.6rem;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 .fresh-card span {
   display: block;
   margin-top: 8px;
   font-size: 0.95rem;
-  color: var(--subway-gray);
+  color: var(--gray);
 }
 
 /* ---------------Home section-------------- */
@@ -387,10 +362,13 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 .highlight-card h3 {
   margin-bottom: 12px;
   font-size: 1.3rem;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 .cta-banner {
-  background: linear-gradient(135deg, var(--subway-dark), var(--subway-green));
+  background-image: url("./tea-img/tea-6568547_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   color: #ffffff;
   padding: 56px 0;
 }
@@ -426,8 +404,21 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 }
 .menu-card h2 {
   margin-bottom: 8px;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
+.page-hero > .container > p {
+  color: #fff;
+}
+.page-hero > .container > h1 {
+  color: #fff;
+}
+.tealeaf {
+  background-image: url("./tea-img/green-tea-5301025_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .menu-card ul {
   margin: 16px 0 0;
   padding: 0;
@@ -438,14 +429,14 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 .menu-card li {
   padding: 8px 12px;
   border-radius: 10px;
-  background-color: var(--subway-cream);
-  color: var(--subway-dark);
+  background-color: var(--sky);
+  color: var(--cream);
   font-weight: 600;
 }
 
 .menu-description {
   margin: 0;
-  color: var(--subway-gray);
+  color: var(--dark);
 }
 .menu-tips {
   margin-top: 72px;
@@ -462,13 +453,19 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 .tips-inner ul {
   margin: 0;
   padding-left: 20px;
-  color: var(--subway-gray);
+  color: var(--dark);
   line-height: 1.6;
 }
 
 /* ---------------HowToOrder------------ */
 .steps-section {
   padding: 64px 0;
+}
+.teaware {
+  background-image: url("./tea-img/teapot-7941793_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .step-grid {
   display: grid;
@@ -490,8 +487,8 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--subway-yellow);
-  color: var(--subway-dark);
+  background: var(--sky);
+  color: var(--dark);
   font-weight: 700;
   margin-bottom: 18px;
 }
@@ -529,11 +526,11 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 }
 .news-card h2 {
   margin-bottom: 12px;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 
 .news-card p {
-  color: var(--subway-gray);
+  color: var(--gray);
   margin-bottom: 16px;
 }
 .news-tag {
@@ -542,7 +539,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
   padding: 6px 12px;
   border-radius: 999px;
   background-color: rgba(0, 104, 56, 0.12);
-  color: var(--subway-green);
+  color: var(--green);
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 16px;
@@ -550,7 +547,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 .media-banner {
   margin-top: 72px;
   padding: 56px 0;
-  background-color: var(--subway-dark);
+  background-color: var(--dark);
   color: rgba(255, 255, 255, 0.92);
   text-align: center;
 }
@@ -579,11 +576,11 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 
 .milestone-card h2 {
   margin-bottom: 12px;
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 
 .milestone-card p {
-  color: var(--subway-gray);
+  color: var(--gray);
 }
 .franchise-contact {
   margin-top: 72px;
@@ -599,7 +596,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 .contact-inner ul {
   margin: 16px 0 0;
   padding-left: 20px;
-  color: var(--subway-gray);
+  color: var(--gray);
   line-height: 1.6;
 }
 .contact-actions {
@@ -611,7 +608,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 
 /* footer */
 .site-footer {
-  background: #0a2a1c;
+  background: var(--dark);
   color: rgba(255, 255, 255, 0.82);
   padding: 32px 0;
 }
@@ -629,7 +626,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
   font-weight: 600;
 }
 .footer-links a:hover {
-  color: var(--subway-yellow);
+  color: var(--sky);
 }
 
 /* -----------공통 클래스 css------------ */
@@ -649,7 +646,7 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 }
 
 .btn-primary {
-  background-color: var(--subway-green);
+  background-color: var(--sky);
   color: #ffffff;
 }
 
@@ -659,34 +656,34 @@ rem의 뜻은 최상위를 뜻하는 root의 r을 붙여줘서 r + em이 된답�
 }
 
 .btn-secondary {
-  background-color: var(--subway-yellow);
-  color: var(--subway-dark);
+  background-color: var(--sky);
+  color: #fff;
 }
 
 .btn-secondary:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 28px rgba(255, 194, 14, 0.25);
+  box-shadow: 0 16px 28px rgba(255, 255, 255, 0.25);
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid var(--subway-green);
-  color: var(--subway-green);
+  border: 2px solid var(--sky);
+  color: var(--sky);
 }
 
 .btn-outline:hover {
-  background-color: rgba(0, 104, 56, 0.08);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 .text-link {
   font-weight: 600;
-  color: var(--subway-green);
+  color: var(--green);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
 .text-link:hover {
-  color: var(--subway-dark);
+  color: var(--dark);
 }
 
 /* -----------media(반응형)------------ */

@@ -12,55 +12,55 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    label: "홈",
+    label: "Home",
     path: "/",
     exact: true,
     subItems: [
-      { label: "브랜드 소개", to: "/#brand" },
-      { label: "오늘의 수프", to: "/#soup" },
-      { label: "온라인 주문", to: "/#order" },
-      { label: "지점 찾기", to: "/#stores" },
+      { label: "About", to: "/#brand" },
+      { label: "Our Ways", to: "/#soup" },
+      { label: "Our Product", to: "/#order" },
+      { label: "Our Mission", to: "/#stores" },
     ],
   },
   {
-    label: "메뉴소개",
+    label: "Shop",
     path: "/menu",
     subItems: [
-      { label: "샌드위치", to: "/menu#sandwich" },
-      { label: "랩ㆍ기타", to: "/menu#wrap" },
-      { label: "샐러드", to: "/menu#salad" },
-      { label: "아침메뉴", to: "/menu#breakfast" },
-      { label: "스마일 썹", to: "/menu#smile-sub" },
+      { label: "New", to: "/menu#sandwich" },
+      { label: "Leaf Tea", to: "/menu#wrap" },
+      { label: "Teabag", to: "/menu#salad" },
+      { label: "Matcha", to: "/menu#breakfast" },
+      { label: "Limited", to: "/menu#smile-sub" },
     ],
   },
   {
-    label: "이용방법",
+    label: "Teaware",
     path: "/how-to-order",
     subItems: [
-      { label: "써브웨이 이용방법", to: "/how-to-order#guide" },
-      { label: "빵 & 재료 소개", to: "/how-to-order#ingredients" },
-      { label: "앱 주문 안내", to: "/how-to-order#app" },
-      { label: "단체 주문", to: "/how-to-order#group" },
+      { label: "Teacup", to: "/how-to-order#guide" },
+      { label: "Teapot", to: "/how-to-order#ingredients" },
+      { label: "Gaiwan", to: "/how-to-order#app" },
+      { label: "Tea Utensils", to: "/how-to-order#group" },
     ],
   },
   {
-    label: "새소식",
+    label: "Community",
     path: "/news",
     subItems: [
-      { label: "이벤트 · 프로모션", to: "/news#event" },
-      { label: "뉴스 · 공지사항", to: "/news#notice" },
-      { label: "광고 영상", to: "/news#media" },
-      { label: "브랜드 캠페인", to: "/news#campaign" },
+      { label: "Event", to: "/news#event" },
+      { label: "Notice", to: "/news#notice" },
+      { label: "Media", to: "/news#media" },
+      { label: "Campaign", to: "/news#campaign" },
     ],
   },
   {
-    label: "가맹점",
+    label: "Tearoom",
     path: "/franchise",
     subItems: [
-      { label: "가맹 절차", to: "/franchise#process" },
-      { label: "투자 비용", to: "/franchise#investment" },
-      { label: "지사 안내", to: "/franchise#branch" },
-      { label: "사업 설명회", to: "/franchise#seminar" },
+      { label: "Sinsa Tearoom", to: "/franchise#process" },
+      { label: "Reservation", to: "/franchise#investment" },
+      { label: "Review", to: "/franchise#branch" },
+      { label: "Special Order", to: "/franchise#seminar" },
       { label: "FAQ", to: "/franchise#faq" },
     ],
   },
@@ -73,8 +73,19 @@ export default function SiteNav() {
       <div className="header-top">
         <div className="container brand-container">
           <div className="brand">
-            <span className="brand-primary">Subway</span>
-            <span className="brand-secondary">Fresh Choice</span>
+            <img
+              src="./tea-img/logo.png"
+              alt="logo"
+              style={{
+                width: "3.5rem",
+                zIndex: "99",
+                paddingBottom: "-10px",
+                margin: "0 auto",
+              }}
+            />
+            <span className="brand-secondary">M&T</span>
+            {/* <span className="brand-primary">Subway</span>
+             */}
           </div>
         </div>
       </div>

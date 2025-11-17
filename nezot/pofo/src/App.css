@@ -2,24 +2,35 @@
   position: relative;
 }
 /* About */
-.me{ 
+.me {
   font-size: small;
   display: grid;
-  gap: 0.1rem;
+  gap: -0.5rem;
   grid-template-columns: repeat(2, 1fr);
   text-align: left;
   list-style: none;
   color: #333;
   margin-top: 10px;
 }
-.mee{margin: 0 auto;
-padding-top: 5.5rem;}
-.me ul{
+.mee {
+  margin: 0 auto;
+  padding-top: 2.8rem;
+}
+.me ul {
   font-weight: bold;
   font-size: 0.9rem;
   margin-top: 10px;
 }
-.me img{margin: 0 auto;}
+.me li {
+  padding-bottom: 5px;
+}
+.me span {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+.me img {
+  margin: 0 0 0 10rem;
+}
 
 /* 네비 */
 .navbar {
@@ -45,7 +56,7 @@ padding-top: 5.5rem;}
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(135deg, #CEDEDC 0%, #ADCFC9 100%);
+  background: linear-gradient(135deg, #cededc 0%, #adcfc9 100%);
   -webkit-background-clip: text; /* -webkit- 크롬에서 작동하도록 만든 밴더프리픽스 */
   /* 주요 웹 브라우저 공급자가 새로운 실험적인 기능을 제공할 때 이전 버전의 웹 브라우저에 그 사실을 알려주기 위해 사용하는 접두사이다. */
   background-clip: text; /* 배경색을 글자에 넣기 */
@@ -67,12 +78,10 @@ padding-top: 5.5rem;}
 
 .nav-menu li:hover {
   background: white;
- 
 }
 .nav-menu li.active {
-  background: linear-gradient(135deg, #EAF8FA 0%, #CEDEDC 50%, #ADCFC9 100%);
+  background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
   color: white;
- 
 }
 
 /* 섹션 */
@@ -84,21 +93,27 @@ section {
   padding: 80px 20px;
 }
 .section-hero {
-  background: linear-gradient(135deg, #EAF8FA 0%, #CEDEDC 50%, #ADCFC9 100%);
+  background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
   color: white;
 }
+.section-hero p {
+  color: #7a7a7a;
+  margin-top: 5px;
+}
 .section-about {
-  background: #EDF2EE;
+  background: #edf2ee;
   color: black;
 }
 
 .section-resume {
-  background: url(/pic.png) no-repeat center ;
+  background: url(/pic.png) no-repeat center;
   color: white;
 }
-
+.section-resume span {
+  color: #fff;
+}
 .section-portfolio {
-  background: linear-gradient(180deg, #EAF8FA 0%, #CEDEDC 50%, #ADCFC9 100%);
+  background: linear-gradient(180deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
   color: #333;
 }
 
@@ -237,7 +252,7 @@ section {
 .portfolio-image {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #EAF8FA 0%, #CEDEDC 50%, #ADCFC9 100%);
+  background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -249,21 +264,38 @@ section {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
-.portfolio-image a{
+.portfolio-image span {
+  position: absolute;
+  top: 30.5%;
+  left: 24%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: width 0.4s ease, border-radius 0.4s ease;
+  visibility: hidden;
+}
+.portfolio-image a:hover span {
+  width: 53%;
+  border-radius: 40px;
+  visibility: visible;
+}
+
+.portfolio-image a {
   color: white !important;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration-line: none;
 }
-.portfolio-image a:visited{
-  color: #ADCFC9;
-} 
-.portfolio-image:hover{
+.portfolio-image a:visited {
+  color: #adcfc9;
+}
+.portfolio-image:hover {
   background: rgba(0, 0, 0, 0.1);
 }
-.portfolio-image a:hover{
-  color: #ADCFC9 !important;
+.portfolio-image a:hover {
+  color: #adcfc9 !important;
 }
 .portfolio-item h3 {
   font-size: 1.3rem;
@@ -306,7 +338,7 @@ section {
 }
 
 .portfolio-swiper .swiper-pagination-bullet-active {
-  background: linear-gradient(135deg, #EAF8FA 0%, #CEDEDC 50%, #ADCFC9 100%);
+  background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
   width: 30px;
   border-radius: 6px;
 }

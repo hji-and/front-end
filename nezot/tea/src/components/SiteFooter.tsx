@@ -3,26 +3,18 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="container footer-inner">
         <div>
-          <strong>SUBWAY® Korea</strong>
-          <p>서울시 서초구 강남대로 535 프린스빌딩 15층 · 02-797-5036</p>
+          <strong>M&T Tea® Korea</strong>
+          <p>서울시 구로구 구로동 · 02-000-0000</p>
         </div>
         <div className="footer-links">
-          <a href="https://www.subway.co.kr/" target="_blank" rel="noreferrer">
+          <a href="#" target="_blank" rel="noreferrer">
             공식 홈페이지
           </a>
-          <a
-            href="https://www.subway.co.kr/menuView"
-            target="_blank"
-            rel="noreferrer"
-          >
-            온라인 주문
+          <a href="#" target="_blank" rel="noreferrer">
+            티룸 예약
           </a>
-          <a
-            href="https://www.subway.co.kr/franchise"
-            target="_blank"
-            rel="noreferrer"
-          >
-            가맹 문의
+          <a href="#" target="_blank" rel="noreferrer">
+            QnA
           </a>
         </div>
       </div>

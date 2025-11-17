@@ -6,29 +6,22 @@ export default function Home() {
       <section className="hero-section">
         <div className="container hero-inner">
           <div className="hero-copy">
-            <p className="eyebrow">Fresh Since 1965</p>
+            <p className="eyebrow">Sinsa Tearoom</p>
             <h1>
-              신선함이 살아있는
-              <span className="highlight">써브웨이 스타일</span>
+              우리의 일상을 더욱
+              <br />
+              <span className="highlight">감각적으로</span>
             </h1>
             <p className="lead">
-              주문 즉시 구워낸 빵과 7가지 야채, 프리미엄 토핑으로 완성되는
-              맞춤형 샌드위치. 오늘은 어떤 조합으로 즐겨볼까요?
+              보글보글 물이 끓는 주전자와 따뜻한 온기가 전해지는 차 한잔.
             </p>
             <div className="hero-actions">
               <Link to="/menu" className="btn btn-primary">
-                인기 메뉴 보기
+                예약
               </Link>
               <Link to="/how-to-order" className="btn btn-outline">
-                이용방법 알아보기
+                티 클래스
               </Link>
-            </div>
-          </div>
-          <div className="hero-image">
-            <div className="fresh-card">
-              <p>Today&apos;s Soup</p>
-              <strong>토시 비프</strong>
-              <span>따끈하게 즐기는 데일리 스페셜</span>
             </div>
           </div>
         </div>
@@ -36,39 +29,40 @@ export default function Home() {
       <section className="highlights">
         <div className="container highlight-grid">
           <article className="highlight-card">
-            <h3>메뉴소개</h3>
+            <h3>About</h3>
             <p>
-              클래식부터 프리미엄까지, 취향대로 골라 담는 써브웨이 샌드위치
-              라인업.
+              찻잎을 따고, 말리고, 덖어내는 지난한 과정을 거쳐야만 맛있는 차가
+              만들어집니다.
             </p>
             <Link to="/menu" className="text-link">
-              샌드위치 보러가기 →
+              차를 닮은 삶 →
             </Link>
           </article>
           <article className="highlight-card">
-            <h3>이용방법</h3>
+            <h3>Our Ways</h3>
             <p>
-              빵 선택에서 토핑, 소스까지. 단계별 가이드를 따라 손쉽게 주문해
-              보세요.
+              매일 손이 가는 맛과 향, 누구나 쉽게 즐길 수 있는 일상의 차를
+              소개합니다.
             </p>
             <Link to="/how-to-order" className="text-link">
-              주문 가이드 →
+              특색을 담은 차 →
             </Link>
           </article>
           <article className="highlight-card">
-            <h3>새소식</h3>
-            <p>프로모션과 방송 PPL, 브랜드 소식을 가장 빠르게 만나보세요.</p>
+            <h3>Our Product</h3>
+            <p>단일 지역, 단일 원료로 만들어내는 풍부한 맛과 향을 담습니다.</p>
             <Link to="/news" className="text-link">
-              최신 소식 →
+              싱글오리진 →
             </Link>
           </article>
           <article className="highlight-card">
-            <h3>가맹점</h3>
+            <h3>Our Mission</h3>
             <p>
-              No.1 프랜차이즈 써브웨이의 가맹 절차와 투자 정보를 확인하세요.
+              차를 더 가까이 일상을 더 탄탄하게, 매일의 찻자리를 위한 차도구를
+              제안합니다.
             </p>
             <Link to="/franchise" className="text-link">
-              가맹 안내 →
+              나와 맞는 차 →
             </Link>
           </article>
         </div>
@@ -76,8 +70,8 @@ export default function Home() {
       <section className="cta-banner">
         <div className="container cta-inner">
           <div>
-            <h2>써브웨이를 제대로 즐기는 가장 쉬운 방법</h2>
-            <p>온라인 주문으로 빠르게 픽업하고 썹 포인트도 챙기세요.</p>
+            <h2>삶의 여유를 전하는 가장 좋은 선물</h2>
+            <p>Gift of Life’s Serenity</p>
           </div>
           <a
             className="btn btn-secondary"

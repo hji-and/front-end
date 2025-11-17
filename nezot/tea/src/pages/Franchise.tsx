@@ -45,7 +45,7 @@ export default function Franchise() {
               안내를 도와드립니다.
             </p>
             <ul>
-              <li>대표전화: 02-797-5036</li>
+              <li>대표전화: 02-000-000</li>
               <li>지사 안내: 수도권 / 지방</li>
               <li>사업설명회: 정기 개최, 사전 예약 필수</li>
             </ul>
@@ -53,7 +53,7 @@ export default function Franchise() {
           <div className="contact-actions">
             <a
               className="btn btn-secondary"
-              href="https://www.subway.co.kr/franchise"
+              href="#"
               target="_blank"
               rel="noreferrer"
             >
@@ -61,7 +61,7 @@ export default function Franchise() {
             </a>
             <a
               className="btn btn-outline"
-              href="https://www.subway.co.kr/support"
+              href="#"
               target="_blank"
               rel="noreferrer"
             >
