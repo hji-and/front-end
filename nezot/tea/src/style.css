@@ -508,6 +508,13 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.present {
+  background-image: url("./tea-img/tea-ceremony-7807230_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
 
 /* ----------- News ------------ */
 .news-list {
@@ -516,7 +523,12 @@ a {
   margin-top: 48px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
-
+.news {
+  background-image: url("./tea-img/reading-7807231_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .news-card {
   background: #ffffff;
   padding: 28px;
@@ -555,48 +567,113 @@ a {
 .media-banner h3 {
   margin: 0 0 12px;
   font-size: 1.8rem;
-  color: #ffffff;
+  color: #333;
 }
-
+.newss {
+  background-image: url("./tea-img/tea-7817881_1280.jpg");
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  color: #333;
+}
 /* -------------Franchise------------- */
 .milestone-grid {
   display: grid;
   gap: 24px;
   margin-top: 48px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  position: relative;
 }
-
+.tearoom {
+  background: url("./tea-img/tea-7817881_1280.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .milestone-card {
-  background: #ffffff;
+  /* position: absolute; */
   padding: 32px;
   border-radius: 24px;
-  border: 1px solid rgba(0, 104, 56, 0.08);
+  position: relative;
+  /* border: 1px solid rgba(0, 104, 56, 0.08); */
   box-shadow: 0 16px 36px rgba(31, 45, 61, 0.1);
+  /* background: url("./tea-img/tea-6568547_1280.jpg") no-repeat center; */
+  background-size: 100%;
+  transition: all 0.3s;
+}
+/* .img {
+  margin-top: 48px;
+  padding: 32px;
+  border-radius: 24px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  box-sizing: border-box;
+} */
+.milestone-card:hover .img {
+  background-size: 110% !important;
+  /* transform: scale(1, 1); */
+  box-sizing: border-box;
+}
+.milestone-card:hover .ho:after {
+  height: 100px;
+}
+.milestone-card:hover > p {
+  color: #fff;
+  z-index: 1;
+  visibility: visible;
+}
+
+.milestone-card .ho:after {
+  content: "";
+  border-radius: 0 0 24px 24px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--sky);
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute;
 }
 
 .milestone-card h2 {
   margin-bottom: 12px;
-  color: var(--dark);
+  color: #fff;
 }
 
 .milestone-card p {
   color: var(--gray);
+  position: relative;
+  visibility: hidden;
+  margin-bottom: 10px;
+  /* transition: all 0.9s ease-in; */
 }
 .franchise-contact {
   margin-top: 72px;
   padding: 64px 0;
-  background: rgba(0, 104, 56, 0.06);
+  /* background: rgba(0, 104, 56, 0.06); */
+  background: url("./tea-img/tea-set-4709642_1280.jpg") no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  /* background-color: linear-gradient(180deg, var(--sky), var(--gray)) !important; */
 }
 .contact-inner {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   align-items: center;
+  background-color: linear-gradient(
+    135deg,
+    rgba(0, 104, 56, 0.9),
+    rgba(255, 194, 14, 0.9)
+  );
 }
 .contact-inner ul {
   margin: 16px 0 0;
   padding-left: 20px;
-  color: var(--gray);
+  color: #333;
   line-height: 1.6;
 }
 .contact-actions {
@@ -606,9 +683,8 @@ a {
   justify-content: flex-start;
 }
 
-/* footer */
 .site-footer {
-  background: var(--dark);
+  background: #333;
   color: rgba(255, 255, 255, 0.82);
   padding: 32px 0;
 }
@@ -672,7 +748,7 @@ a {
 }
 
 .btn-outline:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .text-link {
   font-weight: 600;

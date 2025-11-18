@@ -1,35 +1,47 @@
 const milestones = [
   {
-    title: "가맹 상담",
-    description: "지사 담당자와 1:1 상담을 통해 지역 및 조건을 확인합니다.",
+    title: "신사 티룸",
+    description:
+      "신사티룸은 일상 속 놓치기 쉬운 감각에 집중할 수 있는 공간입니다. ",
+    img: "./tea-img/tea-set-4709640_1280.jpg",
   },
   {
-    title: "사업 설명회",
-    description:
-      "브랜드 철학, 투자 비용, 교육 과정 등 가맹 성공 전략을 공유합니다.",
+    title: "성수 티룸",
+    description: "성수티룸은 가장 일상적인 차를 제안합니다. ",
+    img: "./tea-img/green-tea-6078275_1280.jpg",
   },
   {
-    title: "교육 & 오픈",
-    description:
-      "본사 직영 아카데미에서 조리 및 운영 교육 후 매장 오픈을 준비합니다.",
+    title: "하동 티룸",
+    description: "하동티룸은 다양한 차를 맛보고 시음할 수 있습니다. ",
+    img: "./tea-img/moc-chau-tea-hills-2094184_1280.jpg",
   },
 ];
 export default function Franchise() {
   return (
     <div className="page franchise-page">
-      <section className="page-hero">
-        <div className="container">
-          <h1>써브웨이 가맹점 안내</h1>
+      <section className="page-hero tearoom">
+        <div className="container ">
+          <h1>Tearoom</h1>
           <p>
-            50년 역사의 No.1 프랜차이즈. 체계적인 지원과 탄탄한 브랜드 파워로
-            안정적인 창업을 도와드립니다.
+            책을 읽으면서, 대화를 하면서, 혹은 노트북을 펼쳐두고 작업을 하는
+            순간에도
+            <br /> 차를 곁들이는 모습을 상상하며 준비한 공간입니다.
           </p>
         </div>
       </section>
 
       <section className="container milestone-grid">
         {milestones.map((milestone) => (
-          <article key={milestone.title} className="milestone-card">
+          <article
+            key={milestone.title}
+            className="milestone-card img"
+            style={{
+              backgroundImage: `url(${milestone.img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="ho"></div>
             <h2>{milestone.title}</h2>
             <p>{milestone.description}</p>
           </article>

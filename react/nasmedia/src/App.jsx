@@ -65,7 +65,6 @@ export default function App() {
   );
 
   const wheelLock = useRef(false);
-  const touchStartY = useRef(null);
 
   const handleWheel = useCallback((event) => {
     if (wheelLock.current || isMenuOpen || showIntro) {
@@ -91,6 +90,50 @@ export default function App() {
   });
   //---App---
 
+  //---Mobiletouch---
+  const touchStartY = useRef(null);
+
+  const handleTouchStart = useCallback(
+    (event) => {
+      if (isMenuOpen || showIntro) return; //메뉴가 열려있을 때나 인트로 중에는 무시
+      touchStartY.current = event.touches[0].clientY; //clientY == Y의좌표
+      //현재는 첫번째 터치만 처리
+    },
+    [isMenuOpen, showIntro]
+  );
+  //실제 움직일 때
+  const handleTouchMove = useCallback(
+    (event) => {
+      if (
+        touchStartY.current == null ||
+        wheelLock.current ||
+        isMenuOpen ||
+        showIntro
+      )
+        return;
+      //시작위치가 없거나, 휠잠금상태이거나, 메뉴가 보이거나, 인트로 상태에선 빠져나감
+
+      const currentY = event.touches[0].clientY;
+      const delta = touchStartY.current - currentY;
+      if (Math.abs(delta) < 50) {
+        //abs절대값 / 미미한 동작(delta)은 이벤트가 발생X
+        return;
+      }
+      wheelLock.current = true;
+      changeSection((prev) => (delta > 0 ? prev + 1 : prev - 1));
+      window.setTimeout(() => {
+        wheelLock.current = false;
+      }, 1000); //올라가는 동안은 터치무브가 안 먹게
+      touchStartY.current = null; //다시 한 번 스크롤이 가능하게 풀어줌
+    },
+    [isMenuOpen, showIntro, changeSection]
+  );
+  //touchStartY.current = null; 넣어놨지만 한 번 더 안전장치
+  const handleTouchEnd = useCallback(() => {
+    touchStartY.current = null;
+  }, []);
+  //---Mobiletouch---
+
   return (
     <div className={`app-root${isMenuOpen ? " menu-open" : ""}`}>
       <FixAnimation
@@ -108,7 +151,13 @@ export default function App() {
         activeIndex={activeSection} //활성화된 섹션값
         onSelect={(index) => changeSection(() => index)}
       />
-      <div id="fullpage" onWheel={handleWheel}>
+      <div
+        id="fullpage"
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="full_cover" style={fullCoverStyle}>
           <SectionOne />
           <SectionTwo />

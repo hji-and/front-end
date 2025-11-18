@@ -16,10 +16,10 @@ export default function Home() {
               보글보글 물이 끓는 주전자와 따뜻한 온기가 전해지는 차 한잔.
             </p>
             <div className="hero-actions">
-              <Link to="/menu" className="btn btn-primary">
+              <Link to="/franchise" className="btn btn-primary">
                 예약
               </Link>
-              <Link to="/how-to-order" className="btn btn-outline">
+              <Link to="/franchise" className="btn btn-outline">
                 티 클래스
               </Link>
             </div>
@@ -34,7 +34,7 @@ export default function Home() {
               찻잎을 따고, 말리고, 덖어내는 지난한 과정을 거쳐야만 맛있는 차가
               만들어집니다.
             </p>
-            <Link to="/menu" className="text-link">
+            <Link to="/news" className="text-link">
               차를 닮은 삶 →
             </Link>
           </article>
@@ -44,14 +44,14 @@ export default function Home() {
               매일 손이 가는 맛과 향, 누구나 쉽게 즐길 수 있는 일상의 차를
               소개합니다.
             </p>
-            <Link to="/how-to-order" className="text-link">
+            <Link to="/menu" className="text-link">
               특색을 담은 차 →
             </Link>
           </article>
           <article className="highlight-card">
             <h3>Our Product</h3>
             <p>단일 지역, 단일 원료로 만들어내는 풍부한 맛과 향을 담습니다.</p>
-            <Link to="/news" className="text-link">
+            <Link to="/menu" className="text-link">
               싱글오리진 →
             </Link>
           </article>
@@ -61,7 +61,7 @@ export default function Home() {
               차를 더 가까이 일상을 더 탄탄하게, 매일의 찻자리를 위한 차도구를
               제안합니다.
             </p>
-            <Link to="/franchise" className="text-link">
+            <Link to="/how-to-order" className="text-link">
               나와 맞는 차 →
             </Link>
           </article>
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <a
             className="btn btn-secondary"
-            href="https://www.subway.co.kr/"
+            href="#"
             target="_blank"
             rel="noreferrer"
             // 외부사이트로 이동하면 브라우저는 자동으로 어디서 왔는지(referrer)를 전송

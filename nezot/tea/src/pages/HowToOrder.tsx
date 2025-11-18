@@ -6,21 +6,22 @@ const steps = [
       "백자에 유약을 입혀 구웠습니다. 차의 향미를 있는 그대로 표현해주는 소재입니다.",
   },
   {
-    number: "🥄",
-    title: "잎차 생활을 위한 전자저울",
+    number: "🌳",
+    title: "나무",
     description:
-      "기본 7가지 야채에 치즈, 에그, 베이컨 등 원하는 토핑을 자유롭게 더합니다.",
+      "촘촘한 결의 소재를 섬세하게 엮어냈습니다. 100% 수공예로 제작됩니다.",
   },
   {
     number: "🧮",
-    title: "잎차 생활을 위한 전자저울",
-    description: "찻잎의 무게는 물론 추출시간까지 잴 수 있어요.",
+    title: "전자저울",
+    description:
+      "잎차 생활을 위한 도구. 찻잎의 무게는 물론 추출시간까지 잴 수 있어요.",
   },
   {
     number: "🥛",
-    title: "세트 업그레이드",
+    title: "유리",
     description:
-      "쿠키, 수프, 음료를 더해 풍성한 한 끼를 완성하거나 샐러드로 가볍게 즐겨보세요.",
+      "우러난 차의 수색을 즐길 수 있는 내열 소재의 티서버와 냉침을 위한 보틀.",
   },
 ];
 
@@ -44,22 +45,19 @@ export default function HowToOrder() {
           ))}
         </div>
       </section>
-      <section className="online-order">
-        <div className="container online-inner">
+      <section className="online-order present">
+        <div className="container online-inner ">
           <div>
-            <h3>온라인 주문으로 더 빠르게</h3>
-            <p>
-              앱 또는 웹에서 미리 주문하고 픽업하면 대기 없이 편리하게 즐길 수
-              있습니다.
-            </p>
+            <h3>선물 기획전</h3>
+            <p>차 선물 세트 최대 20% 할인 혜택과 감사의 달 사은품 증정</p>
           </div>
           <a
             className="btn btn-primary"
-            href="https://www.subway.co.kr/app"
+            href="#"
             target="_blank"
             rel="noreferrer"
           >
-            앱 주문 안내
+            선물 기획전 보러가기
           </a>
         </div>
       </section>
