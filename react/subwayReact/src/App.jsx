@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
-import "./styles/subway.css";
-import Slider from "react-slick";
+import { Slider } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./styles/subway.css";
+import Slide from "/Slide.jsx";
 
 const navMenus = [
   {
@@ -449,7 +450,9 @@ export default function App() {
                 </li>
               </ul>
             </div>
-            <div className="cont_04"></div>
+            <div className="cont_04">
+              <Slide />
+            </div>
           </div>
         </div>
       </section>

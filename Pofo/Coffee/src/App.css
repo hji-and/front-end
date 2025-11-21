@@ -46,26 +46,33 @@ li {
 }
 
 /* ------App.jsx------ */
-.header {
+/* .header {
   width: 100%;
   height: 15%;
-}
-.fix_top {
-  width: 100%;
-  height: 50px;
-  background-color: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s ease;
+} */
+/* .fix_top {
   position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out; */
+/* height: 50px; */
+/* background-color: transparent;
+  border-bottom: 1px solid transparent;
+  color: var(--brown);
+}
+
+.fix_top.scrolled {
+  height: 50px;
+  background-color: var(--white);
+
+  border-bottom: 1px solid lightslategrey;
 }
 .fix_top > P {
   display: block;
   padding-left: 55%;
-}
-.fix_top:hover {
-  height: 50px;
-  background-color: var(--teddy);
-  border-bottom: 1px solid lightslategrey;
 }
 .logo {
   display: block;
@@ -98,22 +105,22 @@ li {
   background: url(/img/icon_global_subway.png) no-repeat center;
 }
 /* nav */
-nav {
+/* nav {
   width: 100%;
   border-bottom: 1px solid #e5e5e5;
 }
 nav > ul {
   width: 50%;
-  height: 75px;
-  margin: 0 auto;
-  /* padding: 0 10%; */
-  text-align: center;
+  height: 75px; */
+/* margin: 0 auto; */
+/* padding: 0 10%; */
+/* text-align: center;
   box-sizing: border-box;
   position: relative;
-  z-index: 15;
-  /* shadow보다 위에 나타나야해서 relative와 z-index 지정 */
-}
-nav > ul > li {
+  z-index: 15;}  */
+/* shadow보다 위에 나타나야해서 relative와 z-index 지정 */
+
+/* nav > ul > li {
   float: left;
 }
 nav > ul > li > a {
@@ -133,9 +140,9 @@ nav ul li ul {
   height: 0;
   opacity: 0;
   transition: all 0.2s;
-  /* padding-top: 20px; */
-}
-nav ul:hover li ul {
+  padding-top: 20px;
+} */
+/* nav ul:hover li ul {
   height: 250px;
   opacity: 1;
 }
@@ -167,4 +174,195 @@ nav ul:hover + .shadow {
 nav ul li ul li:hover a {
   color: var(--rose);
   text-decoration: underline;
+} */
+
+/* ----------- */
+/* Nav.css */
+
+/*
+  1. 헤더 기본 스타일 및 스크롤에 따른 변화
+*/
+#top {
+  /* 헤더 전체를 감싸는 영역 (필요에 따라 추가 스타일링) */
+  position: relative;
+  width: 100%;
+  z-index: 100; /* 네비게이션이 다른 요소 위에 오도록 설정 */
 }
+
+.fix {
+  position: fixed; /* 뷰포트에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0; /* 상하 패딩 */
+  transition: background-color 0.3s ease-in-out; /* 배경색 전환 애니메이션 */
+  background-color: transparent; /* 초기 배경색 투명 */
+  color: #333; /* 초기 글자색 (검은색 계열) */
+  z-index: 10;
+}
+
+/* 스크롤 시 배경색과 글자색 변경 */
+.fix.scrolled {
+  background-color: #000; /* 스크롤 시 검은색 배경 */
+  color: #fff; /* 스크롤 시 흰색 글자 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 스크롤 시 그림자 추가 */
+}
+
+/* 스크롤 시 .fix 안에 있는 모든 링크/텍스트의 색상을 흰색으로 변경 */
+.fix.scrolled a {
+  color: #fff;
+}
+
+/* 로고 텍스트 색상 (스크롤 시 .fix.scrolled에서 변경됨) */
+.logo-txt {
+  color: inherit; /* 부모 요소인 .fix의 색상을 상속 */
+}
+
+/* 로고 이미지 스크롤 시 대비를 위해 필요하다면 스타일 추가 */
+.fix.scrolled .logo img {
+  /* 예: 로고 이미지를 흰색 버전으로 변경하거나, 필터를 적용할 수 있습니다. */
+  /* filter: brightness(0) invert(1); */
+}
+
+/*
+  2. 메뉴 목록들을 단정하게 정렬 (일반적인 웹페이지 네비게이션 스타일)
+*/
+
+.util-bar {
+  display: flex;
+  justify-content: space-between; /* 로고와 유틸 메뉴를 양 끝으로 */
+  align-items: center;
+  max-width: 1200px; /* 콘텐츠 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 0 20px; /* 좌우 패딩 */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: inherit; /* 부모 .fix의 색상 상속 */
+}
+
+.logo img {
+  height: 40px; /* 로고 이미지 크기 */
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.util-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px; /* 메뉴 항목 간 간격 */
+}
+
+.util-menu li a {
+  text-decoration: none;
+  color: inherit; /* 부모 .fix의 색상 상속 */
+  font-size: 0.8rem;
+  white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 언어 변경 버튼 (earth 클래스) 스타일링 */
+.util-menu li .earth {
+  /* 실제 지구 아이콘 이미지를 사용하는 경우 */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(/img/icon_global_subway.png); /* 실제 이미지 경로로 대체 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* 스크롤 시 색상 변경을 위해 배경 이미지 대신 색상/필터 사용을 고려할 수 있습니다. */
+}
+
+/* 메인 네비게이션 스타일 */
+nav {
+  /* .fix 높이 + 추가 여백 만큼 top에 패딩을 주어 겹치지 않게 함 */
+  padding-top: 60px; /* .fix의 높이에 맞춰 조정 (대략 40px 로고 + 2*10px 패딩) */
+  width: 100%;
+  background-color: transparent;
+  z-index: 5; /* .fix 아래에 위치 */
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-around; /* 메뉴들을 균등하게 분배 */
+  background-color: #fff; /* 메인 메뉴 배경색 */
+  border-top: 1px solid #eee;
+  padding: 15px 20px;
+}
+
+nav > ul > li {
+  position: relative; /* 하위 메뉴 위치 기준점 */
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 0 10px;
+  display: block;
+  line-height: 1;
+}
+
+/* 하위 메뉴 (드롭다운) 스타일 */
+nav ul ul {
+  display: none; /* 기본적으로 숨김 */
+  position: absolute;
+  top: 100%; /* 상위 메뉴 바로 아래에 위치 */
+  left: 0;
+  min-width: 180px; /* 최소 너비 */
+  background-color: #fff;
+  border: 1px solid #eee;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+/* 호버 시 하위 메뉴 보이게 */
+nav > ul > li:hover > ul {
+  display: block;
+}
+
+nav ul ul li a {
+  text-decoration: none;
+  color: #555;
+  padding: 8px 20px;
+  display: block;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+nav ul ul li a:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+/* 드롭다운 메뉴 아래 그림자 (배경이 짙어질 때 사용될 수 있음) */
+.shadow {
+  display: none;
+  position: absolute;
+  top: 100%; /* nav 내부에서 하단에 위치 */
+  left: 0;
+  width: 100%;
+  height: 0; /* 초기 높이 0 */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 15;
+  transition: height 0.3s ease-in-out;
+}
+
+/* 드롭다운 메뉴가 보일 때 shadow도 함께 표시하려면 JS 로직이 추가되어야 하지만,
+   순수 CSS만으로는 :hover에 의존해야 합니다. */
+/* nav > ul > li:hover ~ .shadow {
+    display: block;
+    height: 200px; 
+} */

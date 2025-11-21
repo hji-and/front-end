@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const navMenus = [
   {
@@ -21,32 +23,51 @@ const navMenus = [
     label: "WHAT'S NEW",
     items: ["뉴스·공지사항", "광고영상", "시즈널 MD", "사회공언"],
   },
-];
-//각 메뉴는 label(메뉴명), items(하위메뉴 배열)
-export default function Nav() {
-  return (
-    <header>
-      <div className="fix_top">
-        <p>The Coffee Roost</p>
+]; //각 메뉴는 label(메뉴명), items(하위메뉴 배열)
 
-        <a href="#" className="logo">
-          <img src="/img/logo1.png" alt="로고" />
-        </a>
-        <ul>
-          <li>
-            <a href="#">매장찾기</a>
-          </li>
-          <li>
-            <a href="#">가맹신청·문의</a>
-          </li>
-          <li>
-            <a href="#">고객센터</a>
-          </li>
-          <li>
-            <a href="#" className="earth" aria-label="언어 변경"></a>
-          </li>
-        </ul>
+export default function Nav() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollHold = 50;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > scrollHold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const headerClass = `fix ${isScrolled ? "scrolled" : ""}`;
+
+  return (
+    <header id="top">
+      <div className={headerClass} id="fix">
+        <div className="util-bar">
+          <a href="#" className="logo">
+            <img src="/img/logo1.png" alt="로고" />
+            <span className="logo-txt">The Coffee Roost</span>
+          </a>
+          <ul className="util-menu">
+            <li>
+              <a href="#">매장찾기</a>
+            </li>
+            <li>
+              <a href="#">가맹신청·문의</a>
+            </li>
+            <li>
+              <a href="#">고객센터</a>
+            </li>
+            <li>
+              <a href="#" className="earth" aria-label="언어 변경"></a>
+            </li>
+          </ul>
+        </div>
       </div>
+
+      {/*  */}
       <nav>
         <ul>
           {navMenus.map((menu) => (
