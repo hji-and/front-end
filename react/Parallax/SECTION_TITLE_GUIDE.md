@@ -853,3 +853,4 @@ const SectionSubtitle = ({ children, className = '' }) => {
 **이 문서는 SectionTitle 컴포넌트의 모든 기능과 사용법을 상세히 설명합니다.**
 **추가 질문이나 개선 사항이 있으면 이슈를 등록해주세요.**
 
+

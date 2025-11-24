@@ -16,6 +16,9 @@
   margin: 0 auto;
   padding-top: 2.8rem;
 }
+.section-content h2 {
+  font-size: 3rem;
+}
 .me ul {
   font-weight: bold;
   font-size: 0.9rem;
@@ -122,7 +125,7 @@ section {
   padding: 2rem;
 }
 .section-content p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.8;
   margin-bottom: 2rem;
 }
@@ -190,6 +193,26 @@ section {
   }
 }
 
+/* 타이핑 */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #333;
+  }
+}
+
 /* section 카드 */
 .cards {
   display: grid;
@@ -240,9 +263,11 @@ section {
   flex-direction: column;
 }
 .portfolio-image {
+  overflow: hidden;
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%);
+  /* background: linear-gradient(135deg, #eaf8fa 0%, #cededc 50%, #adcfc9 100%); */
+  /* background: url(/dasoni.PNG) no-repeat center; */
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -254,7 +279,7 @@ section {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
-.portfolio-image span {
+/* .portfolio-image span {
   position: absolute;
   top: 30.5%;
   left: 24%;
@@ -264,29 +289,30 @@ section {
   background-color: rgba(0, 0, 0, 0.1);
   transition: width 0.4s ease, border-radius 0.4s ease;
   visibility: hidden;
-}
-.portfolio-image a:hover span {
+} */
+/* .portfolio-image a:hover span {
   width: 53%;
   border-radius: 40px;
   visibility: visible;
-}
+} */
 
 .portfolio-image a {
-  color: white !important;
+  color: #333 !important;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration-line: none;
+  z-index: 999;
 }
 .portfolio-image a:visited {
-  color: #adcfc9;
+  color: #333;
 }
-.portfolio-image:hover {
+/* .portfolio-image:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 .portfolio-image a:hover {
   color: #adcfc9 !important;
-}
+} */
 .portfolio-item h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
@@ -295,6 +321,27 @@ section {
 .portfolio-item p {
   color: #666;
   line-height: 1.6;
+}
+/* 사진 */
+.portfolio-image .thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* 이미지가 잘릴 경우 가운데를 중심으로 표시 */
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.project-link:hover .thumbnail {
+  transform: scale(1.1);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+}
+.project-link {
+  display: block; /* 블록 요소로 만들어 <img>를 꽉 채우도록 */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 /* Swiper Navigation */
 .portfolio-swiper .swiper-button-next,

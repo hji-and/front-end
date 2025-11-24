@@ -33,26 +33,26 @@ const Hero = () => {
             backgroundPosition: 'center',
           }}
         />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6">
-            <span className="inline-flex items-center">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 mb-4 sm:mb-6">
+            <span className="inline-flex items-center flex-wrap justify-center">
               <span className="whitespace-nowrap">{displayText}</span>
-              <span className="inline-block w-0.5 h-12 md:h-16 bg-orange-500 ml-2 animate-pulse"></span>
+              <span className="inline-block w-0.5 h-8 sm:h-10 md:h-12 lg:h-16 bg-orange-500 ml-2 animate-pulse"></span>
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8 px-4">
             창의적인 웹 개발자
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 px-4">
             <a
               href="#portfolio"
-              className="px-8 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 font-medium"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 active:bg-orange-700 transition-colors duration-300 font-medium text-base sm:text-lg touch-manipulation"
             >
               포트폴리오 보기
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 bg-transparent border-2 border-gray-800 text-gray-800 rounded-lg hover:bg-gray-800 hover:text-white transition-colors duration-300 font-medium"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3 bg-transparent border-2 border-gray-800 text-gray-800 rounded-lg hover:bg-gray-800 hover:text-white active:bg-gray-900 transition-colors duration-300 font-medium text-base sm:text-lg touch-manipulation"
             >
               연락하기
             </a>

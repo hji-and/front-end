@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Slider } from "react-slick";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/subway.css";
-import Slide from "/Slide.jsx";
+import Slide from "./Slide";
 
 const navMenus = [
   {

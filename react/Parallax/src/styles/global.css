@@ -10,6 +10,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -18,6 +20,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 모바일 터치 최적화 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* 스크롤 애니메이션 */

@@ -1,5 +1,6 @@
+/////////Slide.jsx/////////
 import React from "react";
-import { Slider } from "react-slick";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/subway.css";
@@ -12,21 +13,20 @@ export default function Slide() {
     speed: 500, //슬라이드 1장 넘어가는 속도
     slidesToShow: 1,
     slidesToScroll: 1, //마우스로 스크롤 시 1장씩 넘어감
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 4000,
-    // className: "basic-slider",
   };
 
   const slides = [
-    { id: 1, image: "/img/slick1.png" },
-    { id: 2, image: "/img/slick2.png" },
-    { id: 3, image: "/img/slick3.png" },
+    { id: 1, image: "/img/min1.png" },
+    { id: 2, image: "/img/min2.png" },
+    { id: 3, image: "/img/min3.png" },
+    { id: 4, image: "/img/min4.png" },
   ];
 
   return (
     <div className="mini-slider">
       <Slider {...settings}>
-        {/* ...전개연산자 */}
         {slides.map((slide) => (
           <div key={slide.id} className="mini-slide">
             <div
