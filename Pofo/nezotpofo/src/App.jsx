@@ -144,7 +144,7 @@ export default function App() {
                   </span>
                 </li>
                 <li>
-                  ‘생성형 AI활용(스테이블 디퓨전) 모던 웹 실무자 육성'
+                  '생성형 AI활용(스테이블 디퓨전) 모던 웹 실무자 육성'
                   이수중(2025.9~2025.12)
                   <br />
                   <span>
@@ -248,9 +248,9 @@ export default function App() {
                         rel="noopener noreferrer"
                       >
                         <img
-                          src="/moon.PNG" // public 폴더의 경로
-                          alt="프로젝트 1 미리보기 이미지"
-                          className="thumbnail" // CSS 스타일링을 위한 클래스
+                          src="/moon.PNG"
+                          alt="프로젝트 2 미리보기 이미지"
+                          className="thumbnail"
                         />
                       </a>
                     </div>
@@ -259,7 +259,7 @@ export default function App() {
                       <LuSquareArrowOutUpRight
                         style={{ fontSize: "20px", padding: "6px 5px 0 0" }}
                       />
-                      Project 1
+                      Project 2
                     </h3>
                     <p>HTML, CSS, JavaScript를 사용한 반응형 웹</p>
                   </div>
@@ -273,14 +273,20 @@ export default function App() {
                         className="project-link"
                         rel="noopener noreferrer"
                       >
-                        <span className="arrow"></span>
-                        <LuSquareArrowOutUpRight
-                          style={{ fontSize: "20px" }}
-                        />{" "}
-                        Project 3
+                        <img
+                          src="/tea.PNG"
+                          alt="프로젝트 3 미리보기 이미지"
+                          className="thumbnail"
+                        />
                       </a>
                     </div>
-                    <h3>프로젝트 3</h3>
+                    <h3>
+                      {" "}
+                      <LuSquareArrowOutUpRight
+                        style={{ fontSize: "20px", padding: "6px 5px 0 0" }}
+                      />
+                      Project 3
+                    </h3>
                     <p>React(Router)와 TypeScript를 사용한 반응형 웹</p>
                   </div>
                 </SwiperSlide>

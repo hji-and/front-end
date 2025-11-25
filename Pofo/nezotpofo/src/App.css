@@ -109,6 +109,7 @@ section {
 .section-resume {
   background: url(/pic.png) no-repeat center;
   color: white;
+  background-size: cover;
 }
 .section-resume span {
   color: #fff;

@@ -1,0 +1,245 @@
+:root {
+  --header-height: 100px; /* 헤더 높이 예상값 */
+}
+
+/* 1. 헤더 전체 고정 및 스크롤 효과 */
+#top.fix {
+  position: fixed; /* 뷰포트에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0; /* 전체 헤더 상하 패딩 */
+  transition: background-color 0.3s ease-in-out; /* 배경색 전환 애니메이션 */
+  background-color: transparent; /* 초기 배경색 투명 */
+  color: #333; /* 초기 글자색 (검은색 계열) */
+  z-index: 100; /* 가장 위에 위치 */
+}
+
+/* 스크롤 시 배경색과 글자색 변경 */
+#top.fix.scrolled {
+  background-color: var(--brown); /* 스크롤 시 배경색 */
+  color: #fff; /* 스크롤 시 흰색 글자 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 스크롤 시 .fix 안에 있는 모든 링크/텍스트의 색상을 흰색으로 변경 */
+#top.fix.scrolled a {
+  color: #fff;
+}
+
+/* 스크롤 시 메인 네비게이션 배경색도 함께 변경 (선택 사항) */
+#top.fix.scrolled .main-nav > ul {
+  /* 스크롤 시에도 메뉴바 배경색을 다르게 유지하고 싶다면 이 부분을 조정 */
+}
+
+/* 로고 텍스트 색상 (스크롤 시 .fix.scrolled에서 변경됨) */
+.logo-txt {
+  color: inherit; /* 부모 요소인 .fix의 색상을 상속 */
+}
+
+/* 콘텐츠 중앙 정렬을 위한 컨테이너 */
+.container {
+  max-width: 1200px; /* 콘텐츠 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 0 20px; /* 좌우 패딩 */
+}
+
+/* 햄버거 메뉴 */
+.col {
+  display: block;
+  float: left;
+  margin: 1% 0 1% 1.6%;
+}
+
+.col:first-of-type {
+  margin-left: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+
+.row .three {
+  padding: 80px 30px;
+  box-sizing: border-box;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+}
+.hamburger .line {
+  width: 50px;
+  height: 5px;
+  background-color: #ecf0f1;
+  display: block;
+  margin: 8px auto;
+  transition: all 0.3s ease-in-out;
+}
+/* #hamburger-1 */
+#hamburger-1.is-active .line:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+}
+#hamburger-1.is-active .line:nth-child(2) {
+  opacity: 0;
+}
+#hamburger-1.is-active .line:nth-child(3) {
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+/* 2. 유틸 바 (로고 + 유틸 메뉴) */
+.util-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px 0; 이미 #top.fix에 패딩 적용 */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: inherit;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.util-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.util-menu li a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* 언어 변경 버튼 (earth 클래스) 스타일링 */
+.util-menu li .earth {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(/img/icon_global_subway.png); /* 실제 이미지 경로로 대체 */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 3. 메인 네비게이션 스타일 (드롭다운 포함) */
+.main-nav {
+  /* width: 100%; */
+  /* .main-nav 자체에는 padding-top을 주지 않고,
+     유틸 바와 메인 내비게이션 간 간격은 .util-bar나 .main-nav의 margin/padding으로 조정 */
+  width: 320px; /* w-80 (320px) */
+  background-color: #00d9c0; /* bg-[#00d9c0] */
+  color: black; /* text-black */
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  position: fixed; /* fixed */
+  height: 100vh; /* h-full */
+  overflow-y: auto; /* overflow-y-auto */
+}
+
+.main-nav > ul {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  /* .fix에 배경색을 적용했으므로, 이 배경색은 초기에는 투명하게 유지하거나 필요에 따라 색상을 지정 */
+  background-color: transparent;
+  padding: 10px 0; /* 메뉴 항목의 상하 패딩 */
+}
+
+.main-nav > ul > li {
+  position: relative;
+}
+
+.main-nav > ul > li > a {
+  text-decoration: none;
+  color: inherit; /* 부모 .fix의 색상을 상속 */
+  font-weight: 600;
+  padding: 5px 10px;
+  display: block;
+}
+
+/* 하위 메뉴 (드롭다운) 스타일 */
+
+.main-nav ul {
+  display: none; /* 기본적으로 숨김 */
+  position: absolute;
+
+  /* 위치 조정 */
+  top: 0;
+  left: 0; /* 상위 메뉴 항목의 왼쪽 끝을 기준으로 시작 */
+
+  /* 기존 중앙 정렬 변환 제거 */
+  transform: none;
+
+  min-width: 180px;
+  background-color: #fff; /* 하위 메뉴 배경색 */
+  border: 1px solid #eee;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+/* 호버 시 하위 메뉴 보이게 */
+.main-nav > ul > li:hover > ul {
+  display: block;
+}
+
+/* 하위 메뉴 세부 스타일은 기존과 동일 */
+.main-nav ul ul li a {
+  text-decoration: none;
+  color: #555;
+  padding: 8px 20px;
+  display: block;
+  white-space: nowrap;
+}
+
+.main-nav ul ul li a:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+/* 4. 본문 콘텐츠를 위한 공간 확보 (중요) */
+/* 고정된 헤더 때문에 본문 콘텐츠가 헤더 아래로 숨겨지는 것을 방지 */
+body {
+  margin-top: 0; /* body의 기본 margin 제거 */
+  padding-top: var(--header-height); /* 헤더의 높이만큼 padding 추가 */
+}
+
+/* 스크롤 시 헤더 높이가 바뀌지 않는다면, body padding-top을 적절히 설정해주세요.
+   예시: 약 100px (유틸바 + 메인메뉴) */
