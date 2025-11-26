@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import slide1 from "./img/slide1.png";
-import slide2 from "./img/slide2.png";
+import slide1 from "./img/slide1-1.png";
+import slide2 from "./img/slide2-1.png";
 import slide3 from "./img/slide3.png";
 
 const SLIDES = [

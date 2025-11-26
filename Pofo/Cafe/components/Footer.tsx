@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
               Best Sellers
             </a>
             <a href="#" className="hover:text-black transition-colors">
-              Accessories
+              MD
             </a>
           </div>
           <div className="flex flex-col space-y-2">
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               Contact
             </a>
             <a href="#" className="hover:text-black transition-colors">
-              Shopping
+              Shop
             </a>
           </div>
         </div>

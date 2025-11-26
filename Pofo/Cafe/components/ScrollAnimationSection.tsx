@@ -86,8 +86,8 @@ export const ScrollAnimationSection: React.FC = () => {
               <p className="text-gray-600 font-light leading-loose text-lg max-w-md border-l-2 border-gray-200 pl-6">
                 커피잔에 담긴 최종 결과물이 어떠해야 하는지를 가장 먼저
                 생각합니다. “강조하고 싶은 풍미는 무엇인가, 무엇이 느껴져야
-                하는가?” 그리고 풍부한 경험을 가진 팀에서 각각의 블렌드를
-                개발하고 제조합니다.
+                하는가?” 풍부한 경험을 가진 팀에서 각각의 블렌드를 개발하고
+                제조합니다.
               </p>
 
               <div className="pt-4">

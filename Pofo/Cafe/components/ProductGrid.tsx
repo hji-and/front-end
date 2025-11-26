@@ -56,7 +56,7 @@ export const ProductGrid: React.FC = () => {
   return (
     <section
       id="shop"
-      className="py-20 px-6 md:px-12 max-w-7xl mx-auto bg-white"
+      className="py-20 px-6 md:px-12 max-w-7xl mx-auto bg-stone-20"
     >
       <div className="text-center mb-16">
         <span className="text-xs font-bold tracking-widest text-gray-500 uppercase block mb-2">
