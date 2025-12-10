@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git 협업 가이드 - 브랜치 전략, 업스트림, 머지 후 삭제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            padding: 24px;
+        }
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: #273c75;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 24px;
+        }
+        h2 {
+            margin: 28px 0 16px;
+            padding: 10px 12px;
+            border-left: 5px solid #273c75;
+            background: #f0f4ff;
+            border-radius: 6px;
+            color: #2f3640;
+            font-size: 1.3rem;
+        }
+        h3 {
+            margin: 18px 0 10px;
+            font-size: 1.1rem;
+            color: #353b48;
+        }
+        p {
+            margin: 6px 0 10px;
+            line-height: 1.6;
+        }
+        ul, ol {
+            margin: 6px 0 12px 22px;
+        }
+        li {
+            margin: 4px 0;
+        }
+        code {
+            font-family: "Consolas", "Menlo", monospace;
+            background: #f3f3f6;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.92rem;
+            color: #e84118;
+        }
+        .terminal {
+            background: #1e272e;
+            color: #f5f6fa;
+            font-family: "Consolas", "Menlo", monospace;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 10px 0 14px;
+            font-size: 0.92rem;
+            overflow-x: auto;
+        }
+        .terminal-line {
+            white-space: pre;
+        }
+        .terminal-line span.prompt {
+            color: #00b894;
+        }
+        .terminal-line span.cmd {
+            color: #ffeaa7;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            background: #dff9fb;
+            color: #0984e3;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .box {
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 10px 0 14px;
+            font-size: 0.95rem;
+        }
+        .box.info {
+            background: #e8f4ff;
+            border-left: 4px solid #0984e3;
+        }
+        .box.warn {
+            background: #fff5e6;
+            border-left: 4px solid #e1a200;
+        }
+        .box.danger {
+            background: #ffecec;
+            border-left: 4px solid #e84118;
+        }
+        .toc {
+            background: #f5f7ff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #dcdde1;
+        }
+        .toc h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            color: #273c75;
+        }
+        .toc ul {
+            margin: 0;
+            list-style: none;
+        }
+        .toc li {
+            margin: 4px 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #0984e3;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+        .step-index {
+            flex: 0 0 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #273c75;
+            color: #fff;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .step-body {
+            flex: 1;
+        }
+        .step-body strong {
+            display: inline-block;
+            margin-bottom: 3px;
+        }
+        .small {
+            font-size: 0.86rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>Git 협업 가이드</h1>
+    <p class="subtitle">
+        팀 협업에서 자주 쓰는 <strong>dev 브랜치 전략, 기능 브랜치(one, two, three)</strong>, 
+        <strong>upstream 설정, 머지 후 브랜치 삭제</strong>까지 한 번에 정리한 HTML 가이드입니다.
+    </p>
+
+    <div class="toc">
+        <h3>📑 목차</h3>
+        <ul>
+            <li><a href="#flow">1. 기본 협업 흐름(요약)</a></li>
+            <li><a href="#dev-setup">2. dev 브랜치 만들기 & 기본 브랜치로 사용</a></li>
+            <li><a href="#feature-branch">3. 기능 브랜치(one, two, three) 생성과 작업</a></li>
+            <li><a href="#upstream">4. upstream 설정과 <code>git push --set-upstream</code></a></li>
+            <li><a href="#merge-delete">5. 머지 후 브랜치 삭제 (로컬 + 원격)</a></li>
+            <li><a href="#merge-to-main">6. dev를 main으로 병합하기</a></li>
+            <li><a href="#github-issues">7. GitHub Issues에서 브랜치 생성</a></li>
+            <li><a href="#fetch-branch">8. 원격 브랜치 가져오기 (git fetch)</a></li>
+            <li><a href="#multiple-branches">9. 여러 브랜치 동시 작업 (conf1, conf2 예시)</a></li>
+            <li><a href="#tips">10. 협업 팁 & 주의할 점</a></li>
+        </ul>
+    </div>
+
+    <section id="flow">
+        <h2>1. 기본 협업 흐름 (요약)</h2>
+        <ol>
+            <li><strong>원격 저장소에서 최초 클론</strong> – <code>git clone</code></li>
+            <li><strong>dev 브랜치 생성 후 원격에 올리기</strong> – <code>git branch dev</code>, <code>git push --set-upstream origin dev</code></li>
+            <li><strong>기능 브랜치(one, two, three 등) 생성</strong> – <code>git checkout -b one</code></li>
+            <li><strong>기능 개발 → 커밋 → 원격에 브랜치 푸시</strong> – <code>git push --set-upstream origin one</code></li>
+            <li><strong>PR/MR 생성해서 dev에 머지</strong> (GitHub, GitLab, Bitbucket 등)</li>
+            <li><strong>머지 후 기능 브랜치 삭제</strong> – <code>git branch -d one</code>, <code>git push origin --delete one</code></li>
+        </ol>
+        <div class="box info">
+            <strong>핵심 개념:</strong> <br />
+            개발은 항상 <strong>기본 브랜치(main/master)</strong>가 아니라, 
+            <strong>dev → 기능 브랜치(one, two, three...)</strong> 구조로 진행하는 것이 좋습니다.
+        </div>
+    </section>
+
+    <section id="dev-setup">
+        <h2>2. dev 브랜치 만들기 & 기본 브랜치로 사용</h2>
+
+        <h3>2.1 dev 브랜치 생성과 최초 푸시</h3>
+        <p>현재 <code>main</code> 브랜치만 있다고 가정합니다.</p>
+
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch dev</span></div>
+            <div class="terminal-line small"># 로컬에 dev 브랜치 생성</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line small"># dev 브랜치로 전환</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push --set-upstream origin dev</span></div>
+            <div class="terminal-line small"># 원격(origin)에 dev 브랜치 최초 푸시 + upstream 설정</div>
+        </div>
+
+        <div class="box info">
+            <strong>설명:</strong> <br />
+            <code>--set-upstream</code> 옵션으로 <strong>로컬 dev</strong> 와 <strong>원격 dev(origin/dev)</strong>를 연결합니다.  
+            이후부터는 <code>git push</code>, <code>git pull</code>만 입력해도 자동으로 <code>origin dev</code>와 통신합니다.
+        </div>
+
+        <h3>2.2 Git 호스팅에서 기본 브랜치를 dev로 변경</h3>
+        <p>
+            GitHub / GitLab / Bitbucket 웹 화면에서 기본 브랜치를 <code>main</code> → <code>dev</code>로 변경하면,  
+            새 PR의 대상 브랜치가 자동으로 <code>dev</code>가 됩니다.
+        </p>
+        <ul>
+            <li><strong>GitHub</strong>: <em>Settings → Branches → Default branch → dev 선택</em></li>
+            <li><strong>GitLab</strong>: <em>Settings → Repository → Default branch → dev</em></li>
+        </ul>
+        <div class="box warn">
+            <strong>주의:</strong> 기본 브랜치 변경은 보통 <strong>리포지토리 관리자/소유자 권한</strong>이 필요합니다.
+        </div>
+    </section>
+
+    <section id="feature-branch">
+        <h2>3. 기능 브랜치(one, two, three) 생성과 작업</h2>
+
+        <h3>3.1 dev에서 기능 브랜치 생성</h3>
+        <p>항상 <code>dev</code> 브랜치에서 파생된 브랜치에서 기능을 개발합니다.</p>
+
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line small"># dev 브랜치로 이동</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch one</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch two</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch three</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch</span></div>
+            <div class="terminal-line small"># * dev, main, one, two, three 확인</div>
+        </div>
+
+        <h3>3.2 브랜치 전환과 커밋 예시 (one 브랜치)</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout one</span></div>
+            <div class="terminal-line small"># Switched to branch 'one'</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">echo "hello world" &gt;&gt; one.txt</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git add .</span></div>
+            <div class="terminal-line small"># CRLF 경고는 윈도우에서 줄바꿈 변환 안내입니다.</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git commit -m "one"</span></div>
+        </div>
+
+        <div class="box info">
+            <strong>LF / CRLF 경고 설명:</strong><br />
+            Windows에서는 기본 줄바꿈이 <strong>CRLF</strong>, Git은 보통 <strong>LF</strong>를 선호합니다.  
+            경고 메시지는 줄바꿈을 변환한다는 정보일 뿐, <strong>치명적인 에러는 아닙니다</strong>.
+        </div>
+    </section>
+
+    <section id="upstream">
+        <h2>4. upstream 설정과 <code>git push --set-upstream</code> 이해</h2>
+
+        <h3>4.1 오류 메시지 상황</h3>
+        <p>one 브랜치에서 처음 <code>git push</code>를 했을 때 나오는 메시지입니다.</p>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push</span></div>
+            <div class="terminal-line small">
+fatal: The current branch one has no upstream branch. <br />
+To push the current branch and set the remote as upstream, use <br />
+    git push --set-upstream origin one
+            </div>
+        </div>
+
+        <div class="box info">
+            <strong>upstream(추적 브랜치)란?</strong><br />
+            로컬 브랜치가 기본으로 연결되어 있는 <strong>원격 브랜치</strong>를 말합니다.  
+            예: 로컬 <code>one</code> ↔ 원격 <code>origin/one</code>
+        </div>
+
+        <h3>4.2 해결 방법: 최초 한 번만 upstream 설정</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push --set-upstream origin one</span></div>
+            <div class="terminal-line small"># origin에 one 브랜치 생성 + upstream 설정</div>
+        </div>
+
+        <p>이후부터는 아래처럼 <strong>간단히</strong> 사용 가능합니다.</p>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git pull</span></div>
+            <div class="terminal-line small"># 자동으로 origin/one 과 통신</div>
+        </div>
+
+        <h3>4.3 새 브랜치마다 자동 upstream 설정하기 (선택)</h3>
+        <p>매번 <code>--set-upstream</code> 쓰기 귀찮다면 전역 설정을 할 수 있습니다.</p>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git config --global push.autoSetupRemote true</span></div>
+        </div>
+        <div class="box info">
+            이렇게 설정하면, 새 브랜치에서 첫 <code>git push</code> 시에  
+            자동으로 <code>git push --set-upstream origin 브랜치명</code>과 같은 효과를 냅니다.
+        </div>
+    </section>
+
+    <section id="merge-delete">
+        <h2>5. 머지 후 브랜치 삭제 (로컬 + 원격)</h2>
+
+        <h3>5.1 기본 머지 흐름 (dev ← one)</h3>
+        <ol>
+            <li><strong>one 브랜치에서 작업 & 커밋 & 원격 푸시</strong></li>
+            <li><strong>GitHub/GitLab에서 PR/MR 생성</strong> – base: <code>dev</code>, compare: <code>one</code></li>
+            <li><strong>코드 리뷰 후 dev에 머지</strong></li>
+            <li><strong>머지 완료 후 one 브랜치 삭제</strong></li>
+        </ol>
+
+        <h3>5.2 로컬에서 dev에 직접 머지하는 명령어 예시</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line small"># dev로 이동</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git pull</span></div>
+            <div class="terminal-line small"># origin/dev 최신 상태로 동기화</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git merge one</span></div>
+            <div class="terminal-line small"># one 브랜치를 dev에 병합</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push</span></div>
+            <div class="terminal-line small"># 병합된 dev를 원격에 푸시</div>
+        </div>
+
+        <h3>5.3 머지 후 브랜치 삭제</h3>
+        <p>one 브랜치를 더 이상 쓰지 않는다면 로컬과 원격에서 정리해줍니다.</p>
+
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -d one</span></div>
+            <div class="terminal-line small"># 로컬 one 브랜치 삭제 (이미 dev에 머지된 경우만 허용)</div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin --delete one</span></div>
+            <div class="terminal-line small"># 원격(origin)의 one 브랜치 삭제</div>
+        </div>
+
+        <div class="box warn">
+            <strong>주의:</strong> <br />
+            <ul>
+                <li>머지 전에 삭제하면 <strong>작업 내용이 사라질 수 있으니</strong> 반드시 dev에 머지 후 삭제하세요.</li>
+                <li>다른 팀원이 아직 해당 브랜치를 사용 중인지 확인하는 것이 좋습니다.</li>
+            </ul>
+        </div>
+
+        <h3>5.4 여러 브랜치 한번에 삭제</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -d one</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -d two</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin --delete one</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin --delete two</span></div>
+        </div>
+    </section>
+
+    <section id="merge-to-main">
+        <h2>6. dev를 main으로 병합하기</h2>
+        <p>개발이 완료되어 dev 브랜치의 모든 변경사항을 main(프로덕션) 브랜치로 반영하는 과정입니다.</p>
+
+        <h3>6.1 기본 병합 흐름</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout main</span></div>
+            <div class="terminal-line small"># main 브랜치로 이동</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git pull origin main</span></div>
+            <div class="terminal-line small"># 원격 main 최신 상태로 업데이트</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git merge dev</span></div>
+            <div class="terminal-line small"># dev 브랜치 내용을 main으로 병합</div>
+        </div>
+
+        <h3>6.2 충돌 발생 시 해결</h3>
+        <p>충돌이 발생하면 Git이 자동으로 병합을 중단합니다.</p>
+        <div class="terminal">
+            <div class="terminal-line small"># 충돌 파일 확인</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git status</span></div>
+            <div class="terminal-line small"># 충돌 파일을 열어서 수동으로 해결</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git add resolved-file.txt</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git commit</span></div>
+            <div class="terminal-line small"># 병합 커밋 완료</div>
+        </div>
+
+        <h3>6.3 병합 후 원격 저장소에 푸시</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin main</span></div>
+            <div class="terminal-line small"># 병합된 main을 원격 저장소에 푸시</div>
+        </div>
+
+        <div class="box info">
+            <strong>실제 예시:</strong><br />
+            <div class="terminal">
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch</span></div>
+                <div class="terminal-line small">* dev</div>
+                <div class="terminal-line small">  main</div>
+                <div class="terminal-line small">  one</div>
+                <div class="terminal-line small">  three</div>
+                <div class="terminal-line small">  two</div>
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout main</span></div>
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git merge dev</span></div>
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin main</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="github-issues">
+        <h2>7. GitHub Issues에서 브랜치 생성</h2>
+        <p>GitHub Issues를 사용하면 이슈 번호와 연결된 브랜치를 자동으로 생성할 수 있습니다.</p>
+
+        <h3>7.1 GitHub 웹에서 브랜치 생성</h3>
+        <ol>
+            <li><strong>GitHub 저장소 → Issues 탭</strong> 이동</li>
+            <li><strong>새 Issue 생성</strong> 또는 기존 Issue 열기</li>
+            <li><strong>우측 사이드바에서 "Development" 섹션</strong> 확인</li>
+            <li><strong>"Create a branch" 버튼 클릭</strong></li>
+            <li>브랜치 이름이 자동으로 생성됨 (예: <code>6-four-기능-개발</code>)</li>
+        </ol>
+
+        <div class="box info">
+            <strong>브랜치 네이밍 규칙:</strong><br />
+            GitHub는 이슈 번호와 제목을 조합해서 브랜치 이름을 자동 생성합니다.<br />
+            예: Issue #6 "four 기능 개발" → <code>6-four-기능-개발</code>
+        </div>
+
+        <h3>7.2 로컬에서 원격 브랜치 가져오기</h3>
+        <p>GitHub에서 생성한 브랜치를 로컬로 가져오는 방법입니다.</p>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git fetch origin</span></div>
+            <div class="terminal-line small"># 원격 저장소의 모든 브랜치 정보 가져오기</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout 6-four-기능-개발</span></div>
+            <div class="terminal-line small"># 자동으로 원격 브랜치를 추적하며 체크아웃</div>
+        </div>
+
+        <div class="box info">
+            <strong>실제 출력 예시:</strong><br />
+            <div class="terminal">
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git fetch origin</span></div>
+                <div class="terminal-line small">From https://github.com/bhher/test2</div>
+                <div class="terminal-line small"> * [new branch]      6-four-기능-개발 -> origin/6-four-기능-개발</div>
+                <div class="terminal-line small">branch '6-four-기능-개발' set up to track 'origin/6-four-기능-개발'.</div>
+                <div class="terminal-line small">Switched to a new branch '6-four-기능-개발'</div>
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch</span></div>
+                <div class="terminal-line small">* 6-four-기능-개발</div>
+                <div class="terminal-line small">  dev</div>
+                <div class="terminal-line small">  main</div>
+                <div class="terminal-line small">  three</div>
+            </div>
+        </div>
+
+        <h3>7.3 작업 완료 후 브랜치 삭제</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -d 6-four-기능-개발</span></div>
+            <div class="terminal-line small"># 로컬 브랜치 삭제</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push origin --delete 6-four-기능-개발</span></div>
+            <div class="terminal-line small"># 원격 브랜치 삭제</div>
+        </div>
+    </section>
+
+    <section id="fetch-branch">
+        <h2>8. 원격 브랜치 가져오기 (git fetch)</h2>
+        <p>다른 팀원이 생성한 원격 브랜치를 로컬로 가져오는 방법입니다.</p>
+
+        <h3>8.1 git fetch vs git pull</h3>
+        <div class="box info">
+            <strong>차이점:</strong><br />
+            <ul>
+                <li><code>git fetch</code>: 원격 저장소의 정보만 가져옴 (병합 안함)</li>
+                <li><code>git pull</code>: 가져오고 자동으로 병합 (fetch + merge)</li>
+            </ul>
+            <strong>권장:</strong> 먼저 <code>git fetch</code>로 확인 후, 필요시 체크아웃하는 것이 안전합니다.
+        </div>
+
+        <h3>8.2 원격 브랜치 확인</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git fetch origin</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -r</span></div>
+            <div class="terminal-line small"># 원격 브랜치 목록 확인</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch -a</span></div>
+            <div class="terminal-line small"># 로컬 + 원격 브랜치 모두 확인</div>
+        </div>
+
+        <h3>8.3 원격 브랜치를 로컬로 가져오기</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git fetch origin</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout -b local-branch origin/remote-branch</span></div>
+            <div class="terminal-line small"># 원격 브랜치를 로컬로 가져와서 체크아웃</div>
+        </div>
+
+        <p>또는 더 간단하게:</p>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout --track origin/remote-branch</span></div>
+            <div class="terminal-line small"># 자동으로 같은 이름의 로컬 브랜치 생성 + 추적 설정</div>
+        </div>
+
+        <div class="box info">
+            <strong>Git 2.23+ 버전:</strong><br />
+            <div class="terminal">
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git switch -c local-branch origin/remote-branch</span></div>
+                <div class="terminal-line small"># 또는</div>
+                <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git switch --track origin/remote-branch</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="multiple-branches">
+        <h2>9. 여러 브랜치 동시 작업 (conf1, conf2 예시)</h2>
+        <p>여러 기능을 동시에 개발할 때 각각 다른 브랜치에서 작업하는 실제 예시입니다.</p>
+
+        <h3>9.1 여러 브랜치 생성</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout dev</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch conf1</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch conf2</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git branch</span></div>
+            <div class="terminal-line small"># * dev, main, conf1, conf2 확인</div>
+        </div>
+
+        <h3>9.2 conf1 브랜치에서 작업</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout conf1</span></div>
+            <div class="terminal-line small"># Switched to branch 'conf1'</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd"># 파일 수정 작업...</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git add .</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git commit -m "conf1"</span></div>
+            <div class="terminal-line small"># [conf1 501daa3] conf1</div>
+            <div class="terminal-line small">#  1 file changed, 0 insertions(+), 0 deletions(-)</div>
+        </div>
+
+        <h3>9.3 conf1 원격에 푸시 (upstream 설정)</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push</span></div>
+            <div class="terminal-line small">fatal: The current branch conf1 has no upstream branch.</div>
+            <div class="terminal-line small">To push the current branch and set the remote as upstream, use</div>
+            <div class="terminal-line small">    git push --set-upstream origin conf1</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push --set-upstream origin conf1</span></div>
+        </div>
+
+        <div class="box info">
+            <strong>실제 푸시 출력 예시:</strong><br />
+            <div class="terminal">
+                <div class="terminal-line small">Enumerating objects: 5, done.</div>
+                <div class="terminal-line small">Counting objects: 100% (5/5), done.</div>
+                <div class="terminal-line small">Delta compression using up to 4 threads</div>
+                <div class="terminal-line small">Compressing objects: 100% (2/2), done.</div>
+                <div class="terminal-line small">Writing objects: 100% (3/3), 331 bytes | 165.00 KiB/s, done.</div>
+                <div class="terminal-line small">Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)</div>
+                <div class="terminal-line small">remote:</div>
+                <div class="terminal-line small">remote: Create a pull request for 'conf1' on GitHub by visiting:</div>
+                <div class="terminal-line small">remote:      https://github.com/bhher/test2/pull/new/conf1</div>
+                <div class="terminal-line small">remote:</div>
+                <div class="terminal-line small">To https://github.com/bhher/test2.git</div>
+                <div class="terminal-line small"> * [new branch]      conf1 -> conf1</div>
+                <div class="terminal-line small">branch 'conf1' set up to track 'origin/conf1'.</div>
+            </div>
+        </div>
+
+        <h3>9.4 conf2 브랜치로 전환하여 작업</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git checkout conf2</span></div>
+            <div class="terminal-line small"># Switched to branch 'conf2'</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd"># 다른 파일 수정 작업...</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git add .</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git commit -m "conf2"</span></div>
+            <div class="terminal-line small"># [conf2 501daa3] conf2</div>
+            <div class="terminal-line small">#  1 file changed, 0 insertions(+), 0 deletions(-)</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git push --set-upstream origin conf2</span></div>
+        </div>
+
+        <h3>9.5 여러 브랜치 관리 팁</h3>
+        <div class="box info">
+            <strong>브랜치 간 전환 시 주의사항:</strong><br />
+            <ul>
+                <li>작업 전에 항상 <code>git status</code>로 현재 상태 확인</li>
+                <li>커밋하지 않은 변경사항이 있으면 <code>git stash</code>로 임시 저장</li>
+                <li>각 브랜치에서 작업 후 원격에 푸시하여 백업</li>
+                <li>작업 완료된 브랜치는 머지 후 삭제하여 정리</li>
+            </ul>
+        </div>
+
+        <h3>9.6 브랜치 간 변경사항 확인</h3>
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git diff conf1 conf2</span></div>
+            <div class="terminal-line small"># 두 브랜치 간 차이점 확인</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">git log conf1..conf2</span></div>
+            <div class="terminal-line small"># conf1에는 없고 conf2에만 있는 커밋 확인</div>
+        </div>
+    </section>
+
+    <section id="tips">
+        <h2>10. 협업 팁 & 주의할 점</h2>
+
+        <h3>6.1 브랜치 네이밍 팁</h3>
+        <ul>
+            <li><code>feature/기능-이름</code> – 예: <code>feature/login-ui</code></li>
+            <li><code>bugfix/이슈번호</code> – 예: <code>bugfix/1234-null-pointer</code></li>
+            <li><code>hotfix/긴급-패치</code></li>
+        </ul>
+
+        <h3>6.2 절대 하지 말아야 할 것</h3>
+        <div class="box danger">
+            <ul>
+                <li><strong>공유 브랜치(dev, main)에서 직접 개발</strong> – 항상 기능 브랜치를 만드세요.</li>
+                <li><strong>공유 브랜치에서 무분별한 <code>git push --force</code></strong> – 다른 사람 커밋이 날아갈 수 있습니다.</li>
+                <li><strong>이미 푸시한 커밋을 마음대로 rebase</strong> – 히스토리가 꼬여 팀 전체에 문제 발생.</li>
+            </ul>
+        </div>
+
+        <h3>6.3 권장하는 습관</h3>
+        <div class="box info">
+            <ul>
+                <li>작업 시작 전 <code>git status</code>로 현재 상태 항상 확인</li>
+                <li>새 작업 시작 전에 <code>git pull</code>로 dev 최신 상태 유지</li>
+                <li>기능이 완성되면 <code>PR/MR</code>을 통해 코드 리뷰 후 dev에 병합</li>
+                <li>머지된 기능 브랜치는 <strong>반드시 삭제</strong>해서 브랜치 목록을 깔끔하게 유지</li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+
+
+
